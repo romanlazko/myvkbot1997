@@ -26,7 +26,7 @@ switch ($data->type) {
         // Вытаскиваем имя отправителя
         $user_name = $userInfo->response->items->first_name;
         $request_params = array(
-            'message' => 'привет,'.$user_name,
+            'message' => 'привет,'.$userId,
             'user_id' => $userId,
             'access_token' => $token,
             'v' => '5.8'
