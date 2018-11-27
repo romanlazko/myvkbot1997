@@ -20,7 +20,7 @@ $request_params1 = array(
 );
 $get_params1 = http_build_query($request_params1);
 $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?'. $get_params1));
-$result -> response[0] -> bdate;
+$user_name = $result -> response[0] -> bdate;
 // проверяем secretKey
 //if (strcmp($data->secret, $secretKey) !== 0 && strcmp($data->type, 'confirmation') !== 0) {return;}
 //$type = $data['type'];
@@ -36,7 +36,7 @@ switch ($type) {
         // Вытаскиваем имя отправителя
         
         $request_params = array(
-            'message' => 'привет,'.$result,
+            'message' => 'привет,'.$user_name,
             'user_id' => $userId,
             'access_token' => $token,
             'v' => '5.8'
