@@ -8,10 +8,16 @@ $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b29032
 $secretKey = 'zdraste123romanlazko';
 
 $data = json_decode(file_get_contents('php://input'),true);
-$userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$userId."&access_token=".$token."&v=5.8"),true);
 $type = $data['type'];
 $userId = $data['object']['user_id'];
-$user_name = $userInfo['response[0]']['first_name'];
+$userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$userId."&access_token=".$token."&v=5.8"),true);
+$user_name = $userInfo['response']['first_name'];
+// $request_params = array(
+//     'user_id' => $user_id,
+//     'fields' => 'bdate',
+//     'v' => '5.52'
+//     'access_token' => '533bacf01e11f55b536a565b57531ac114461ae8736d6506a3'
+// );
 // проверяем secretKey
 //if (strcmp($data->secret, $secretKey) !== 0 && strcmp($data->type, 'confirmation') !== 0) {return;}
 //$type = $data['type'];
