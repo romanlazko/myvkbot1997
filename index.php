@@ -21,11 +21,11 @@ switch ($type) {
         
         //$userId = $data->object->user_id;
         // через users.get получаем данные об авторе
-        //$userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=113601869&access_token=0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d&v=5.8"));
+        $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=113601869&access_token=0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d&v=5.8"));
         // Вытаскиваем имя отправителя
-        //$user_name = $data->response->first_name;
+        $user_name = $data['response']['first_name'];
         $request_params = array(
-            'message' => 'привет,'.$userId,
+            'message' => 'привет,'.$user_name,
             'user_id' => $userId,
             'access_token' => $token,
             'v' => '5.8'
