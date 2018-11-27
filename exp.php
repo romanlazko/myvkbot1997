@@ -7,5 +7,5 @@ $request_params = array(
 );
 $get_params = http_build_query($request_params);
 $result = json_decode(file_get_contents('https://api.vk.com/method/users.get?'. $get_params),true);
-echo($result['response']['first_name']);
+echo($result['response[0]']['first_name']);
 ?>
