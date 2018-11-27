@@ -27,13 +27,14 @@ switch ($data->type) {
         //$user_name = $data['object']['first_name'];
         // Через messages.send используя токен сообщества отправляем ответ
         $request_params = array(
-            'message' => $data,
+            'message' => 'привет'.$data,
             'user_id' => $userId,
             'access_token' => $token,
             'v' => '5.0'
         );
         $get_params = http_build_query($request_params);
         file_get_contents('https://api.vk.com/method/messages.send?'. $get_params);
+        echo $data;
         echo('ok'); // Возвращаем "ok" серверу Callback API
         break;
 }
