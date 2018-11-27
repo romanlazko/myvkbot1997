@@ -10,14 +10,17 @@ $secretKey = 'zdraste123romanlazko';
 $data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
 $userId = $data['object']['user_id'];
-$userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$userId."&access_token=".$token."&v=5.8"));
-$user_name = $userInfo->response->first_name;
-// $request_params = array(
-//     'user_id' => $user_id,
-//     'fields' => 'bdate',
-//     'v' => '5.52'
-//     'access_token' => '533bacf01e11f55b536a565b57531ac114461ae8736d6506a3'
-// );
+//$userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$userId."&access_token=".$token."&v=5.8"));
+//$user_name = $userInfo->response->first_name;
+$request_params1 = array(
+    'user_id' => $userId,
+    'fields' => 'bdate',
+    'v' => '5.52'
+    'access_token' => $token
+);
+$get_params1 = http_build_query($request_params1);
+$result = json_decode(file_get_contents('https://api.vk.com/method/users.get?'. $get_params1));
+$result -> response[0] -> bdate;
 // проверяем secretKey
 //if (strcmp($data->secret, $secretKey) !== 0 && strcmp($data->type, 'confirmation') !== 0) {return;}
 //$type = $data['type'];
@@ -33,7 +36,7 @@ switch ($type) {
         // Вытаскиваем имя отправителя
         
         $request_params = array(
-            'message' => 'привет,'.$user_name,
+            'message' => 'привет,'.$result,
             'user_id' => $userId,
             'access_token' => $token,
             'v' => '5.8'
