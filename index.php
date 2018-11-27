@@ -24,7 +24,7 @@ switch ($data->type) {
         // через users.get получаем данные об авторе
         $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$userId}&v=5.8"));
         // Вытаскиваем имя отправителя
-        $user_name = $userInfo->response[0]->first_name;
+        $user_name = $userInfo->response->items->first_name;
         $request_params = array(
             'message' => 'привет,'.$user_name,
             'user_id' => $userId,
