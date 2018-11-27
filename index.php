@@ -17,12 +17,26 @@ $user_name = $userInfo['response'][0]['first_name'];
 switch ($type) {
 
     case 'message_new':
-        
+        $keyboard= keyboard:{
+                "one_time":false,
+                "buttons":[
+                    [{
+                        "action":{
+                            "type":"text",
+                            "payload":"{\"button\":\"1\"}",
+                            "label":"Red"
+                        },
+                        "color":"negative"
+                    }]
+                    ]
+        }
+            
         
         $request_params = array(
             'message' => 'привет,'.$user_name."Твое сообщение: ".$text,
             'user_id' => $userId,
             'access_token' => $token,
+            'keyboard'=>$keyboard,
             'v' => '5.8'
         );
         file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
