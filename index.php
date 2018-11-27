@@ -1,5 +1,5 @@
 <?php
-if (!isset($_REQUEST)) {return;}
+//if (!isset($_REQUEST)) {return;}
 // Строка, которую должен вернуть сервер (См. Callback API->Настройки сервера)
 $confirmationToken = '14997d31';
 // Ключ доступа сообщества (длинная строчка которую получили нажав "создать ключ")
@@ -8,25 +8,24 @@ $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b29032
 $secretKey = 'zdraste123romanlazko';
 
 $data = json_decode(file_get_contents('php://input'));
+$type = $data['type'];
+$userId = $data['object']['user_id'];
 // проверяем secretKey
 //if (strcmp($data->secret, $secretKey) !== 0 && strcmp($data->type, 'confirmation') !== 0) {return;}
 //$type = $data['type'];
 // Проверяем, что находится в поле "type"
-switch ($data->type) {
-// Запрос для подтверждения адреса сервера (посылает ВК)
-    case 'confirmation':
-        echo $confirmationToken; // отправляем строку для подтверждения адреса
-        break;
-    // Если это уведомление о новом сообщении...
+switch ($type) {
+
     case 'message_new':
         // получаем id автора сообщения
-        $userId = $data->object->user_id;
+        
+        //$userId = $data->object->user_id;
         // через users.get получаем данные об авторе
-        $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=113601869&access_token=0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d&v=5.8"));
+        //$userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=113601869&access_token=0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d&v=5.8"));
         // Вытаскиваем имя отправителя
-        $user_name = $data->response->first_name;
+        //$user_name = $data->response->first_name;
         $request_params = array(
-            'message' => 'привет,'.$user_name,
+            'message' => 'привет,'.$userId,
             'user_id' => $userId,
             'access_token' => $token,
             'v' => '5.8'
