@@ -15,7 +15,7 @@ $userId = $data['object']['user_id'];
 $request_params1 = array(
     'user_id' => $userId,
     'fields' => 'bdate',
-    'v' => '5.52'
+    'v' => '5.52',
     'access_token' => $token
 );
 $get_params1 = http_build_query($request_params1);
