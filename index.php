@@ -10,7 +10,7 @@ $secretKey = 'zdraste123romanlazko';
 $data = json_decode(file_get_contents('php://input'));
 // проверяем secretKey
 if (strcmp($data->secret, $secretKey) !== 0 && strcmp($data->type, 'confirmation') !== 0) {return;}
-$type = $data['type'];
+//$type = $data['type'];
 // Проверяем, что находится в поле "type"
 switch ($data->type) {
 // Запрос для подтверждения адреса сервера (посылает ВК)
