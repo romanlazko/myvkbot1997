@@ -7,7 +7,7 @@ $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b29032
 // Секретный ключ. (Задаем в Callback API->Настройки сервера)
 $secretKey = 'zdraste123romanlazko';
 
-$data = json_decode(file_get_contents('php://input'));
+$data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
 $userId = $data['object']['user_id'];
 // проверяем secretKey
