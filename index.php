@@ -22,9 +22,9 @@ switch ($data->type) {
         // получаем id автора сообщения
         $userId = $data['object']['user_id'];
         // через users.get получаем данные об авторе
-        $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$userId}&v=5.0"));
+        //$userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$userId}&v=5.0"));
         // Вытаскиваем имя отправителя
-        $user_name = $userInfo['response']['0']['first_name'];
+        $user_name = $data['object']['first_name'];
         // Через messages.send используя токен сообщества отправляем ответ
         $request_params = array(
             'message' => "{$user_name}, Ваше сообщение получено!
