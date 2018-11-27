@@ -27,7 +27,7 @@ switch ($data->type) {
         $user_name = $data['object']['first_name'];
         // Через messages.send используя токен сообщества отправляем ответ
         $request_params = array(
-            'message' => "{$user_name}, Ваше сообщение получено!
+            'message' => "Ваше сообщение получено!
             В ближайшее время админ группы на него ответит.",
             'user_id' => $userId,
             'access_token' => $token,
