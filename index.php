@@ -11,7 +11,7 @@ $data = json_decode(file_get_contents('php://input'),true);
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$userId."&access_token=".$token."&v=5.8"),true);
 $type = $data['type'];
 $userId = $data['object']['user_id'];
-$user_name = $userInfo['response']['0']['first_name'];
+$user_name = $userInfo['response[0]']['first_name'];
 // проверяем secretKey
 //if (strcmp($data->secret, $secretKey) !== 0 && strcmp($data->type, 'confirmation') !== 0) {return;}
 //$type = $data['type'];
