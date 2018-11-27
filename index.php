@@ -27,11 +27,11 @@ switch ($data->type) {
         $user_name = $userInfo->response[0]->first_name;
         // Через messages.send используя токен сообщества отправляем ответ
         $request_params = array(
-        'message' => "{$user_name}, Ваше сообщение получено!
-        В ближайшее время админ группы на него ответит.",
-        'user_id' => $userId,
-        'access_token' => $token,
-        'v' => '5.0'
+            'message' => "{$user_name}, Ваше сообщение получено!
+            В ближайшее время админ группы на него ответит.",
+            'user_id' => $userId,
+            'access_token' => $token,
+            'v' => '5.0'
         );
         $get_params = http_build_query($request_params);
         file_get_contents('https://api.vk.com/method/messages.send?'. $get_params);
