@@ -12,7 +12,7 @@ $data = json_decode(file_get_contents('php://input'));
 if (strcmp($data->secret, $secretKey) !== 0 && strcmp($data->type, 'confirmation') !== 0) {return;}
 $type = $data['type'];
 // Проверяем, что находится в поле "type"
-switch ($type) {
+switch ($data->type) {
 // Запрос для подтверждения адреса сервера (посылает ВК)
     case 'confirmation':
         echo $confirmationToken; // отправляем строку для подтверждения адреса
@@ -27,8 +27,7 @@ switch ($type) {
         //$user_name = $data['object']['first_name'];
         // Через messages.send используя токен сообщества отправляем ответ
         $request_params = array(
-            'message' => "Ваше сообщение получено!
-            В ближайшее время админ группы на него ответит.",
+            'message' => $type,
             'user_id' => $userId,
             'access_token' => $token,
             'v' => '5.0'
