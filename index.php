@@ -30,7 +30,17 @@ if($type == 'message_new'){
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
-    }        
+    }elseif($text =='Проверить почту') {
+        $reply = $user_name. ", что бы проверить почту сначала отправь мне свое имя по паспорту в формате\n
+        'N: ИМЯ'";
+        $keyboard = null;
+        sendMessage($token,$user_name,$user_id,$reply,$keyboard);
+    } 
+    else{
+        $str = substr($text, 0, strrpos($text, ':'));
+        $reply = "Твое имя: ".$str;
+        sendMessage($token,$user_name,$user_id,$reply,$keyboard);
+    }
 }
 function sendMessage($token,$user_name,$user_id,$reply,$keyboard){
     $request_params = array(
