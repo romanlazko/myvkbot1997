@@ -33,7 +33,6 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту сначала отправь мне свое имя по паспорту в формате\n
         'N: ИМЯ'";
-        $keyboard = null;
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     } 
     else{
