@@ -26,7 +26,7 @@ $keyboard = [
     ],],
 ]; 
 $Name = substr($text, 0, strrpos($text, ','));
-$str = substr($Name, 0, strrpos($text, ':'));
+$str = substr($Name, 0, strrpos($Name, ':'));
 $N = substr($Name, strrpos($Name,":")+1);
 $Lastname = substr($text, strrpos($text,",")+1);
 $L = substr($Lastname, strrpos($Lastname,":")+1);
