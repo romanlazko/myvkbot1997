@@ -13,15 +13,16 @@ $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
-$keyboard = [ 
-    'one_time' => true, 
-    'buttons' => Keyboard("1",'первая')
-]; 
+ 
 $rest = substr($text, 0,1);
 
 if($type == 'message_new'){
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
+        $keyboard = [ 
+            'one_time' => true, 
+            'buttons' => keyboard("1",'Проверить почту','positive')
+        ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту, через запятую и начиная с ':'. \n
@@ -42,7 +43,20 @@ if($type == 'message_new'){
         $L = substr($Lastname, strrpos($Lastname,":")+1);
          
         $reply = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
-        sendMessage($token,$user_id,$reply,$keyboard);
+        $keyboard = [ 
+            'one_time' => true, 
+            'buttons' => keyboard("1",'Начать','positive')
+        ];
+        sendKeyboard($token,$user_id,$reply,$keyboard);
+    }
+    else{
+        $reply="Прости, я тебя не понимаю)
+        \nПопробуй еще раз!";
+        $keyboard = [ 
+            'one_time' => true, 
+            'buttons' => keyboard("1",'Начать','positive')
+        ];
+        sendKeyboard($token,$user_id,$reply,$keyboard);
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
@@ -66,13 +80,13 @@ function sendMessage($token,$user_id,$reply){
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     echo('ok'); 
 }
-function Keyboard($par,$name_btn){
+function keyboard($par,$name_btn,$color){
     $key = [[
         ['action' =>['type' => 'text', 
                      'payload' => '{"button": '.$par.'}',
                      'label' => $name_btn, 
                     ],
-        'color' => 'negative']
+        'color' => $color]
 
         
     ]];
