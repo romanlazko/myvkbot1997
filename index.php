@@ -9,8 +9,8 @@ $secretKey = 'zdraste123romanlazko';
 
 $data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
-$userId = $data['object']['user_id'];
-$text = $data['object']['body'];
+$userId = $data['object']['from_id'];
+$text = $data['object']['text'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$userId."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 
@@ -18,50 +18,12 @@ switch ($type) {
 
     case 'message_new':
         $keyboard = [ 
-  'one_time' => false, 
-  'buttons' => [ 
-    [ 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "1"}', 
-          'label' => 'Red', 
-        ], 
-        'color' => 'negative', 
-      ], 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "2"}', 
-          'label' => 'Green', 
-        ], 
-        'color' => 'positive', 
-      ], 
-    ], 
-    [ 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "3"}', 
-          'label' => 'White', 
-        ], 
-        'color' => 'default', 
-      ], 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "4"}', 
-          'label' => 'Blue', 
-        ], 
-        'color' => 'primary', 
-      ], 
-    ], 
-  ], 
-];  
+        'one_time' => false, 
+        'buttons' => [
+            [
+              ['action' => ['type' => 'text', 'payload' => '{"button": "1"}', 'label' => 'Red',], 'color' => 'negative',],
+            ], 
+        ];  
  
             
         
