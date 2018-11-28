@@ -29,32 +29,43 @@ $keyboard = [
 if($type == 'message_new'){
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
-        sendMessage($token,$user_name,$user_id,$reply,$keyboard);
+        sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту в формате\n
         'N: ИМЯ, L: ФАМИЛИЯ'\n
         Важно!\n
         Данные должны быть написанны:
         Латиницей,
-        Большими буквами
+        Большими буквами,
+        Не забудь спользовать идентификаторы 'N:' и 'L:'
         ";
-        sendMessage($token,$user_name,$user_id,$reply,$keyboard);
+        sendMessage($token,$user_id,$reply);
     } 
-    else{
+    elseif(substr($text, 0, strrpos($text, ':'))=='N'){
         $Name = substr($text, 0, strrpos($text, ','));
         $N = substr($Name, strrpos($Name,":")+1);
         $Lastname = substr($text, strrpos($text,",")+1);
         $L = substr($Lastname, strrpos($Lastname,":")+1);
         $reply = "Имя ".$N."\nФамилия ".$L;
-        sendMessage($token,$user_name,$user_id,$reply,$keyboard);
+        sendKeyboard($token,$user_id,$reply,$keyboard);
     }
 }
-function sendMessage($token,$user_name,$user_id,$reply,$keyboard){
+function sendKeyboard($token,$user_id,$reply,$keyboard){
     $request_params = array(
         'message' => $reply,
         'user_id' => $user_id,
         'access_token' => $token,
         'keyboard'=>json_encode($keyboard, JSON_UNESCAPED_UNICODE),
+        'v' => '5.8'
+    );
+    file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
+    echo('ok'); 
+}
+function sendMessage($token,$user_id,$reply){
+    $request_params = array(
+        'message' => $reply,
+        'user_id' => $user_id,
+        'access_token' => $token,
         'v' => '5.8'
     );
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
