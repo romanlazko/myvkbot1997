@@ -53,7 +53,7 @@ if($type == 'message_new'){
         $Lastname = substr($text, strrpos($text,",")+1);
         $L = substr($Lastname, strrpos($Lastname,":")+1);
          
-        $reply = "https://www.mvcr.cz/soubor/".$L."-".$N.".-pdf.aspx";
+        $reply = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
         sendMessage($token,$user_id,$reply,$keyboard);
     }
 }
