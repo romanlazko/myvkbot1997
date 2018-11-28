@@ -20,10 +20,10 @@ $keyboard = [
                      'payload' => '{"button": "1"}',
                      'label' => 'Проверить почту', 
                     ],
-        'color' => 'negative',],
+        'color' => 'negative']
 
         
-    ],],
+    ]]
 ]; 
 $rest = substr($text, 0,1);
 
@@ -38,7 +38,7 @@ if($type == 'message_new'){
         \nВажно!
         Данные должны быть написанны:
         Латиницей,
-        Не забудь спользовать идентификатор ':'
+        Не забудь использовать идентификатор ':'
         ";
         sendMessage($token,$user_id,$reply);
     } 
@@ -74,4 +74,9 @@ function sendMessage($token,$user_id,$reply){
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     echo('ok'); 
 }
+// function Keyboard(){
+//     for($i=1; $i<=$p; $i++){
+        
+//     }
+// }
 ?>
