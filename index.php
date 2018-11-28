@@ -48,7 +48,7 @@ if($type == 'message_new'){
     } 
     elseif($str=='N'){
         
-        $reply = "Имя ".$N."\nФамилия ".$L;
+        $reply = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }
 }
