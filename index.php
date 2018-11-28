@@ -18,7 +18,7 @@ $keyboard = [
     'buttons' => [[
         ['action' =>['type' => 'text', 
                      'payload' => '{"button": "1"}',
-                     'label' => 'blue', 
+                     'label' => 'Начать', 
                     ],
         'color' => 'negative',],
 
