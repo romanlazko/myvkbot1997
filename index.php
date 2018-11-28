@@ -35,8 +35,8 @@ if($type == 'message_new'){
         'N: ИМЯ'";
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     } 
-    else{
-        $str = substr($text, 0, strrpos($text, ':'));
+    elseif(substr($text, 0, strrpos($text, ':'))=='N'){
+        $str = substr($text, strrpos($text,":")+1);
         $reply = "Твое имя: ".$str;
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     }
