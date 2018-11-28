@@ -31,13 +31,21 @@ if($type == 'message_new'){
         $reply = "Привет, ".$user_name;
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
-        $reply = $user_name. ", что бы проверить почту сначала отправь мне свое имя по паспорту в формате\n
-        'N: ИМЯ'";
+        $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту в формате\n
+        'N: ИМЯ, L: ФАМИЛИЯ'\n
+        Важно!\n
+        Данные должны быть написанны:
+        Латиницей,
+        Большими буквами
+        ";
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     } 
-    elseif(substr($text, 0, strrpos($text, ':'))=='N'){
-        $str = substr($text, strrpos($text,":")+1);
-        $reply = "Твое имя: ".$str;
+    elseif(=='N' and ){
+        $Name = substr($text, 0, strrpos($text, ','));
+        $N = substr($Name, strrpos($Name,":")+1);
+        $Lastname = substr($text, strrpos($text,",")+1);
+        $L = substr($Lastname, strrpos($Lastname,":")+1);
+        $reply = "Имя ".$N."\nФамилия ".$L;
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     }
 }
