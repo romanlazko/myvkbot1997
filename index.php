@@ -69,7 +69,7 @@ function sendMessage($token,$user_id,$reply){
 function Keyboard($par,$name_btn){
     $key = [[
         ['action' =>['type' => 'text', 
-                     'payload' => '{"button": $par}',
+                     'payload' => '{"button": "1"}',
                      'label' => $name_btn, 
                     ],
         'color' => 'negative']
