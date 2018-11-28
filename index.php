@@ -40,7 +40,7 @@ if($type == 'message_new'){
         ";
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     } 
-    elseif(=='N' and ){
+    elseif(substr($text, 0, strrpos($text, ':'))=='N'){
         $Name = substr($text, 0, strrpos($text, ','));
         $N = substr($Name, strrpos($Name,":")+1);
         $Lastname = substr($text, strrpos($text,",")+1);
