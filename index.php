@@ -25,6 +25,11 @@ $keyboard = [
         
     ],],
 ]; 
+$Name = substr($text, 0, strrpos($text, ','));
+$str = substr($Name, 0, strrpos($text, ':'));
+$N = substr($Name, strrpos($Name,":")+1);
+$Lastname = substr($text, strrpos($text,",")+1);
+$L = substr($Lastname, strrpos($Lastname,":")+1);
 
 if($type == 'message_new'){
     if($text =='Начать') {
@@ -41,11 +46,8 @@ if($type == 'message_new'){
         ";
         sendMessage($token,$user_id,$reply);
     } 
-    elseif(substr($text, 0, strrpos($text, ':'))=='N'){
-        $Name = substr($text, 0, strrpos($text, ','));
-        $N = substr($Name, strrpos($Name,":")+1);
-        $Lastname = substr($text, strrpos($text,",")+1);
-        $L = substr($Lastname, strrpos($Lastname,":")+1);
+    elseif($str=='N'){
+        
         $reply = "Имя ".$N."\nФамилия ".$L;
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }
