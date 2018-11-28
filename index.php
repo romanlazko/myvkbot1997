@@ -18,30 +18,21 @@ switch ($type) {
 
     case 'message_new':
         $keyboard = [ 
-        'one_time' => false, 
-  'buttons' => [ 
-    [ 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "1"}', 
-          'label' => 'blue', 
-        ], 
-        'color' => 'negative', 
-      ], 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "2"}', 
-          'label' => 'yellow', 
-        ], 
-        'color' => 'positive', 
-      ], 
-    ],  
-   ],
-];  
+            'one_time' => false, 
+            'buttons' => [
+                ['action' =>['type' => 'text', 
+                             'payload' => '{"button": "1"}',
+                             'label' => 'blue', 
+                            ],
+                'color' => 'negative',],
+
+                ['action' =>['type' => 'text',
+                             'payload' => '{"button": "2"}',
+                             'label' => 'yellow',
+                            ], 
+                'color' => 'positive',],
+            ],
+        ];  
  
             
         
