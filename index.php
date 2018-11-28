@@ -15,7 +15,7 @@ $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?u
 $user_name = $userInfo['response'][0]['first_name'];
 $keyboard = [ 
     'one_time' => true, 
-    'buttons' => Keyboard('1','первая')
+    'buttons' => Keyboard("1",'первая')
 ]; 
 $rest = substr($text, 0,1);
 
@@ -69,7 +69,7 @@ function sendMessage($token,$user_id,$reply){
 function Keyboard($par,$name_btn){
     $key = [[
         ['action' =>['type' => 'text', 
-                     'payload' => '{"button": "1"}',
+                     'payload' => '{"button": '.$par.'}',
                      'label' => $name_btn, 
                     ],
         'color' => 'negative']
