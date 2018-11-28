@@ -39,28 +39,8 @@ switch ($type) {
         ], 
         'color' => 'positive', 
       ], 
-    ], 
-    [ 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "3"}', 
-          'label' => 'White', 
-        ], 
-        'color' => 'default', 
-      ], 
-      [ 
-        'action' =>   
-        [ 
-          'type' => 'text', 
-          'payload' => '{"button": "4"}', 
-          'label' => 'Blue', 
-        ], 
-        'color' => 'primary', 
-      ], 
-    ], 
-  ], 
+    ],  
+   
 ];  
  
             
