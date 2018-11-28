@@ -40,7 +40,7 @@ switch ($type) {
         'color' => 'positive', 
       ], 
     ],  
-   
+   ],
 ];  
  
             
