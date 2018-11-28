@@ -32,9 +32,13 @@ $keyboard = [
 
 if($type == 'message_new'){
     if($text =='yellow') {
-        $reply = "Привет, ".$user_name;
-        $request_params = array(
-        'message' => $reply,
+        $reply = "Привет, ";
+        sendMessage($token,$user_name,$user_id,$reply,$keyboard);
+    }        
+}
+function sendMessage($token,$user_name,$user_id,$reply,$keyboard){
+    $request_params = array(
+        'message' => $reply.$user_name,
         'user_id' => $user_id,
         'access_token' => $token,
         'keyboard'=>json_encode($keyboard),
@@ -42,20 +46,5 @@ if($type == 'message_new'){
     );
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     echo('ok'); 
-//         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
-    }
-        
 }
-// function sendMessage($token,$user_name,$user_id,$reply,$keyboard){
-//     $request_params = array(
-//         'message' => $reply,
-//         'user_id' => $user_id,
-//         'access_token' => $token,
-//         'keyboard'=>json_encode($keyboard),
-//         'v' => '5.8'
-//     );
-//     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
-//     echo('ok'); 
-//     break;
-// }
 ?>
