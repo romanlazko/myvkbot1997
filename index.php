@@ -31,7 +31,7 @@ $keyboard = [
 ]; 
 
 if ($type == 'message_new'){
-    if($text=='Начать') {
+    if($text=='yellow') {
         $reply = 'Привет, '.$user_name;
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     }
