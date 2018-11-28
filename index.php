@@ -26,7 +26,7 @@ switch ($type) {
         [ 
           'type' => 'text', 
           'payload' => '{"button": "1"}', 
-          'label' => 'Red', 
+          'label' => 'blue', 
         ], 
         'color' => 'negative', 
       ], 
@@ -35,7 +35,7 @@ switch ($type) {
         [ 
           'type' => 'text', 
           'payload' => '{"button": "2"}', 
-          'label' => 'Green', 
+          'label' => 'yellow', 
         ], 
         'color' => 'positive', 
       ], 
