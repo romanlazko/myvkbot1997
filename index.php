@@ -48,6 +48,7 @@ if($type == 'message_new'){
     } 
     elseif($str=='N'){
         $text = str_replace(' ','',$text);
+        $Name = substr($text, 0, strrpos($text, ','));
         $N = substr($Name, strrpos($Name,":")+1);
         $Lastname = substr($text, strrpos($text,",")+1);
         $L = substr($Lastname, strrpos($Lastname,":")+1);
