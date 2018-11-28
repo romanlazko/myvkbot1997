@@ -14,7 +14,7 @@ $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 $keyboard = [ 
-    'one_time' => false, 
+    'one_time' => true, 
     'buttons' => [[
         ['action' =>['type' => 'text', 
                      'payload' => '{"button": "1"}',
@@ -31,14 +31,14 @@ $keyboard = [
 ]; 
 
 if($type == 'message_new'){
-    if($text =='yellow') {
-        $reply = "Привет, ";
+    if($text =='Начать') {
+        $reply = "Привет, ".$user_name;
         sendMessage($token,$user_name,$user_id,$reply,$keyboard);
     }        
 }
 function sendMessage($token,$user_name,$user_id,$reply,$keyboard){
     $request_params = array(
-        'message' => $reply.$user_name,
+        'message' => $reply,
         'user_id' => $user_id,
         'access_token' => $token,
         'keyboard'=>json_encode($keyboard),
