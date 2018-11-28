@@ -9,8 +9,8 @@ $secretKey = 'zdraste123romanlazko';
 
 $data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
-$userId = $data['id']['from_id'];
-$text = $data['id']['text'];
+$userId = $data['object']['user_id'];
+$text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$userId."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 
