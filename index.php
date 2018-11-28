@@ -47,7 +47,11 @@ if($type == 'message_new'){
         sendMessage($token,$user_id,$reply);
     } 
     elseif($str=='N'){
-        
+        $text = str_replace(' ','',$text);
+        $N = substr($Name, strrpos($Name,":")+1);
+        $Lastname = substr($text, strrpos($text,",")+1);
+        $L = substr($Lastname, strrpos($Lastname,":")+1);
+         
         $reply = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }
