@@ -76,5 +76,6 @@ function Keyboard($par,$name_btn){
 
         
     ]];
+    return $key;
 }
 ?>
