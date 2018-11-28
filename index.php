@@ -17,7 +17,7 @@ $user_name = $userInfo['response'][0]['first_name'];
 switch ($type) {
 
     case 'message_new':
-        $keyboard = [ 
+        $keyboard = [[ 
             'one_time' => false, 
             'buttons' => [
                 ['action' =>['type' => 'text', 
@@ -31,7 +31,7 @@ switch ($type) {
                              'label' => 'yellow',
                             ], 
                 'color' => 'positive',],
-            ],
+            ],],
         ];  
  
             
