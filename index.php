@@ -54,7 +54,7 @@ if($type == 'message_new'){
         $L = substr($Lastname, strrpos($Lastname,":")+1);
          
         $reply = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
-        sendKeyboard($token,$user_id,$reply,$keyboard);
+        sendMessage($token,$user_id,$reply,$keyboard);
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
