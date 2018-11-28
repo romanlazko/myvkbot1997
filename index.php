@@ -25,7 +25,7 @@ $keyboard = [
         
     ],],
 ]; 
-$rest = substr($text, 0);
+$rest = substr($text, 0,1);
 
 if($type == 'message_new'){
     if($text =='Начать') {
