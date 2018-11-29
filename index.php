@@ -42,12 +42,25 @@ if($type == 'message_new'){
         $Lastname = substr($text, strrpos($text,",")+1);
         $L = substr($Lastname, strrpos($Lastname,":")+1);
          
-        $reply = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
+        $url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
+        $url = "http://site.com/image.jpg";
+        $urlHeaders = @get_headers($url);
+        // проверяем ответ сервера на наличие кода: 200 - ОК
         $keyboard = [ 
             'one_time' => true, 
             'buttons' => keyboard("1",'Начать','positive')
         ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
+        
+        if(strpos($urlHeaders[0], '200')) {
+            sendKeyboard($token,$user_id,'Ссылка есть',$keyboard);
+        } else {
+            sendKeyboard($token,$user_id,'Ссылки нет',$keyboard);
+        }
+        $keyboard = [ 
+            'one_time' => true, 
+            'buttons' => keyboard("1",'Начать','positive')
+        ];
+        //sendKeyboard($token,$user_id,$reply,$keyboard);
     }
     else{
         $reply="Прости, я тебя не понимаю)
