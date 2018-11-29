@@ -46,21 +46,17 @@ if($type == 'message_new'){
         //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
        
         $urlHeaders = @get_headers($url);
-        // проверяем ответ сервера на наличие кода: 200 - ОК
         $keyboard = [ 
             'one_time' => true, 
             'buttons' => keyboard("1",'Начать','positive')
         ];
         
         if(strpos($urlHeaders[0], '200')) {
-            sendKeyboard($token,$user_id,'Ссылка есть',$keyboard);
-        } else {
+            sendKeyboard($token,$user_id,$url,$keyboard);
+        } elseif() {
             sendKeyboard($token,$user_id,'Ссылки нет',$keyboard);
         }
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => keyboard("1",'Начать','positive')
-        ];
+        
         //sendKeyboard($token,$user_id,$reply,$keyboard);
     }
     else{
