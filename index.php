@@ -53,7 +53,7 @@ if($type == 'message_new'){
         ];
         
         if(strpos($urlHeaders[0], '200')) {
-            sendKeyboard($token,$user_id,$url,$keyboard);
+            sendKeyboard($token,$user_id,'Есть ссылка',$keyboard);
 // //         } elseif(strpos($urlHeaders1[0], '200')) {
 // //             sendKeyboard($token,$user_id,$url1,$keyboard);
         } else
