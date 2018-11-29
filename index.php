@@ -44,7 +44,7 @@ if($type == 'message_new'){
         //https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-zaleskiy-gleb.aspx
         $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
         //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
-        $url = "http://site.com/image.jpg";
+       
         $urlHeaders = @get_headers($url);
         // проверяем ответ сервера на наличие кода: 200 - ОК
         $keyboard = [ 
