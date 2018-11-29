@@ -44,8 +44,9 @@ if($type == 'message_new'){
         //https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-zaleskiy-gleb.aspx
         $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
         //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
-       
+        $url1="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx"
         $urlHeaders = @get_headers($url);
+        $urlHeaders1 = @get_headers($url1);
         $keyboard = [ 
             'one_time' => true, 
             'buttons' => keyboard("1",'Начать','positive')
@@ -53,7 +54,9 @@ if($type == 'message_new'){
         
         if(strpos($urlHeaders[0], '200')) {
             sendKeyboard($token,$user_id,$url,$keyboard);
-        } else {
+        } elseif($urlHeaders1[0], '200') {
+            sendKeyboard($token,$user_id,$url,$keyboard);
+        } else
             sendKeyboard($token,$user_id,'Ссылки нет',$keyboard);
         }
         
