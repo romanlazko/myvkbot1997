@@ -54,7 +54,7 @@ if($type == 'message_new'){
         
         if(strpos($urlHeaders[0], '200')) {
             sendKeyboard($token,$user_id,$url,$keyboard);
-        } elseif($urlHeaders1[0], '200') {
+        } elseif(strpos($urlHeaders1[0], '200')) {
             sendKeyboard($token,$user_id,$url1,$keyboard);
         } else
             sendKeyboard($token,$user_id,'Ссылки нет',$keyboard);
