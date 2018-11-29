@@ -45,20 +45,20 @@ if($type == 'message_new'){
         $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
         //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
 //         $url1="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
-        $urlHeaders = @get_headers($url);
+//         $urlHeaders = @get_headers($url);
 //         $urlHeaders1 = @get_headers($url1);
         $keyboard = [ 
             'one_time' => true, 
             'buttons' => keyboard("1",'Начать','positive')
         ];
         
-        if(strpos($urlHeaders[0], '200')) {
-            sendKeyboard($token,$user_id,'есть ссылка',$keyboard);
-//         } elseif(strpos($urlHeaders1[0], '200')) {
-//             sendKeyboard($token,$user_id,$url1,$keyboard);
-        } else
-            sendKeyboard($token,$user_id,'Ссылки нет',$keyboard);
-        }
+//         if(strpos($urlHeaders[0], '200')) {
+//             sendKeyboard($token,$user_id,'есть ссылка',$keyboard);
+// //         } elseif(strpos($urlHeaders1[0], '200')) {
+// //             sendKeyboard($token,$user_id,$url1,$keyboard);
+//         } else
+            sendKeyboard($token,$user_id,$url,$keyboard);
+//         }
         
         //sendKeyboard($token,$user_id,$reply,$keyboard);
     }
