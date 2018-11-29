@@ -41,8 +41,9 @@ if($type == 'message_new'){
         $N = substr($Name, strrpos($Name,":")+1);
         $Lastname = substr($text, strrpos($text,",")+1);
         $L = substr($Lastname, strrpos($Lastname,":")+1);
-         
-        $url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
+        //https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-zaleskiy-gleb.aspx
+        $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
+        //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
         $url = "http://site.com/image.jpg";
         $urlHeaders = @get_headers($url);
         // проверяем ответ сервера на наличие кода: 200 - ОК
