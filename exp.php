@@ -24,6 +24,6 @@ foreach ($request->updates as $item) {
         
     }
 }
-echo json_encode($log);
+echo $log;
 
 ?>
