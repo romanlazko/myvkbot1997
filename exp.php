@@ -13,28 +13,28 @@ $pool = [
     "server" => $pool_data->response->server,
     "ts" => $pool_data->response->ts
 ];
-while($item[0] !='4'){
+//while($item[0] !='4'){
 $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-$item = $request->updates;
-if ($item[0] == "4") {
-        echo $item[5];
-    break;
-    }
-}
-// foreach ($request->updates as $item) {
-// //     switch ($item[0]) {
-// //     case 61:
-// //         echo "Пишет";
-// //     case 4:
-// //         echo "Написал:" . $item[5];
-        
-// // }
-//     if ($item[0] == "61") {
-//         //array_push($log, "Юзверь с ID:" . $item[1] . " набирает текст");
-//         echo 'Write';
-//     }
-//     if ($item[0] == "4") {
+// $item = $request->updates;
+// if ($item[0] == "4") {
 //         echo $item[5];
+//     break;
 //     }
 // }
+foreach ($request->updates as $item) {
+//     switch ($item[0]) {
+//     case 61:
+//         echo "Пишет";
+//     case 4:
+//         echo "Написал:" . $item[5];
+        
+// // }
+    if ($item[0] == "61") {
+        //array_push($log, "Юзверь с ID:" . $item[1] . " набирает текст");
+        echo 'Write';
+    }
+    if ($item[0] == "4") {
+        echo $item[5];
+    }
+}
 ?>
