@@ -13,7 +13,7 @@ $pool = [
     "server" => $pool_data->response->server,
     "ts" => $pool_data->response->ts
 ];
-while(1){
+while($item[0] !='4'){
 $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
 $item = $request->updates;
 if ($item[0] == "4") {
