@@ -19,7 +19,7 @@ $log = [];
 foreach ($request->updates as $item) {
     if ($item[0] == "61") {
         array_push($log, "User with ID:" . $item[1] . " write message");
-        echo json_encode($log);
+        
     }
 
     if ($item[0] == "4") {
@@ -27,6 +27,6 @@ foreach ($request->updates as $item) {
         
     }
 }
-
+echo json_encode($log, JSON_UNESCAPED_UNICODE);
 
 ?>
