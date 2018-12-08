@@ -14,16 +14,19 @@ $pool = [
     "ts" => $pool_data->response->ts
 ];
 $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-$log = [];
-
 foreach ($request->updates as $item) {
-    
-
-    if ($item[0] == "4") {
-        //array_push($log, "Take massage from ID:" . $item[3] . " and text: " . $item[5] . );
-        echo $item[5];
-    }
+    switch ($item[0]) {
+    case 61:
+        echo "Пишет";
+    case 4:
+        echo "Написал:" . $item[5];
+        
 }
-
-
+//     if ($item[0] == "61") {
+//         array_push($log, "Юзверь с ID:" . $item[1] . " набирает текст");
+//     }
+//     if ($item[0] == "4") {
+//         echo $item[5];
+//     }
+}
 ?>
