@@ -17,10 +17,7 @@ $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_
 $log = [];
 
 foreach ($request->updates as $item) {
-    if ($item[0] == "61") {
-        array_push($log, "User with ID:" . $item[1] . " write message");
-        
-    }
+    
 
     if ($item[0] == "4") {
         array_push($log, "Take massage from ID:" . $item[3] . " and text: " . $item[5] . );
