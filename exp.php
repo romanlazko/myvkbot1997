@@ -18,7 +18,7 @@ $log = [];
 
 foreach ($request->updates as $item) {
     if ($item[0] == "61") {
-        array_push($log, "Юзверь с ID:" . $item[1] . " набирает текст");
+        array_push($log, "User with ID:" . $item[1] . " write message");
     }
 
     if ($item[0] == "4") {
