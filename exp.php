@@ -22,7 +22,7 @@ foreach ($request->updates as $item) {
     }
 
     if ($item[0] == "4") {
-        array_push($log, "Пришло сообщение от юзверя с ID:" . $item[3] . " и текстом '" . $item[6] . "'");
+        array_push($log, "Take massage from ID:" . $item[3] . " and text '" . $item[6] . "'");
     }
 }
 
