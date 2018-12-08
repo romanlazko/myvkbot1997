@@ -20,7 +20,7 @@ foreach ($request->updates as $item) {
     
 
     if ($item[0] == "4") {
-        array_push($log, "Take massage from ID:" . $item[3] . " and text: " . $item[5] . );
+        //array_push($log, "Take massage from ID:" . $item[3] . " and text: " . $item[5] . );
         echo $item[5];
     }
 }
