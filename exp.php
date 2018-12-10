@@ -18,11 +18,11 @@ while(1){
     foreach ($request->updates as $item) {
         if($item[0] == "4"){
             echo json_encode($request);
-            break;
+            break 2;
         }
         if($item[0]===[]){
             echo 'Время ожидания истекло';
-            break;
+            break 2;
         }
     }
     
