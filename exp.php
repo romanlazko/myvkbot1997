@@ -22,10 +22,10 @@ while(1){
             echo $item[5];
             break 2;
         }       
-        if(!isset($item)){
-            echo 'Время истекло';
-            break 2;
-        }
+//         if(!isset($item)){
+//             echo 'Время истекло';
+//             break 2;
+//         }
     }
     
 //     $filed = $request->failed;
