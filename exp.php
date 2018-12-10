@@ -15,18 +15,19 @@ $pool = [
 ];
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
+    if(isset($item)){echo $request;}
+        
+//     foreach ($request->updates as $item) {
     
-    foreach ($request->updates as $item) {
-    
-        if ($item[0] == "4") {
-            echo $item[5];
-            break 2;
-        }       
-        if($item[0]){
-            echo json_encode($item);
-            break 2;
-        }
-    }
+//         if ($item[0] == "4") {
+//             echo $item[5];
+//             break ;
+//         }       
+//         if($item[0]){
+//             echo json_encode($item);
+//             break ;
+//         }
+//     }
     
 //     $filed = $request->failed;
 //     if(isset($filed)){echo $request;}
