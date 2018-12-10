@@ -18,11 +18,11 @@ while(1){
     $item = $request->updates;
         if(isset($item[0])){
             echo json_encode($request);
-            break 1;
+            break;
         }
         if($item[0] == "4"){
             echo $item[5];            
-            break 1;
+            break;
         }
         
 //         if($item[0]==[]){
