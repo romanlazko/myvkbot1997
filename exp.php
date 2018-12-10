@@ -23,6 +23,7 @@ while($item[0] !='4' ){
         }       
         if(empty($item[0])){
             $ec = 'Время истекло';
+            break;
         }
     }
 //     $filed = $request->failed;
