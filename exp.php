@@ -18,7 +18,7 @@ while($item[0] !='4'  ){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
     $filed = $request->failed;
     if ($filed[0] = '2'){
-        echo $filed;
+        echo json_encode($filed);
         break;
     }
     foreach ($request->updates as $item) {
