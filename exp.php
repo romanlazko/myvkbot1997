@@ -22,9 +22,12 @@ while($item[0] !='4'){
             $ec = $item[5];
             break;
         }
+        if($item[0] == '2'){
+            $ec = 'Время ожидания истекло';
+        }
     }
-    $filed = $request->failed;
-    if(isset($filed)){echo $request;}
+//     $filed = $request->failed;
+//     if(isset($filed)){echo $request;}
 //     if ($filed[0] = "2"){
 //         $ec = 'Время ожидания истекло';
 //         break;
