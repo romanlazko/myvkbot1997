@@ -15,15 +15,14 @@ $pool = [
 ];
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-    foreach ($request->updates as $item) {
+    $item = $request->updates;
         if(isset($item[0])){
             echo json_encode($request);
-            break 2;
+            break 1;
         }
         if($item[0] == "4"){
-            echo $item[5];
-            
-            break 2;
+            echo $item[5];            
+            break 1;
         }
         
 //         if($item[0]==[]){
