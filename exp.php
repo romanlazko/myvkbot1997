@@ -18,7 +18,7 @@ while(1){
     $item = $request->updates;
     
         if($item[0] = "4"){
-            echo json_encode($item[5]);
+            echo json_encode($request);
             break;
         }
         if(!isset($item[0])){
