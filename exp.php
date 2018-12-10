@@ -15,8 +15,7 @@ $pool = [
 ];
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-    $item = $request->updates;
-    if(isset($item)){
+    foreach ($request->updates as $item) {
         if($item[0] == "4"){
             echo json_encode($request);
             break;
