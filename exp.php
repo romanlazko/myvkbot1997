@@ -20,7 +20,7 @@ while(1){
             echo $item[5];
             break 2;
         }
-        if(!isset($item[0])){
+        if($item[0]){
             echo 'Время ожидания истекло';
             break 2;
         }
