@@ -22,7 +22,7 @@ while(1){
             echo $item[5];
             break 2;
         }       
-        if(!$item){
+        if(empty($item)){
             echo 'Время истекло';
             break 2;
         }
