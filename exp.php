@@ -25,8 +25,8 @@ while(1){
                 echo $item;            
                 break;
             }
-            echo json_encode($request);
-            break;
+//             echo json_encode($request);
+//             break;
         }
         
     
