@@ -21,7 +21,7 @@ while($item[0] !='4' ){
         if ($item[0] == "4") {
             $ec = $item[5];
         }       
-        if(!$item){
+        if(!$item[0]){
             $ec = 'Время истекло';
             break 2;
         }
