@@ -18,6 +18,7 @@ while(1){
     $item = $request['updates'][0];
         echo json_encode($request);
     echo json_encode($item);
+    break;
 //             if($item == []){
 //                 echo $item;            
 //                 break;
