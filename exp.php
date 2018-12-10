@@ -22,7 +22,7 @@ while(1){
             echo $item[5];
             break 2;
         }       
-        if(array_shift($item)){
+        if(sizeof($item)){
             echo 'Время истекло';
             break 2;
         }
