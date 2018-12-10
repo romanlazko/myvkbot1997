@@ -18,11 +18,11 @@ while(1){
     $item = $request->updates;
     if(isset($item)){
         if(!isset($item[0])){
-            echo json_encode($item);
+            echo 'Время ожидания истекло';
             break;
         }
-        else{
-            echo json_encode($request);
+        elseif($item[0]=='4'){
+            echo $item[5];
             break;
         }
     }
