@@ -16,16 +16,17 @@ $pool = [
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
     $item = $request->updates;
-    if(isset($item)){
+    
+        if($item[0] == "4"){
+            echo json_encode($item[5]);
+            break;
+        }
         if(!isset($item[0])){
             echo 'Время ожидания истекло';
             break;
         }
-        if($item[0] == "4"){
-            echo $item[5];
-            break;
-        }
-    }
+        
+    
     
         
 //     foreach ($request->updates as $item) {
