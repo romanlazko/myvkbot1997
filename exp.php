@@ -22,8 +22,8 @@ while(1){
             echo $item[5];
             break 2;
         }       
-        else{
-            echo 'Время истекло';
+        if($item[0]){
+            echo json_encode($item);
             break 2;
         }
     }
