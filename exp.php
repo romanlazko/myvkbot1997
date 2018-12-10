@@ -21,7 +21,7 @@ while($item[0] !='4'  || $filed[0] !='2'){
         if ($filed[0] = "2"){
             $ec = 'Время ожидания истекло';
             break;
-        }
+        }else break;
     }
     foreach ($request->updates as $item) {
         if ($item[0] == "4") {
