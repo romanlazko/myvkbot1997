@@ -21,12 +21,12 @@ while($item[0] !='4' ){
         if ($item[0] == "4") {
             $ec = $item[5];
         }       
-        
-    }
-    if($item===[]){
+        if(!$item){
             $ec = 'Время истекло';
-            break;
+            break 2;
         }
+    }
+    
 //     $filed = $request->failed;
 //     if(isset($filed)){echo $request;}
 //     if ($filed[0] = "2"){
