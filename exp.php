@@ -20,7 +20,7 @@ while(1){
             echo json_encode($request);
             break 2;
         }
-        if($item[0]===[]){
+        if(!isset($item[0])){
             echo 'Время ожидания истекло';
             break 2;
         }
