@@ -17,14 +17,18 @@ while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
     $item = $request->updates;
         if(isset($item)){
-            
+            if($item[0] == "4"){
+                echo $item[5];            
+                break;
+            }
+            if($item == []){
+                echo $item;            
+                break;
+            }
             echo json_encode($request);
             break;
         }
-        if($item[0] == "4"){
-            echo $item[5];            
-            break;
-        }
+        
     
     
     
