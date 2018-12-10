@@ -13,21 +13,17 @@ $pool = [
     "server" => $pool_data->response->server,
     "ts" => $pool_data->response->ts
 ];
-//while($item[0] !='4'){
-$request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-// $item = $request->updates;
-// if ($item[0] == "4") {
-//         echo $item[5];
-//     break;
-//     }
-// }
-foreach ($request->updates as $item) {
+$item[0] = '0';
+while($item[0] !='4'){
+    $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
+    foreach ($request->updates as $item) {
 
-    if ($item[0] == "61") {
-        $ec = 'Write';
-    }
-    if ($item[0] == "4") {
-        $ec = $item[5];
+        if ($item[0] == "61") {
+            $ec = 'Write';
+        }
+        if ($item[0] == "4") {
+            $ec = $item[5];
+        }
     }
 }
 echo $ec;
