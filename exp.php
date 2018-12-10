@@ -21,7 +21,7 @@ while(1){
             break 2;
         }
         if($item[0]){
-            echo 'Время ожидания истекло';
+            echo $item[0];
             break 2;
         }
     }
