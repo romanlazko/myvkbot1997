@@ -25,7 +25,7 @@ while($item[0] !='4'  ){
     $item = $request->updates;
         if ($item[0] == "4") {
             $ec = $item[5];
-            break;
+//             break;
         }
 //     }
 }
