@@ -21,10 +21,10 @@ while(1){
                 echo $item[5];            
                 break;
             }
-            if($item == []){
-                echo $item;            
-                break;
-            }
+//             if($item == []){
+//                 echo $item;            
+//                 break;
+//             }
 //             echo json_encode($request);
 //             break;
         }
