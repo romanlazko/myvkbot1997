@@ -21,13 +21,13 @@ while($item[0] !='4'  ){
         echo 'Время ожидания истекло';
         break;
     }
-//     foreach ($request->updates as $item) {
+    foreach ($request->updates as $item) {
     $item = $request->updates;
         if ($item[0] = "4") {
             $ec = $item[5];
-//             break;
+            
         }
-//     }
+    }
 }
 echo $ec;
 ?>
