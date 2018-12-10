@@ -22,7 +22,7 @@ while(1){
             echo $item[5];
             break 2;
         }       
-        if(empty($item)){
+        if($item===[]){
             echo 'Время истекло';
             break 2;
         }
