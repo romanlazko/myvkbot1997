@@ -14,8 +14,8 @@ $pool = [
     "ts" => $pool_data->response->ts
 ];
 while(1){
-    $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-    $item = $request->updates;
+    $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"),true);
+    $item = $request[updates];
         if(isset($item)){
             if($item[0] == "4"){
                 echo $item[5];            
