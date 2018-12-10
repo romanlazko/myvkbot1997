@@ -22,19 +22,13 @@ $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_
 //     }
 // }
 foreach ($request->updates as $item) {
-//     switch ($item[0]) {
-//     case 61:
-//         echo "Пишет";
-//     case 4:
-//         echo "Написал:" . $item[5];
-        
-// // }
+
     if ($item[0] == "61") {
-        //array_push($log, "Юзверь с ID:" . $item[1] . " набирает текст");
-        echo 'Write';
+        $ec = 'Write';
     }
     if ($item[0] == "4") {
-        echo $item[5];
+        $ec = $item[5];
     }
 }
+echo $ec;
 ?>
