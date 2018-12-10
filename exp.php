@@ -26,7 +26,7 @@ while(1){
 //             echo 'Время истекло';
 //             break 2;
 //         }
-    }
+//     }
     
 //     $filed = $request->failed;
 //     if(isset($filed)){echo $request;}
