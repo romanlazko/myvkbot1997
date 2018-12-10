@@ -17,13 +17,13 @@ $item[0] = '0';
 while($item[0] !='4'  ){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
     $filed = $request->failed;
-    if ($filed[0] == '2'){
+    if ($filed[0] = '2'){
         echo 'Время ожидания истекло';
         break;
     }
 //     foreach ($request->updates as $item) {
     $item = $request->updates;
-        if ($item[0] == "4") {
+        if ($item[0] = "4") {
             $ec = $item[5];
 //             break;
         }
