@@ -15,10 +15,10 @@ $pool = [
 ];
 $item[0] = '0';
 $filed[0] = '0';
-while($item[0] !='4'  or $filed[0] !='2'){
+while($item[0] !='4'  || $filed[0] !='2'){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
     foreach ($request->failed as $filed){ 
-        if ($filed[0] == '2'){
+        if ($filed[0] == "2"){
             $ec = 'Время ожидания истекло';
             break;
         }
