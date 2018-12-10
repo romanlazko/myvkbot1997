@@ -18,6 +18,7 @@ while(1){
     foreach ($request->updates as $item) {
         if(isset($item)){
             echo json_encode($request);
+            break 2;
         }
         if($item[0] == "4"){
             echo $item[5];
