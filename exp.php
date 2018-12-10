@@ -17,12 +17,23 @@ $item[0] = '0';
 $filed[0] = '0';
 while($item[0] !='4' ){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-    foreach ($request->updates as $item) {
-        if ($item[0] == "4") {
-            $ec = $item[5];
-        }
-        
+    $filed = $request->failed;
+    if(isset($filed)) {
+        echo json_encode($request);
+        break;
     }
+    $item = $request->updates;
+    if(isset($item)){
+        echo json_encode($request);
+        break;
+    }
+        
+//     foreach ($request->updates as $item) {
+//         if ($item[0] == "4") {
+//             $ec = $item[5];
+//         }
+        
+//     }
 //     $filed = $request->failed;
 //     if(isset($filed)){echo $request;}
 //     if ($filed[0] = "2"){
@@ -30,5 +41,5 @@ while($item[0] !='4' ){
 //         break;
 //     }
 }
-echo $ec;
+// echo $ec;
 ?>
