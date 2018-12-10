@@ -16,18 +16,13 @@ $pool = [
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
     $item = $request->updates;
-        if(isset($item[0])){
+        if(isset($item)){
             echo json_encode($request);
             break;
         }
-        if($item[0] == "4"){
-            echo $item[5];            
-            break;
-        }
-        
-//         if($item[0]==[]){
-//             echo $item[0];
-//             break 2;
+//         if($item[0] == "4"){
+//             echo $item[5];            
+//             break;
 //         }
     
     
@@ -45,12 +40,6 @@ while(1){
 //         }
 //     }
     
-//     $filed = $request->failed;
-//     if(isset($filed)){echo $request;}
-//     if ($filed[0] = "2"){
-//         $ec = 'Время ожидания истекло';
-//         break;
-//     }
 }
  //echo $ec;
 ?>
