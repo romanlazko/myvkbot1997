@@ -21,7 +21,7 @@ while(1){
             echo 'Время ожидания истекло';
             break;
         }
-        elseif($item[0] = "4"){
+        if($item[0] == "4"){
             echo $item[5];
             break;
         }
