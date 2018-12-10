@@ -33,5 +33,5 @@ while($item[0] !='4' ){
 //         break;
 //     }
 }
-// echo $ec;
+ echo $ec;
 ?>
