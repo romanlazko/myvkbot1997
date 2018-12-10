@@ -20,8 +20,8 @@ while(1){
             echo $item[5];
             break 2;
         }
-        if(!$item){
-            echo $item[0];
+        if($item[0]){
+            echo $item;
             break 2;
         }
     }
