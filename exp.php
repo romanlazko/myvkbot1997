@@ -20,12 +20,8 @@ while($item[0] !='4' || $item[0] !='2'){
     foreach ($request->updates as $item) {
         if ($item[0] == "4") {
             $ec = $item[5];
-            break;
         }
-        if($item[0] == '2'){
-            $ec = 'Время ожидания истекло';
-            break;
-        }
+        
     }
 //     $filed = $request->failed;
 //     if(isset($filed)){echo $request;}
