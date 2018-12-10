@@ -18,9 +18,10 @@ while(1){
     foreach ($request->updates as $item) {
         if($item[0] == "4"){
             echo $item[5];
+            echo json_encode($request);
             break 2;
         }
-        echo $item[0];
+        
 //         if($item[0]==[]){
 //             echo $item[0];
 //             break 2;
