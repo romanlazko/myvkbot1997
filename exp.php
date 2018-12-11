@@ -20,8 +20,13 @@ while(1){
         echo 'сообщение';
         break;
     }
-    echo $item;
-    break;
+    elseif($item=='61'){
+        echo $item;
+        continue;
+    }else{
+        echo 'время истекло';
+        break;
+    }
 //     if(isset($item)){
 //         }
 //     if($item==[]){
