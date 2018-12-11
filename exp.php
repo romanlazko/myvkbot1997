@@ -20,11 +20,11 @@ while(1){
         echo 'сообщение';
         break;
     }
-    if($item==[]){
+//     if($item==[]){
     
-        echo 'время истекло';
-        break;
-    }
+//         echo 'время истекло';
+//         break;
+//     }
 //             if($item == []){
 //                 echo $item;            
 //                 break;
