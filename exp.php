@@ -22,7 +22,7 @@ while($bool!==TRUE){
             echo $item[5];
             break 2;
         } else{
-            echo json_encode($item);
+            echo json_encode($item[]);
             break 2;
         }
 //         if(!count($item)){
