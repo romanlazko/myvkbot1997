@@ -16,20 +16,23 @@ $pool = [
 $bool===FALSE;
 while($bool!==TRUE){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
-    echo json_encode($request);
-        
+    $request2 = json_encode($request);
+    $ts = $pool['ts'];    
+    $request1 = '{"ts":'$ts',"updates":[]}';
+    if($request1 ==$request2){
+        echo 'ppc';
+        break;}
     foreach ($request->updates as $item) {
-        if(sizeof($item)){
+        
             if ($item[0] == "4") {
                 echo $item[5];
                 break 2;
-            } elseif($item[0] == "61"){
+            } 
+        if($item[0] == "61"){
                 echo json_encode($item[0]);
                 break 2;
-            }else {
-                break 2;
             }
-        }
+        
         
     }
     break;
