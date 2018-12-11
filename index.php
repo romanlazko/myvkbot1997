@@ -28,34 +28,34 @@ if($type == 'message_new'){
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
         sendMessage($token,$user_id,$reply);
         
-        $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
-        $pool = [
-            "key" => $pool_data->response->key,
-            "server" => $pool_data->response->server,
-            "ts" => $pool_data->response->ts
-        ];
-        while(1){
-            $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
-            $updates = $request->updates;
-            if(json_encode($updates)==='[]'){
+//         $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
+//         $pool = [
+//             "key" => $pool_data->response->key,
+//             "server" => $pool_data->response->server,
+//             "ts" => $pool_data->response->ts
+//         ];
+//         while(1){
+//             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
+//             $updates = $request->updates;
+//             if(json_encode($updates)==='[]'){
                 
-                sendMessage($token,$user_id,'Время ожидания истекло');
-                break;
-            }
-            foreach ($request->updates as $item) {
-                if ($item[0] == "4") {
-                    sendMessage($token,$user_id,'привет'.$item[5]);
-                    break 2;
-                }  
-                elseif($item[0] == "61") {
+//                 sendMessage($token,$user_id,'Время ожидания истекло');
+//                 break;
+//             }
+//             foreach ($request->updates as $item) {
+//                 if ($item[0] == "4") {
+//                     sendMessage($token,$user_id,'привет'.$item[5]);
+//                     break 2;
+//                 }  
+//                 elseif($item[0] == "61") {
                     
-                    continue 2;
-                }  else{
-                    sendMessage($token,$user_id,'Время ожидания истекло');
-                    break 2;
-                }
-            }
-        }
+//                     continue 2;
+//                 }  else{
+//                     sendMessage($token,$user_id,'Время ожидания истекло');
+//                     break 2;
+//                 }
+//             }
+//         }
     } 
 //     elseif($rest==':'){
 //         $text = str_replace(' ','',$text);
