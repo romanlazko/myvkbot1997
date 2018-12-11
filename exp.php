@@ -19,7 +19,7 @@ while(1){
     if($item[0] == '4'){
         echo 'сообшение';
     }
-    echo json_encode($item[0]);
+    echo $item[0];
     break;
 //             if($item == []){
 //                 echo $item;            
