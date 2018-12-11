@@ -29,7 +29,7 @@ while($bool!==TRUE){
             }
         }
         echo json_encode($request);
-        
+        break 2;
     }
 //     $item = $request['updates'][0][0];
 //     if($item=='4'){
