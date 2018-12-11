@@ -22,7 +22,7 @@ while($bool!==TRUE){
             echo $item[5];
             break 2;
         } 
-        if($item[0]===[]){
+        if($item === []){
             break 2;
         }
         
