@@ -32,7 +32,7 @@ while($bool!==TRUE){
         }
         
     }
-    break 2;
+    break;
 //     $item = $request['updates'][0][0];
 //     if($item=='4'){
 //         echo 'сообщение';
