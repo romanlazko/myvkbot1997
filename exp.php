@@ -21,10 +21,12 @@ while($bool!==TRUE){
         if ($item[0] == "4") {
             echo $item[5];
             break 2;
-        } 
-        if(!count($item)){
-            break 2;
+        } else{
+            echo json_encode($item);
         }
+//         if(!count($item)){
+//             break 2;
+//         }
         
     }
 //     $item = $request['updates'][0][0];
