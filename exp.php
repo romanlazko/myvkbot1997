@@ -20,7 +20,7 @@ while($bool!==TRUE){
     
         if ($item[0] == "4") {
             echo $item[5];
-            $bool === TRUE;
+            break 2;
         } 
     }
 //     $item = $request['updates'][0][0];
