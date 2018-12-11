@@ -21,11 +21,11 @@ while(1){
         if ($item[0] == "4") {
             echo $item[5];
             break 2;
-        } 
-        if(json_encode($item)==='[]'){
-            echo 'Время ожидания истекло';
-            break 2;
-        }
+        }         
+    }
+    if(json_encode($item)==='[]'){
+        echo 'Время ожидания истекло';
+        break;
     }
     
 }
