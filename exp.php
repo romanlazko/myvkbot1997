@@ -25,7 +25,10 @@ while($bool!==TRUE){
                 echo json_encode($item[0]);
                 break 2;
             }
-        }else {echo 'ppc';}
+        }else {
+            echo 'ppc';
+            break 2;
+        }
 //         if(!count($item)){
 //             break 2;
 //         }
