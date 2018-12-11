@@ -21,10 +21,10 @@ while($bool!==TRUE){
             if ($item[0] == "4") {
                 echo $item[5];
                 break 2;
-            } else{
+            } elseif{
                 echo json_encode($item[0]);
                 break 2;
-            }
+            }else break 2;
         }else {
             echo 'ppc';
             break 2;
