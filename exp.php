@@ -15,18 +15,29 @@ $pool = [
 ];
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"),true);
-    $item = $request['updates'][0][0];
-    if($item=='4'){
-        echo 'сообщение';
-        break;
+    foreach ($request['updates'][0] as $item) {
+    
+        if ($item[0] == "4") {
+            echo $item[5];
+            break 2;
+        }       
+        if($item[0]=="61"){
+            echo json_encode($item);
+            break 2;
+        }
     }
-    elseif($item=='61'){
-        echo $item;
-        continue;
-    }else{
-        echo 'время истекло';
-        break;
-    }
+//     $item = $request['updates'][0][0];
+//     if($item=='4'){
+//         echo 'сообщение';
+//         break;
+//     }
+//     elseif($item=='61'){
+//         echo $item;
+//         continue;
+//     }else{
+//         echo 'время истекло';
+//         break;
+//     }
 //     if(isset($item)){
 //         }
 //     if($item==[]){
