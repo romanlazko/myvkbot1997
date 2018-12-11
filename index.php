@@ -38,16 +38,13 @@ if($type == 'message_new'){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $updates = $request->updates;
             if(json_encode($updates)==='[]'){
-                $keyboard = [ 
-                    'one_time' => true, 
-                    'buttons' => keyboard("1",'Проверить почту','positive')
-                ];
-                sendKeyboard($token,$user_id,'Время ожидания истекло',$keyboard);
+                
+                sendMessage($token,$user_id,'Время ожидания истекло');
                 break;
             }
             foreach ($request->updates as $item) {
                 if ($item[0] == "4") {
-                    echo $item[5];
+                    sendMessage($token,$user_id,'привет'.$item[5]);
                     break 2;
                 }         
             }
