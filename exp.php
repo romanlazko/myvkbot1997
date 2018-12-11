@@ -22,6 +22,10 @@ while($bool!==TRUE){
             echo $item[5];
             break 2;
         } 
+        if($item[0]===[]){
+            break 2;
+        }
+        
     }
 //     $item = $request['updates'][0][0];
 //     if($item=='4'){
