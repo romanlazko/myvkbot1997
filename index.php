@@ -46,7 +46,14 @@ if($type == 'message_new'){
                 if ($item[0] == "4") {
                     sendMessage($token,$user_id,'привет'.$item[5]);
                     break 2;
-                }         
+                }  
+                elseif($item[0] == "61") {
+                    sendMessage($token,$user_id,'привет'.$item[5]);
+                    continue 2;
+                }  else{
+                    sendMessage($token,$user_id,'Время ожидания истекло');
+                    break 2;
+                }
             }
         }
     } 
