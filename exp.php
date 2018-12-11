@@ -16,8 +16,8 @@ $pool = [
 
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
-    $item1=$request->updates;
-    echo = json_encode($item1);
+    $item1 = $request->updates;
+    echo  json_encode($item1);
 //     $ts = $pool['ts'];    
 //     $request1 = '{"ts":'.$ts.',"updates":[]}';
 //     if($request1 == $request2){
