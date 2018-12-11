@@ -50,33 +50,33 @@ if($type == 'message_new'){
             }
         }
     } 
-    elseif($rest==':'){
-        $text = str_replace(' ','',$text);
-        $Name = substr($text, 0, strrpos($text, ','));
-        $N = substr($Name, strrpos($Name,":")+1);
-        $Lastname = substr($text, strrpos($text,",")+1);
-        $L = substr($Lastname, strrpos($Lastname,":")+1);
-        //https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-zaleskiy-gleb.aspx
-        $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
-        //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
-        $url1 ="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
-        $urlHeaders = @get_headers($url);
-        $urlHeaders1 = @get_headers($url1);
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => keyboard("1",'Начать','positive')
-        ];
+//     elseif($rest==':'){
+//         $text = str_replace(' ','',$text);
+//         $Name = substr($text, 0, strrpos($text, ','));
+//         $N = substr($Name, strrpos($Name,":")+1);
+//         $Lastname = substr($text, strrpos($text,",")+1);
+//         $L = substr($Lastname, strrpos($Lastname,":")+1);
+//         //https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-zaleskiy-gleb.aspx
+//         $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
+//         //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
+//         $url1 ="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
+//         $urlHeaders = @get_headers($url);
+//         $urlHeaders1 = @get_headers($url1);
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => keyboard("1",'Начать','positive')
+//         ];
         
-        if(strpos($urlHeaders[0], '200')) {
-            sendKeyboard($token,$user_id,$url,$keyboard);
-        } elseif(strpos($urlHeaders1[0], '200')) {
-             sendKeyboard($token,$user_id,$url1,$keyboard);
-        } else{
-            sendKeyboard($token,$user_id,'Нет ссылки',$keyboard);
-        }
+//         if(strpos($urlHeaders[0], '200')) {
+//             sendKeyboard($token,$user_id,$url,$keyboard);
+//         } elseif(strpos($urlHeaders1[0], '200')) {
+//              sendKeyboard($token,$user_id,$url1,$keyboard);
+//         } else{
+//             sendKeyboard($token,$user_id,'Нет ссылки',$keyboard);
+//         }
         
-        //sendKeyboard($token,$user_id,$reply,$keyboard);
-    }
+//         //sendKeyboard($token,$user_id,$reply,$keyboard);
+//     }
     else{
         $reply="Прости, я тебя не понимаю)
         \nПопробуй еще раз!";
