@@ -28,10 +28,7 @@ while($bool!==TRUE){
                 break 2;
             }
         }
-        else{
-            echo 'ppc';
-            break 2;
-        }
+        echo json_encode($request);
         
     }
 //     $item = $request['updates'][0][0];
