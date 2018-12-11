@@ -18,7 +18,7 @@ while($bool!==TRUE){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=25&mode=2&version=2"));
     $request2 = json_encode($request);
     $ts = $pool['ts'];    
-    $request1 = '{"ts":'$ts',"updates":[]}';
+    $request1 = '{"ts":'.$ts.',"updates":[]}';
     if($request1 ==$request2){
         echo 'ppc';
         break;}
