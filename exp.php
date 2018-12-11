@@ -16,22 +16,16 @@ $pool = [
 
 while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
-    $item1 = $request->updates;
-    if(  json_encode($item1)==='[]'){
-        echo 'Время ожидания истекло';
-        break;
-    }
-//     $ts = $pool['ts'];    
-//     $request1 = '{"ts":'.$ts.',"updates":[]}';
-//     if($request1 == $request2){
-//         echo 'Время ожидания истекло';
-//         break;
-//     }
+    
     foreach ($request->updates as $item) {
         if ($item[0] == "4") {
             echo $item[5];
             break 2;
         } 
+        if(json_encode($item)==='[]'){
+            echo 'Время ожидания истекло';
+            break 2;
+        }
     }
     
 }
