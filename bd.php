@@ -28,6 +28,10 @@ function setdisen($user_id,$dbconnect){
             return true;
             break;
         }
+        else{
+            return false;
+            break;
+        }
     }   
 }
 ?>
