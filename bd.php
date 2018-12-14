@@ -19,11 +19,25 @@ function name($token,$user_id,$reply){
             sendMessage($token,$user_id,$reply);
         }
     }else{
-        $updatename = "UPDATE `vkbot` SET `disen`='2' WHERE `user_id`='$user_id'";
+        $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'";
         if($dbconnect->query($updatename)===TRUE){
             sendMessage($token,$user_id,$reply);
         }
     }
         
 }
+function setdisen($user_id){ 
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";    
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $result = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
+    while($row = $result->fetch_assoc()){        
+        if($row['disen']==1){
+            return true;
+            break;
+        }
+        
+    }   
 ?>
