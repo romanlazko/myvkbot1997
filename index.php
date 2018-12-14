@@ -41,7 +41,7 @@ if($type == 'message_new'){
         if(setdisen($user_id)===true){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
-        }
+        }else{
         $reply="Прости, я тебя не понимаю)
         \nПопробуй еще раз!";
         $keyboard = [ 
@@ -49,6 +49,7 @@ if($type == 'message_new'){
             'buttons' => keyboard("1",'Начать','positive')
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
+        }
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
