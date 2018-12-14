@@ -13,7 +13,12 @@ $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
- 
+$pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
+$pool = [
+    "key" => $pool_data->response->key,
+    "server" => $pool_data->response->server,
+    "ts" => $pool_data->response->ts
+]; 
 $rest = substr($text, 0,1);
 
 if($type == 'message_new'){
@@ -26,12 +31,7 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
      sendMessage($token,$user_id,'send name');
-        $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
-        $pool = [
-            "key" => $pool_data->response->key,
-            "server" => $pool_data->response->server,
-            "ts" => $pool_data->response->ts
-        ];
+        
         while(1){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $updates = $request->updates;
