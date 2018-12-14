@@ -17,14 +17,16 @@ function name($token,$user_id,$reply){
         $insertname = "INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')";
         if($dbconnect->query($insertname)===TRUE){
             sendMessage($token,$user_id,$reply);
+            $dbconnect->close();
         }
     }else{
         $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'";
         if($dbconnect->query($updatename)===TRUE){
             sendMessage($token,$user_id,$reply);
+            $dbconnect->close();
         }
     }
-    $dbconnect->close();
+    
         
 }
 function setdisen($user_id){ 
