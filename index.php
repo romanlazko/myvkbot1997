@@ -42,7 +42,7 @@ if($type == 'message_new'){
             foreach ($request->updates as $item) {
                 if ($item[0] == "4") {
                     sendMessage($token,$user_id,'Твое имя'.$item[5]); 
-                    break;
+//                     break;
                 }   
 //                 else {
 //                     break;
