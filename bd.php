@@ -18,7 +18,7 @@ function name($user_id){
             return true;
         }
     }else{
-        $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='user_id'";
+        $updatename = "UPDATE `vkbot` SET `disen`='2' WHERE `user_id`='user_id'";
         if($dbconnect->query($updatename)===TRUE){
             return true;
         }
