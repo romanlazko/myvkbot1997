@@ -72,18 +72,19 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-        name($token,$user_id,$reply);
+        sendMessage($token,$user_id,$reply);
+        //name($token,$user_id,$reply);
         
         
     } 
 
     else{
         
-        if(setdisen($user_id)===true){
-            $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
-            sendMessage($token,$user_id,$reply);
+//         if(setdisen($user_id)===true){
+//             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
+//             sendMessage($token,$user_id,$reply);
             
-        }else{
+//         }else{
             $reply="Прости, я не понимаю ".$text.")
             \nПопробуй еще раз!";
             $keyboard = [ 
