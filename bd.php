@@ -13,9 +13,9 @@ function name($user_id){
         }
     }   
     if($new_id !== false){
-        $insertname = $dbconnect->query("INSERT INTO vkbot(user_id,disen) VALUES('$user_id','enable')");
+        $insertname = $dbconnect->query("INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')");
     }else{
-        $insertname = $dbconnect->query("UPDATE 'vkbot' SET 'disen'='enable' WHERE 'user_id'='user_id'");
+        $insertname = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='user_id'");
     }
         
 }
