@@ -40,4 +40,5 @@ function setdisen($user_id){
         }
         
     }   
+}
 ?>
