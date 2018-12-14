@@ -32,7 +32,7 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
      sendMessage($token,$user_id,'send name');
         
-        while(1){
+        while($item[0] != "4"){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $updates = $request->updates;
             if(json_encode($updates)==='[]'){
@@ -43,8 +43,8 @@ if($type == 'message_new'){
 
                     if ($item[0] == "4") {
                         sendMessage($token,$user_id,'Что то написанно'); 
-                        break 2;
-                    }  
+                        
+                    }  else{break 2;}
                 }
             }
 
