@@ -38,7 +38,7 @@ if($type == 'message_new'){
     } 
 
     else{
-        if(setdiseb($user_id)===true){
+        if(setdisen($user_id)===true){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
         }
