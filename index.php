@@ -1,4 +1,9 @@
 <?php
+$servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";    
+    $dbname="promocoder1";
+    
 //if (!isset($_REQUEST)) {return;}
 // Строка, которую должен вернуть сервер (См. Callback API->Настройки сервера)
 $confirmationToken = '14997d31';
@@ -32,24 +37,28 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
         
-        
-        name($token,$user_id,$reply);
+        $dbconnect = new mysqli($servername, $username, $password, $dbname);
+        name($token,$user_id,$reply,$dbconnect);
+        $dbconnect->close();
         
     } 
 
     else{
-        if(setdisen($user_id)===true){
+        $dbconnect = new mysqli($servername, $username, $password, $dbname);
+        if(setdisen($user_id,$dbconnect)===true){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
+            
         }else{
-        $reply="Прости, я тебя не понимаю)
-        \nПопробуй еще раз!";
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => keyboard("1",'Начать','positive')
-        ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
+            $reply="Прости, я тебя не понимаю)
+            \nПопробуй еще раз!";
+            $keyboard = [ 
+                'one_time' => true, 
+                'buttons' => keyboard("1",'Начать','positive')
+            ];
+            sendKeyboard($token,$user_id,$reply,$keyboard);
         }
+        $dbconnect->close();
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
