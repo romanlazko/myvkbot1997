@@ -13,14 +13,14 @@ function name($token,$user_id){
         }
     }   
     if($new_id !== false){
-        $insertname = $dbconnect->query("INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')");
-        if($insertname){
+        $insertname = "INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')";
+        if($dbconnect->query($insertname)===TRUE){
             $reply = ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
             sendMessage($token,$user_id,$reply);
         }
     }else{
-        $insertname = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='user_id'");
-        if($insertname){
+        $insertname = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='user_id'";
+        if($dbconnect->query($insertname)===TRUE){
             $reply = ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
             sendMessage($token,$user_id,$reply);
         }
