@@ -45,7 +45,6 @@ if($type == 'message_new'){
                     sendMessage($token,$user_id,'Что то написанно'); 
                     break 2;
                 }  
-                else{continue 2;}
             }
 
 
