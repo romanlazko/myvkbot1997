@@ -13,12 +13,12 @@ function name($token,$user_id,$reply,$dbconnect){
             sendMessage($token,$user_id,$reply);
         }
     }
-//     else{
-//         $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'";
-//         if($dbconnect->query($updatename)===TRUE){
-//             sendMessage($token,$user_id,$reply);
-//         }
-//     }
+    else{
+        $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'";
+        if($dbconnect->query($updatename)===TRUE){
+            sendMessage($token,$user_id,$reply);
+        }
+    }
 }
 function setdisen($user_id,$dbconnect){ 
     
