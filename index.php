@@ -3,7 +3,7 @@ $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
     $dbname="promocoder1";
-    
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
 //if (!isset($_REQUEST)) {return;}
 // Строка, которую должен вернуть сервер (См. Callback API->Настройки сервера)
 $confirmationToken = '14997d31';
@@ -37,14 +37,14 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
         
-        $dbconnect = new mysqli($servername, $username, $password, $dbname);
+        
         name($token,$user_id,$reply,$dbconnect);
-        $dbconnect->close();
+        
         
     } 
 
     else{
-        $dbconnect = new mysqli($servername, $username, $password, $dbname);
+        
         if(setdisen($user_id,$dbconnect)===true){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
@@ -58,7 +58,7 @@ if($type == 'message_new'){
             ];
             sendKeyboard($token,$user_id,$reply,$keyboard);
         }
-        $dbconnect->close();
+        
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
@@ -94,6 +94,7 @@ function keyboard($par,$name_btn,$color){
     ]];
     return $key;
 }
+$dbconnect->close();
 //     elseif($rest==':'){
 //         $text = str_replace(' ','',$text);
 //         $Name = substr($text, 0, strrpos($text, ','));
