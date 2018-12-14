@@ -1,5 +1,5 @@
 <?php
-function name($token,$user_id){ 
+function name($user_id){ 
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
@@ -15,14 +15,12 @@ function name($token,$user_id){
     if($new_id !== false){
         $insertname = "INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')";
         if($dbconnect->query($insertname)===TRUE){
-            $reply = ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-            sendMessage($token,$user_id,$reply);
+            return true;
         }
     }else{
         $insertname = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='user_id'";
         if($dbconnect->query($insertname)===TRUE){
-            $reply = ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-            sendMessage($token,$user_id,$reply);
+            return true;
         }
     }
         
