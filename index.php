@@ -30,7 +30,7 @@ if($type == 'message_new'){
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
-     if(sendMessage($token,$user_id,'send name')==true){
+     
         
         while($item[0] != "4"){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
@@ -40,16 +40,18 @@ if($type == 'message_new'){
                 break;
             }else{
                 foreach ($request->updates as $item) {
-
                     if ($item[0] == "4") {
-                        sendMessage($token,$user_id,'Что то написанно'); 
-                        
+                        if($item[5] != "send name"){
+                            sendMessage($token,$user_id,'Что то написанно');    
+                        }else{
+                            break 2;
+                        }
                     }  
                 }
             }
 
 
-        }}
+        }
 //         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
 //         sendMessage($token,$user_id,$reply);
         
