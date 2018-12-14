@@ -30,7 +30,7 @@ if($type == 'message_new'){
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
-     sendMessage($token,$user_id,'send name');
+//      sendMessage($token,$user_id,'send name');
         
         while(1){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
