@@ -32,25 +32,25 @@ if($type == 'message_new'){
             "server" => $pool_data->response->server,
             "ts" => $pool_data->response->ts
         ];
-        while(1){
+//         while(1){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
-            $updates = $request->updates;
-            if(json_encode($updates)==='[]'){
-                sendMessage($token,$user_id,'Время ожидания истекло');
-                break;
-            }
+//             $updates = $request->updates;
+//             if(json_encode($updates)==='[]'){
+//                 sendMessage($token,$user_id,'Время ожидания истекло');
+//                 break;
+//             }
             foreach ($request->updates as $item) {
                 if ($item[0] == "4") {
                     sendMessage($token,$user_id,'Твое имя'.$item[5]); 
-                    break 2;
-                }   
-                else {
                     break;
-                }
+                }   
+//                 else {
+//                     break;
+//                 }
             }
 
 
-        }
+//         }
 //         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
 //         sendMessage($token,$user_id,$reply);
         
