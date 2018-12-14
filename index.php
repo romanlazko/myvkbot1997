@@ -40,14 +40,11 @@ if($type == 'message_new'){
                 break;
             }
             foreach ($request->updates as $item) {
-                if ($item[5] == "send name"){
-                    break 2;
-                }
+                
                 if ($item[0] == "4") {
                     sendMessage($token,$user_id,$item[5]); 
                     break 2;
                 }  
-                else {break;}
             }
 
 
