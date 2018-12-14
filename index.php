@@ -50,7 +50,7 @@ if($type == 'message_new'){
             sendMessage($token,$user_id,$reply);
             
         }else{
-            $reply="Прости, я не понимаю '.text.')
+            $reply="Прости, я не понимаю '.$text.')
             \nПопробуй еще раз!";
             $keyboard = [ 
                 'one_time' => true, 
