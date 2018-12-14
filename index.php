@@ -32,8 +32,8 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
         
-        sendMessage($token,$user_id,$reply);
-        name($user_id);
+        
+        name($token,$user_id,$reply);
     } 
 
     else{
