@@ -37,13 +37,13 @@ if($type == 'message_new'){
             $updates = $request->updates;
             if(json_encode($updates)==='[]'){
                 sendMessage($token,$user_id,'Время ожидания истекло');
-                break;
+//                 break;
             }
             foreach ($request->updates as $item) {
                 
                 if ($item[0] == "4") {
                     sendMessage($token,$user_id,'Что то написанно'); 
-                    break 2;
+                    break;
                 }  
             }
 
