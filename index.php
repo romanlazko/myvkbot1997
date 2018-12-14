@@ -13,13 +13,13 @@ $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
-$pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
-$pool = [
-    "key" => $pool_data->response->key,
-    "server" => $pool_data->response->server,
-    "ts" => $pool_data->response->ts
-]; 
-$rest = substr($text, 0,1);
+// $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
+// $pool = [
+//     "key" => $pool_data->response->key,
+//     "server" => $pool_data->response->server,
+//     "ts" => $pool_data->response->ts
+// ]; 
+
 include 'bd.php';
 if($type == 'message_new'){
     if($text =='Начать') {
