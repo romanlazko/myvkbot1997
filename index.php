@@ -37,6 +37,7 @@ if($type == 'message_new'){
     } 
 
     else{
+        
         $reply="Прости, я тебя не понимаю)
         \nПопробуй еще раз!";
         $keyboard = [ 
@@ -66,7 +67,6 @@ function sendMessage($token,$user_id,$reply){
     );
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     echo('ok'); 
-    return true;
 }
 function keyboard($par,$name_btn,$color){
     $key = [[
