@@ -42,7 +42,7 @@ function setdisen($user_id){
         else{
             return false;
         }
-    }   
+       
     $dbconnect->close();
 }
 //if (!isset($_REQUEST)) {return;}
