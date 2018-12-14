@@ -1,5 +1,5 @@
 <?php
-function name($token,$user_id,$reply){ 
+function name($token,$user_id){ 
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
