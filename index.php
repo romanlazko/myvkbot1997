@@ -44,7 +44,7 @@ if($type == 'message_new'){
                     if ($item[0] == "4") {
                         sendMessage($token,$user_id,'Что то написанно'); 
                         
-                    }  else{break 2;}
+                    }  
                 }
             }
 
