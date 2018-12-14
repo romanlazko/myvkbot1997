@@ -38,7 +38,10 @@ if($type == 'message_new'){
     } 
 
     else{
-        
+        if(setdiseb($user_id)===true){
+            $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
+            sendMessage($token,$user_id,$reply);
+        }
         $reply="Прости, я тебя не понимаю)
         \nПопробуй еще раз!";
         $keyboard = [ 
