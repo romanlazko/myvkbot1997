@@ -32,7 +32,7 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
      
         
-        while($item[0] != "4"){
+        while(1){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $updates = $request->updates;
             if(json_encode($updates)==='[]'){
