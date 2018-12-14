@@ -1,6 +1,6 @@
 <?php
 
-function name($token,$user_id,$reply,$dbconnect){ 
+function name($token,$user_id,$reply){ 
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
@@ -27,7 +27,7 @@ function name($token,$user_id,$reply,$dbconnect){
     }
     $dbconnect->close();
 }
-function setdisen($user_id,$dbconnect){ 
+function setdisen($user_id){ 
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
