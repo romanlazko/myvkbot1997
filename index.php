@@ -41,11 +41,11 @@ if($type == 'message_new'){
             }else{
                 foreach ($request->updates as $item) {
                     if ($item[0] == "4") {
-                        if($item[5] != "send name"){
+//                         if($item[5] != "send name"){
                             sendMessage($token,$user_id,'Что то написанно');    
-                        }else{
-                            break 2;
-                        }
+//                         }else{
+//                             break 2;
+//                         }
                     }  
                 }
             }
