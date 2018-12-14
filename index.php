@@ -33,7 +33,10 @@ if($type == 'message_new'){
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
         
         
-        name($token,$user_id);
+        if(name($user_id)===true){
+            sendMessage($token,$user_id,$reply);
+        }
+        
     } 
 
     else{
