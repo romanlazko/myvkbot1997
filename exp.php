@@ -23,7 +23,7 @@ while(1){
     }
     foreach ($request->updates as $item) {
         if ($item[0] == "4") {
-            echo ison_encode($request);
+            echo json_encode($request);
             break 2;
         }         
     }
