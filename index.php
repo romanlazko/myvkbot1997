@@ -1,9 +1,52 @@
 <?php
-$servername="db4free.net: 3306";
+
+function name($token,$user_id,$reply,$dbconnect){ 
+    $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $result = $dbconnect->query("SELECT user_id FROM vkbot");    
+    while($row = $result->fetch_assoc()){        
+        if($row['user_id']==$user_id){
+            $new_id = false;
+            break;
+        }
+    }   
+    if($new_id !== false){
+        $insertname = "INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')";
+        if($dbconnect->query($insertname)===TRUE){
+            sendMessage($token,$user_id,$reply);
+        }
+    }
+    else{
+        $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'";
+        if($dbconnect->query($updatename)===TRUE){
+            sendMessage($token,$user_id,$reply);
+        }
+    }
+    $dbconnect->close();
+}
+function setdisen($user_id,$dbconnect){ 
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";    
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $result1 = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
+    while($row = $result1->fetch_assoc()){        
+        if($row['disen']=='1'){
+            $updatename1 = $dbconnect->query("UPDATE `vkbot` SET `disen`='0' WHERE `user_id`='$user_id'");
+            return true;
+            break;
+        }
+        else{
+            return false;
+            break;
+        }
+    }   
+    $dbconnect->close();
+}
 //if (!isset($_REQUEST)) {return;}
 // Строка, которую должен вернуть сервер (См. Callback API->Настройки сервера)
 $confirmationToken = '14997d31';
@@ -18,14 +61,7 @@ $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
-// $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
-// $pool = [
-//     "key" => $pool_data->response->key,
-//     "server" => $pool_data->response->server,
-//     "ts" => $pool_data->response->ts
-// ]; 
-
-include 'bd.php';
+// include 'bd.php';
 if($type == 'message_new'){
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
@@ -36,16 +72,14 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-        
-        
-        name($token,$user_id,$reply,$dbconnect);
+        name($token,$user_id,$reply);
         
         
     } 
 
     else{
         
-        if(setdisen($user_id,$dbconnect)===true){
+        if(setdisen($user_id)===true){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
             
@@ -94,7 +128,7 @@ function keyboard($par,$name_btn,$color){
     ]];
     return $key;
 }
-$dbconnect->close();
+
 //     elseif($rest==':'){
 //         $text = str_replace(' ','',$text);
 //         $Name = substr($text, 0, strrpos($text, ','));
