@@ -25,47 +25,69 @@ if($type == 'message_new'){
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
-        $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-        sendMessage($token,$user_id,$reply);
+        $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
+        $pool = [
+            "key" => $pool_data->response->key,
+            "server" => $pool_data->response->server,
+            "ts" => $pool_data->response->ts
+        ];
+        while(1){
+            $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
+            $updates = $request->updates;
+            if(json_encode($updates)==='[]'){
+                sendMessage($token,$user_id,'Время ожидания истекло');
+                break;
+            }
+            foreach ($request->updates as $item) {
+                if ($item[0] == "4") {
+                    sendMessage($token,$user_id,$item[5]); 
+                    break 2;
+                }         
+            }
+
+
+        }
+//         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
+//         sendMessage($token,$user_id,$reply);
         
 //         
     } 
-    elseif($rest==':'){
-        $text = str_replace(' ','',$text);
-        $Name = substr($text, 0, strrpos($text, ','));
-        $N = substr($Name, strrpos($Name,":")+1);
-        $Lastname = substr($text, strrpos($text,",")+1);
-        $L = substr($Lastname, strrpos($Lastname,":")+1);
-        //https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-zaleskiy-gleb.aspx
-        $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
-        //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
-        $url1 ="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
-        $urlHeaders = @get_headers($url);
-        $urlHeaders1 = @get_headers($url1);
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => keyboard("1",'Начать','positive')
-        ];
+//     elseif($rest==':'){
+//         $text = str_replace(' ','',$text);
+//         $Name = substr($text, 0, strrpos($text, ','));
+//         $N = substr($Name, strrpos($Name,":")+1);
+//         $Lastname = substr($text, strrpos($text,",")+1);
+//         $L = substr($Lastname, strrpos($Lastname,":")+1);
+//         //https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-zaleskiy-gleb.aspx
+//         $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
+//         //$url = "https://www.mvcr.cz/soubor/".$L."-".$N."-pdf.aspx";
+//         $url1 ="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
+//         $urlHeaders = @get_headers($url);
+//         $urlHeaders1 = @get_headers($url1);
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => keyboard("1",'Начать','positive')
+//         ];
         
-        if(strpos($urlHeaders[0], '200')) {
-            sendKeyboard($token,$user_id,$url,$keyboard);
-        } elseif(strpos($urlHeaders1[0], '200')) {
-             sendKeyboard($token,$user_id,$url1,$keyboard);
-        } else{
-            sendKeyboard($token,$user_id,'Нет ссылки',$keyboard);
-        }
+//         if(strpos($urlHeaders[0], '200')) {
+//             sendKeyboard($token,$user_id,$url,$keyboard);
+//         } elseif(strpos($urlHeaders1[0], '200')) {
+//              sendKeyboard($token,$user_id,$url1,$keyboard);
+//         } else{
+//             sendKeyboard($token,$user_id,'Нет ссылки',$keyboard);
+//         }
         
-        //sendKeyboard($token,$user_id,$reply,$keyboard);
-    }
-    else{
-        $reply="Прости, я тебя не понимаю)
-        \nПопробуй еще раз!";
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => keyboard("1",'Начать','positive')
-        ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
-    }
+//         //sendKeyboard($token,$user_id,$reply,$keyboard);
+//     }
+//     else{
+//         $reply="Прости, я тебя не понимаю)
+//         \nПопробуй еще раз!";
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => keyboard("1",'Начать','positive')
+//         ];
+//         sendKeyboard($token,$user_id,$reply,$keyboard);
+//     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
     $request_params = array(
