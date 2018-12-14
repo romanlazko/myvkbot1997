@@ -92,7 +92,7 @@ if($type == 'message_new'){
                 'buttons' => keyboard("1",'Начать','positive')
             ];
             sendKeyboard($token,$user_id,$reply,$keyboard);
-        }
+        
         
     }
 }
