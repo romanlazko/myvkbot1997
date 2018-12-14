@@ -25,7 +25,7 @@ if($type == 'message_new'){
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
-     sendMessage($token,$user_id,'Пришли имя');
+     sendMessage($token,$user_id,'send name');
         $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
         $pool = [
             "key" => $pool_data->response->key,
