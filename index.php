@@ -32,23 +32,24 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
 //      sendMessage($token,$user_id,'send name');
         
-//         while(1){
+        while(1){
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $updates = $request->updates;
             if(json_encode($updates)==='[]'){
                 sendMessage($token,$user_id,'Время ожидания истекло');
-//                 break;
+                break;
             }
             foreach ($request->updates as $item) {
                 
                 if ($item[0] == "4") {
                     sendMessage($token,$user_id,'Что то написанно'); 
-                    break;
+                    break 2;
                 }  
+                else{continue 2;}
             }
 
 
-//         }
+        }
 //         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
 //         sendMessage($token,$user_id,$reply);
         
