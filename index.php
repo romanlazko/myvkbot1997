@@ -44,7 +44,7 @@ if($type == 'message_new'){
                     continue 2;
                 }
                 if ($item[0] == "4") {
-                    sendMessage($token,$user_id,'Твое имя'.$item[5]); 
+                    sendMessage($token,$user_id,$item[5]); 
                     break 2;
                 }   
             }
