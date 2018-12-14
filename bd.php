@@ -24,6 +24,7 @@ function name($token,$user_id,$reply){
             sendMessage($token,$user_id,$reply);
         }
     }
+    $dbconnect->close();
         
 }
 function setdisen($user_id){ 
@@ -40,5 +41,6 @@ function setdisen($user_id){
         }
         
     }   
+    $dbconnect->close();
 }
 ?>
