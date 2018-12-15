@@ -74,21 +74,21 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-        if(name($token,$user_id,$reply,$dbconnect)==='ok'){
+//         if(name($token,$user_id,$reply,$dbconnect)==='ok'){
             sendMessage($token,$user_id,$reply);
-        }
+//         }
         //name($token,$user_id,$reply);
         
         
     } 
 
     else{
-        $i=setdisen($user_id,$dbconnect); 
-        if($i==='ok'){
-            $reply = 'Сейчас проверим есть ли письмо на имя'.$text. ' и '.$i;
-            sendMessage($token,$user_id,$reply);
+//         $i=setdisen($user_id,$dbconnect); 
+//         if($i==='ok'){
+//             $reply = 'Сейчас проверим есть ли письмо на имя'.$text. ' и '.$i;
+//             sendMessage($token,$user_id,$reply);
             
-        }else{
+//         }else{
             $reply="Прости, я не понимаю ".$text. " и ".$i.")
             \nПопробуй еще раз!";
             $keyboard = [ 
@@ -96,7 +96,7 @@ if($type == 'message_new'){
                 'buttons' => keyboard("1",'Начать','positive')
             ];
             sendKeyboard($token,$user_id,$reply,$keyboard);
-        }
+        
         
     }
 }
