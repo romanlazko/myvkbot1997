@@ -22,12 +22,12 @@ while(1){
 //         echo 'Время ожидания истекло';
 //         break;
 //     }
-    echo json_encode($request);
     if(time()==$endtime){
         echo 'Время ожидания истекло';
         break;
     }
     foreach ($request->updates as $item) {
+        echo json_encode($request);
         if ($item[0] == "4") {
 //             if($item[5]=="send"){
 //                 continue;
