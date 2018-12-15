@@ -15,13 +15,13 @@ function name($token,$user_id,$reply){
     }   
     if($new_id !== false){
         $insertname = "INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')";
-        if($dbconnect->query($insertname)===TRUE){
+        if($dbconnect->query($insertname)==TRUE){
             return true;
         }
     }
     else{
         $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'";
-        if($dbconnect->query($updatename)===TRUE){
+        if($dbconnect->query($updatename)==TRUE){
             return true;
         }
     }
@@ -70,7 +70,7 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-        if(name($token,$user_id,$reply)===true){
+        if(name($token,$user_id,$reply)==true){
             sendMessage($token,$user_id,$reply);
         }
         //name($token,$user_id,$reply);
@@ -80,7 +80,7 @@ if($type == 'message_new'){
 
     else{
         
-        if(setdisen($user_id)===true){
+        if(setdisen($user_id)==true){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
             
