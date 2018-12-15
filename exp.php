@@ -14,21 +14,22 @@ $pool = [
     "ts" => $pool_data->response->ts
 ];
 $i = 0;
-$endtime=time()+15;
-while(1){
+// $endtime=time()+15;
+// while(1){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
 //     $updates = $request->updates;
 //     if(json_encode($updates)==='[]'){
 //         echo 'Время ожидания истекло';
 //         break;
 //     }
-    if(time()==$endtime){
-        echo 'Время ожидания истекло';
-        break;
-    }
+//     if(time()==$endtime){
+//         echo 'Время ожидания истекло';
+//         break;
+//     }
     foreach ($request->updates as $item) {
-        echo json_encode($request);
-        break 2;
+        if ($item[0] == "61") {
+            continue;
+        }
         if ($item[0] == "4") {
 //             if($item[5]=="send"){
 //                 continue;
@@ -36,7 +37,7 @@ while(1){
 //             }
             
             echo json_encode($request);
-            break 2;
+            break;
         }         
     }
     
