@@ -1,54 +1,54 @@
 <?php
-$servername="db4free.net: 3306";
-    $username="romanlazko";
-    $password="zdraste123";    
-    $dbname="promocoder1";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-function name($token,$user_id,$reply,$dbconnect){ 
-    $result = $dbconnect->query("SELECT user_id FROM vkbot");
-    $new_id = false;
-    while($row = $result->fetch_assoc()){        
-        if($row['user_id']==$user_id){
-            $new_id = true;
-            sendMessage($token,$user_id,'бля');
-            break;
-        }
-        else {
-            $new_id = false;
-        }
-    }   
-    if($new_id == false){
-        $insertname = "INSERT INTO vkbot(user_id,disen) VALUES('$user_id','1')";
-        if($dbconnect->query($insertname)==TRUE){
-            return 'ok';
-        }
-    }
-    
-    echo('ok'); 
-}
-function setdisen($user_id,$dbconnect){ 
-    $servername="db4free.net: 3306";
-    $username="romanlazko";
-    $password="zdraste123";    
-    $dbname="promocoder1";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $result = $dbconnect->query("SELECT user_id FROM vkbot");
-    $new_id = false;
-    while($row = $result->fetch_assoc()){        
-        if($row['user_id']==$user_id){
-            $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");
-            return 'ok';
-            break;
-        }
-    }   
-//     $result1 = $dbconnect->query("SELECT . FROM vkbot WHERE user_id='$user_id'");    
-//     $row = $result1->fetch_assoc();       
-//         if($row['disen']='1'){    
-//             $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");            
+// $servername="db4free.net: 3306";
+//     $username="romanlazko";
+//     $password="zdraste123";    
+//     $dbname="promocoder1";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+// function name($token,$user_id,$reply,$dbconnect){ 
+//     $result = $dbconnect->query("SELECT user_id FROM vkbot");
+//     $new_id = false;
+//     while($row = $result->fetch_assoc()){        
+//         if($row['user_id']==$user_id){
+//             $new_id = true;
+//             sendMessage($token,$user_id,'бля');
+//             break;
 //         }
+//         else {
+//             $new_id = false;
+//         }
+//     }   
+//     if($new_id == false){
+//         $insertname = "INSERT INTO vkbot(user_id,disen) VALUES('$user_id','1')";
+//         if($dbconnect->query($insertname)==TRUE){
+//             return 'ok';
+//         }
+//     }
+    
+//     echo('ok'); 
+// }
+// function setdisen($user_id,$dbconnect){ 
+//     $servername="db4free.net: 3306";
+//     $username="romanlazko";
+//     $password="zdraste123";    
+//     $dbname="promocoder1";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $result = $dbconnect->query("SELECT user_id FROM vkbot");
+//     $new_id = false;
+//     while($row = $result->fetch_assoc()){        
+//         if($row['user_id']==$user_id){
+//             $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");
+//             return 'ok';
+//             break;
+//         }
+//     }   
+// //     $result1 = $dbconnect->query("SELECT . FROM vkbot WHERE user_id='$user_id'");    
+// //     $row = $result1->fetch_assoc();       
+// //         if($row['disen']='1'){    
+// //             $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");            
+// //         }
        
-    echo('ok'); 
-}
+//     echo('ok'); 
+// }
 //if (!isset($_REQUEST)) {return;}
 // Строка, которую должен вернуть сервер (См. Callback API->Настройки сервера)
 $confirmationToken = '14997d31';
