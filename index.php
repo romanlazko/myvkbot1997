@@ -41,7 +41,7 @@ if($type == 'message_new'){
                 sendMessage($token,$user_id,'Время ожидания истекло');
                 break;
             }
-            $item =json_encode($request->updates) ;
+            foreach($request->updates as $item) ;
                 
                 if ($item[0] == "4") {
                     if($item[5]=="send"){
@@ -60,13 +60,11 @@ if($type == 'message_new'){
                         sendMessage($token,$user_id,'send');
                     }
                     
-                    sendMessage($token,$user_id,$item);
+                    sendMessage($token,$user_id,$item[5]);
         //             echo json_encode($request);
                     break 2;
                 }         
-            sendMessage($token,$user_id,$item);
-        //             echo json_encode($request);
-                    break 2;
+        }
 
 
         }
