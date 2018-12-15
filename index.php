@@ -58,6 +58,7 @@ if($type == 'message_new'){
                         break 2;
                     }elseif($item[5] =='Проверить почту') {
                         sendMessage($token,$user_id,'send');
+                        break 2;
                     }
                     
                     sendMessage($token,$user_id,$item[5]);
