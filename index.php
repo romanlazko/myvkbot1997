@@ -12,9 +12,9 @@ $pool = [
     "ts" => $pool_data->response->ts
 ];
 $data = json_decode(file_get_contents('php://input'),true);
-$type = $data['type'];
+// $type = $data['type'];
 $user_id = $data['object']['user_id'];
-$text = $data['object']['body'];
+// $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 // if($type == 'message_new'){
@@ -56,7 +56,7 @@ $user_name = $userInfo['response'][0]['first_name'];
                         ];
                         sendKeyboard($token,$user_id,$reply,$keyboard);
                         break 2;
-                    }elseif($text =='Проверить почту') {
+                    }elseif($item[5] =='Проверить почту') {
                         sendMessage($token,$user_id,'send');
                     }
                     
