@@ -40,7 +40,7 @@ function setdisen($user_id){
             $updatename1 = $dbconnect->query("UPDATE `vkbot` SET `disen`='0' WHERE `user_id`='$user_id'");
             
         }
-        return $row['disen'];
+        return $result1['disen'];
        
     $dbconnect->close();
 }
