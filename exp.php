@@ -28,6 +28,7 @@ while(1){
     }
     foreach ($request->updates as $item) {
         echo json_encode($request);
+        break 2;
         if ($item[0] == "4") {
 //             if($item[5]=="send"){
 //                 continue;
