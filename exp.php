@@ -23,6 +23,9 @@ while(1){
     }
     foreach ($request->updates as $item) {
         if ($item[0] == "4") {
+            if($item[5]=="send"){
+                echo 'gbib';
+            }
             echo json_encode($request);
             break 2;
         }         
