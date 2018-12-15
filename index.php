@@ -12,12 +12,12 @@ $pool = [
     "ts" => $pool_data->response->ts
 ];
 $data = json_decode(file_get_contents('php://input'),true);
-// $type = $data['type'];
+$type = $data['type'];
 $user_id = $data['object']['user_id'];
 // $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
-// if($type == 'message_new'){
+if($type == 'message_new'){
 //     if($text =='Начать') {
 //         $reply = "Привет, ".$user_name;
 //         $keyboard = [ 
@@ -68,7 +68,7 @@ $user_name = $userInfo['response'][0]['first_name'];
 
 
         }
-//     } 
+    } 
 
 //     else{
 //             $reply="Прости, я не понимаю ".$text. ")
