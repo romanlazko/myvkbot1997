@@ -1,11 +1,10 @@
 <?php
-
-function name($token,$user_id,$reply){ 
-    $servername="db4free.net: 3306";
+$servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+function name($token,$user_id,$reply,$dbconnect){ 
     $result = $dbconnect->query("SELECT user_id FROM vkbot");
     $new_id = false;
     while($row = $result->fetch_assoc()){        
@@ -25,10 +24,9 @@ function name($token,$user_id,$reply){
         }
     }
     
-    $dbconnect->close();
     echo('ok'); 
 }
-function setdisen($user_id){ 
+function setdisen($user_id,$dbconnect){ 
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";    
@@ -49,7 +47,6 @@ function setdisen($user_id){
 //             $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");            
 //         }
        
-    $dbconnect->close();
     echo('ok'); 
 }
 //if (!isset($_REQUEST)) {return;}
@@ -77,7 +74,7 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-        if(name($token,$user_id,$reply)==='ok'){
+        if(name($token,$user_id,$reply,$dbconnect)==='ok'){
             sendMessage($token,$user_id,$reply);
         }
         //name($token,$user_id,$reply);
@@ -86,7 +83,7 @@ if($type == 'message_new'){
     } 
 
     else{
-        $i=setdisen($user_id); 
+        $i=setdisen($user_id,$dbconnect); 
         if($i==='ok'){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text. ' и '.$i;
             sendMessage($token,$user_id,$reply);
@@ -137,6 +134,7 @@ function keyboard($par,$name_btn,$color){
     return $key;
 }
 
+    $dbconnect->close();
 //     elseif($rest==':'){
 //         $text = str_replace(' ','',$text);
 //         $Name = substr($text, 0, strrpos($text, ','));
