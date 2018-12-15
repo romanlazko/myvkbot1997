@@ -22,7 +22,7 @@ while(1){
 //         echo 'Время ожидания истекло';
 //         break;
 //     }
-    if(time()!=$endtime){
+    if(time()==$endtime){
         echo 'Время ожидания истекло';
         break;
     }
