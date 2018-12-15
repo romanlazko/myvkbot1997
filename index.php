@@ -34,8 +34,9 @@ function setdisen($user_id){
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result1 = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
-    $row = $result1->fetch_assoc();       
-        if($row['disen']='1'){
+//     $row = $result1->fetch_assoc();       
+//         if($row['disen']='1'){
+    if($result1['disen']='1'){
             $updatename1 = $dbconnect->query("UPDATE `vkbot` SET `disen`='0' WHERE `user_id`='$user_id'");
             
         }
@@ -77,9 +78,9 @@ if($type == 'message_new'){
     } 
 
     else{
-        
-        if(setdisen($user_id)=='1'){
-            $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
+        $i=setdisen($user_id); 
+        if($i=='1'){
+            $reply = 'Сейчас проверим есть ли письмо на имя'.$text. ' и '.$i;
             sendMessage($token,$user_id,$reply);
             
         }else{
