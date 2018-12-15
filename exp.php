@@ -13,8 +13,8 @@ $pool = [
     "server" => $pool_data->response->server,
     "ts" => $pool_data->response->ts
 ];
-
-while(1){
+$i = 0;
+while($i<=5){
     $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
     $updates = $request->updates;
     if(json_encode($updates)==='[]'){
@@ -31,6 +31,7 @@ while(1){
             break 2;
         }         
     }
+    $i++
     
     
 }
