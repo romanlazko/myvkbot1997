@@ -60,7 +60,7 @@ if($type == 'message_new'){
                         sendMessage($token,$user_id,'send');
                     }
                     
-                    sendMessage($token,$user_id,$item[5]);
+                    sendMessage($token,$user_id,$item);
         //             echo json_encode($request);
                     break 2;
                 }         
