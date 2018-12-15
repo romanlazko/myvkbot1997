@@ -134,7 +134,6 @@ function keyboard($par,$name_btn,$color){
     return $key;
 }
 
-    $dbconnect->close();
 //     elseif($rest==':'){
 //         $text = str_replace(' ','',$text);
 //         $Name = substr($text, 0, strrpos($text, ','));
