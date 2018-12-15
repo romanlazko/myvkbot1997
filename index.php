@@ -7,11 +7,11 @@ function name($token,$user_id,$reply){
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM vkbot");
-    $new_id = true;
+    $new_id = false;
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
-            $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'");
-            return true;
+            $new_id = true;
+            sendMessage($token,$user_id,'бля');
             break;
         }
         else {
@@ -19,7 +19,7 @@ function name($token,$user_id,$reply){
         }
     }   
     if($new_id == false){
-        $insertname = "INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')";
+        $insertname = "INSERT INTO vkbot(user_id,disen) VALUES('$user_id','1')";
         if($dbconnect->query($insertname)==TRUE){
             return true;
         }
@@ -33,14 +33,20 @@ function setdisen($user_id){
     $password="zdraste123";    
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $result1 = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
-//     $row = $result1->fetch_assoc();       
-//         if($row['disen']='1'){
-    if($result1['disen']='1'){
-            $updatename1 = $dbconnect->query("UPDATE `vkbot` SET `disen`='0' WHERE `user_id`='$user_id'");
-            
+    $result = $dbconnect->query("SELECT user_id FROM vkbot");
+    $new_id = false;
+    while($row = $result->fetch_assoc()){        
+        if($row['user_id']==$user_id){
+            $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");
+            return true;
+            break;
         }
-        return $result1['disen'];
+    }   
+//     $result1 = $dbconnect->query("SELECT . FROM vkbot WHERE user_id='$user_id'");    
+//     $row = $result1->fetch_assoc();       
+//         if($row['disen']='1'){    
+//             $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");            
+//         }
        
     $dbconnect->close();
 }
@@ -79,7 +85,7 @@ if($type == 'message_new'){
 
     else{
         $i=setdisen($user_id); 
-        if($i=='1'){
+        if($i==true){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text. ' и '.$i;
             sendMessage($token,$user_id,$reply);
             
