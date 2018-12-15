@@ -21,7 +21,7 @@ function name($token,$user_id,$reply){
     if($new_id == false){
         $insertname = "INSERT INTO vkbot(user_id,disen) VALUES('$user_id','1')";
         if($dbconnect->query($insertname)==TRUE){
-            return true;
+            return 'ok';
         }
     }
     
@@ -39,7 +39,7 @@ function setdisen($user_id){
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
             $updatename1 = $dbconnect->query("DELETE FROM `vkbot` WHERE `user_id`='$user_id'");
-            return true;
+            return 'ok';
             break;
         }
     }   
@@ -77,7 +77,7 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
-        if(name($token,$user_id,$reply)==true){
+        if(name($token,$user_id,$reply)==='ok'){
             sendMessage($token,$user_id,$reply);
         }
         //name($token,$user_id,$reply);
@@ -87,7 +87,7 @@ if($type == 'message_new'){
 
     else{
         $i=setdisen($user_id); 
-        if($i==true){
+        if($i==='ok'){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text. ' и '.$i;
             sendMessage($token,$user_id,$reply);
             
