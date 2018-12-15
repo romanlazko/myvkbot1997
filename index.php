@@ -26,6 +26,7 @@ function name($token,$user_id,$reply){
     }
     
     $dbconnect->close();
+    echo('ok'); 
 }
 function setdisen($user_id){ 
     $servername="db4free.net: 3306";
@@ -49,6 +50,7 @@ function setdisen($user_id){
 //         }
        
     $dbconnect->close();
+    echo('ok'); 
 }
 //if (!isset($_REQUEST)) {return;}
 // Строка, которую должен вернуть сервер (См. Callback API->Настройки сервера)
