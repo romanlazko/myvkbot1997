@@ -75,7 +75,7 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
         $reply = $user_name. ", что бы проверить почту, отправь мне свое имя и фамилию по паспорту";
 //         if(name($token,$user_id,$reply,$dbconnect)==='ok'){
-            sendMessage($token,$user_id,$reply);
+            sendMessage($token,$user_id,'send');
 //         }
         //name($token,$user_id,$reply);
         
