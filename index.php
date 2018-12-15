@@ -6,25 +6,25 @@ function name($token,$user_id,$reply){
     $password="zdraste123";    
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $result = $dbconnect->query("SELECT user_id FROM vkbot");    
+    $result = $dbconnect->query("SELECT user_id FROM vkbot");
+    $new_id = true;
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
-            $new_id = false;
+            $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'");
+            return true;
             break;
         }
+        else {
+            $new_id = false;
+        }
     }   
-    if($new_id !== false){
+    if($new_id == false){
         $insertname = "INSERT INTO vkbot(user_id,disen,name,surname) VALUES('$user_id','1','1','1')";
         if($dbconnect->query($insertname)==TRUE){
             return true;
         }
     }
-    else{
-        $updatename = "UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'";
-        if($dbconnect->query($updatename)==TRUE){
-            return true;
-        }
-    }
+    
     $dbconnect->close();
 }
 function setdisen($user_id){ 
