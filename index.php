@@ -78,7 +78,7 @@ if($type == 'message_new'){
 
     else{
         
-        if(setdisen($user_id)='1'){
+        if(setdisen($user_id)=='1'){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
             
