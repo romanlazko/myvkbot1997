@@ -35,7 +35,7 @@ function setdisen($user_id){
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result1 = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
     $row = $result1->fetch_assoc();       
-        if($row['disen']=='1'){
+        if($row['disen']='1'){
             $updatename1 = $dbconnect->query("UPDATE `vkbot` SET `disen`='0' WHERE `user_id`='$user_id'");
             return true;
         }
