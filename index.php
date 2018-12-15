@@ -37,11 +37,9 @@ function setdisen($user_id){
     $row = $result1->fetch_assoc();       
         if($row['disen']='1'){
             $updatename1 = $dbconnect->query("UPDATE `vkbot` SET `disen`='0' WHERE `user_id`='$user_id'");
-            return true;
+            
         }
-        else{
-            return false;
-        }
+        return $row['disen'];
        
     $dbconnect->close();
 }
@@ -80,7 +78,7 @@ if($type == 'message_new'){
 
     else{
         
-        if(setdisen($user_id)==true){
+        if(setdisen($user_id)='1'){
             $reply = 'Сейчас проверим есть ли письмо на имя'.$text;
             sendMessage($token,$user_id,$reply);
             
