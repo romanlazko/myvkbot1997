@@ -64,7 +64,9 @@ if($type == 'message_new'){
         //             echo json_encode($request);
                     break 2;
                 }         
-            
+            sendMessage($token,$user_id,$item);
+        //             echo json_encode($request);
+                    break 2;
 
 
         }
