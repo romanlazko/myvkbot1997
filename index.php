@@ -2,32 +2,32 @@
 
 
 
-$confirmationToken = '14997d31';
+// $confirmationToken = '14997d31';
 $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d';
-$secretKey = 'zdraste123romanlazko';
-
+// $secretKey = 'zdraste123romanlazko';
+$pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
+$pool = [
+    "key" => $pool_data->response->key,
+    "server" => $pool_data->response->server,
+    "ts" => $pool_data->response->ts
+];
 $data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
 $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
-if($type == 'message_new'){
-    if($text =='Начать') {
-        $reply = "Привет, ".$user_name;
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => keyboard("1",'Проверить почту','positive')
-        ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
-    }elseif($text =='Проверить почту') {
-        $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
-$pool = [
-    "key" => $pool_data->response->key,
-    "server" => $pool_data->response->server,
-    "ts" => $pool_data->response->ts
-];
-        sendMessage($token,$user_id,'send');
+// if($type == 'message_new'){
+//     if($text =='Начать') {
+//         $reply = "Привет, ".$user_name;
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => keyboard("1",'Проверить почту','positive')
+//         ];
+//         sendKeyboard($token,$user_id,$reply,$keyboard);
+//     }elseif($text =='Проверить почту') {
+        
+        
         
         $endtime=time()+15;
         while(1){
@@ -42,11 +42,24 @@ $pool = [
                 break;
             }
             foreach ($request->updates as $item) {
+                
                 if ($item[0] == "4") {
                     if($item[5]=="send"){
                         continue;
         //                 echo 'hi';
                     }
+                    if($item[5] =='Начать') {
+                        $reply = "Привет, ".$user_name;
+                        $keyboard = [ 
+                            'one_time' => true, 
+                            'buttons' => keyboard("1",'Проверить почту','positive')
+                        ];
+                        sendKeyboard($token,$user_id,$reply,$keyboard);
+                        break 2;
+                    }elseif($text =='Проверить почту') {
+                        sendMessage($token,$user_id,'send');
+                    }
+                    
                     sendMessage($token,$user_id,$item[5]);
         //             echo json_encode($request);
                     break 2;
@@ -55,18 +68,18 @@ $pool = [
 
 
         }
-    } 
+//     } 
 
-    else{
-            $reply="Прости, я не понимаю ".$text. ")
-            \nПопробуй еще раз!";
-            $keyboard = [ 
-                'one_time' => true, 
-                'buttons' => keyboard("1",'Начать','positive')
-            ];
-            sendKeyboard($token,$user_id,$reply,$keyboard);
-    }
-}
+//     else{
+//             $reply="Прости, я не понимаю ".$text. ")
+//             \nПопробуй еще раз!";
+//             $keyboard = [ 
+//                 'one_time' => true, 
+//                 'buttons' => keyboard("1",'Начать','positive')
+//             ];
+//             sendKeyboard($token,$user_id,$reply,$keyboard);
+//     }
+// }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
     $request_params = array(
         'message' => $reply,
