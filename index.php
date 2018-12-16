@@ -42,7 +42,7 @@ if($type == 'message_reply'){
                 }
 //                 $pool['ts']=$request->ts;
             }
-            $ts=$request->ts;
+//             $ts=$request->ts;
 
 
         }
