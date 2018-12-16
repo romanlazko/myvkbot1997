@@ -44,11 +44,11 @@ $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
-if($type == 'message_reply'){
-    if($text =='send') {
-        name($token,$user_id,$reply,$dbconnect);
-    }
-}
+// if($type == 'message_reply'){
+//     if($text =='send') {
+//         name($token,$user_id,$reply,$dbconnect);
+//     }
+// }
 if($type == 'message_new'){
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
