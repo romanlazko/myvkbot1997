@@ -32,7 +32,7 @@ if($type == 'message_reply'){
             foreach ($request->updates as $item) {
                 
                 if ($item[0] == "4") {
-                    sendMessage($token,$item[3],'writen');
+                    sendMessage($token,$user_id,$item[5]);
                     break 2;
                 }  else{
                     continue;
