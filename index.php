@@ -1,4 +1,39 @@
 <?php
+$servername="db4free.net: 3306";
+$username="romanlazko";
+$password="zdraste123";
+$dbname="promocoder1";
+$dbconnect = new mysqli($servername, $username, $password, $dbname);
+function name($token,$user_id,$reply,$dbconnect){ 
+    $result = $dbconnect->query("SELECT user_id FROM vkbot");    
+    while($row = $result->fetch_assoc()){        
+        if($row['user_id']==$user_id){
+            $new_id = false;
+            break;
+        }
+    }   
+    if($new_id !== false){
+        $insertname = $dbconnect->query("INSERT INTO vkbot(user_id,disen) VALUES('$user_id','1')");
+    }
+    else{
+        $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'");
+    }
+}
+function setdisen($user_id,$dbconnect){ 
+    
+    $result1 = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
+    while($row = $result1->fetch_assoc()){        
+        if($row['disen']=='1'){
+            $updatename1 = $dbconnect->query("UPDATE `vkbot` SET `disen`='0' WHERE `user_id`='$user_id'");
+            return true;
+            break;
+        }
+        else{
+            return false;
+            break;
+        }
+    }   
+}
 $confirmationToken = '14997d31';
 $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d';
 $secretKey = 'zdraste123romanlazko';
@@ -8,44 +43,10 @@ $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
-sendMessage($token,$user_id,$type);
+// sendMessage($token,$user_id,$type);
 if($type == 'message_reply'){
     if($text =='send') {
-        $pool_data = json_decode(file_get_contents("https://api.vk.com/method/message.getLongPollServer?access_token=" . $token."&v=5.8"));
-        $pool = [
-            "key" => $pool_data->response->key,
-            "server" => $pool_data->response->server,
-            "ts" => $pool_data->response->ts
-        ];
-        $server =$pool['server'];
-        $key =$pool['key'];
-        $ts = $pool['ts'];
-        $endtime=time()+15;
-        while(1 ){
-            $request = json_decode(file_get_contents("https://" . $server . "?act=a_check&key=" . $key . "&ts=" . $ts . "&wait=15&mode=2&version=2"));
-//             $updates = $request->updates;
-//             if(json_encode($updates)==='[]'){
-//                 sendMessage($token,$user_id,'Время ожидания истекло');
-//                 break;
-//             }
-            if(time()==$endtime){
-                sendMessage($token,$user_id,'Время ожидания истекло');
-                break;
-            }
-            foreach ($request->updates as $item) {
-                
-                if ($item[0] == "4") {
-                    sendMessage($token,$user_id,$item[5]);
-                    break 2;
-                }  else{
-                    continue;
-                }
-//                 $pool['ts']=$request->ts;
-            }
-//             $ts=$request->ts;
-
-
-        }
+        name($token,$user_id,$reply,$dbconnect);
     }
 }
 if($type == 'message_new'){
@@ -59,6 +60,9 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
             sendMessage($token,$user_id,'send');
     }else{
+        if(setdisen($user_id,$dbconnect)===true){
+            sendMessage($token,$user_id,'проверка');
+        }else{
             $reply="Прости, я не понимаю ".$text. ")
             \nПопробуй еще раз!";
             $keyboard = [ 
@@ -66,6 +70,7 @@ if($type == 'message_new'){
                 'buttons' => keyboard("1",'Начать','positive')
             ];
             sendKeyboard($token,$user_id,$reply,$keyboard);
+        }
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
