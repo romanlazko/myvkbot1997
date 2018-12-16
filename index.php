@@ -22,9 +22,7 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
             sendMessage($token,$user_id,'send');
-    } 
-    
-    else{
+    }else{
             $reply="Прости, я не понимаю ".$text. ")
             \nПопробуй еще раз!";
             $keyboard = [ 
