@@ -132,5 +132,6 @@ function keyboard($par,$name_btn,$color){
         
 //         //sendKeyboard($token,$user_id,$reply,$keyboard);
 //     }
+$dbconnect->close();
 return false;
 ?>
