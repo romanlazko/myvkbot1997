@@ -9,9 +9,40 @@ $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
-// if($type == 'confirmation'){
-//     echo $confirmationToken;
-// }
+if($type == 'message_reply'){
+    if($text =='send') {
+        $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
+        $pool = [
+            "key" => $pool_data->response->key,
+            "server" => $pool_data->response->server,
+            "ts" => $pool_data->response->ts
+        ];
+        $endtime=time()+15;
+        while(1){
+            $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
+            $updates = $request->updates;
+            if(json_encode($updates)==='[]'){
+                sendMessage($token,$user_id,'Время ожидания истекло');
+                break;
+            }
+            if(time()==$endtime){
+                sendMessage($token,$user_id,'Время ожидания истекло');
+                break;
+            }
+            foreach ($request->updates as $item) {
+                if ($item[0] == "61") {
+                    continue;
+                }
+                if ($item[0] == "4") {
+                    sendMessage($token,$user_id,$item[5]);
+                    break 2;
+                }         
+            }
+
+
+        }
+    }
+}
 if($type == 'message_new'){
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
