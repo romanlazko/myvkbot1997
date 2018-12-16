@@ -83,6 +83,7 @@ function sendKeyboard($token,$user_id,$reply,$keyboard){
     );
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     echo('ok'); 
+    return false;
 }
 function sendMessage($token,$user_id,$reply){
     $request_params = array(
@@ -93,6 +94,7 @@ function sendMessage($token,$user_id,$reply){
     );
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     echo('ok'); 
+    return false;
 }
 function keyboard($par,$name_btn,$color){
     $key = [[
@@ -104,6 +106,7 @@ function keyboard($par,$name_btn,$color){
         
     ]];
     return $key;
+    return false;
 }
 //     elseif($rest==':'){
 //         $text = str_replace(' ','',$text);
@@ -133,5 +136,5 @@ function keyboard($par,$name_btn,$color){
 //         //sendKeyboard($token,$user_id,$reply,$keyboard);
 //     }
 // $dbconnect->close();
-// return false;
+
 ?>
