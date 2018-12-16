@@ -32,15 +32,15 @@ $pool = [
             echo 'write';
         }
         if ($item[0] == "4") {
-            if($item[5]=="send"){
+//             if($item[5]=="send"){
                 echo 'written';
 //                 continue;
-            }
+//             }
             
 //             echo $request->ts;
 //             break 2;
         }         
-    }
+//     }
     
     
 }
