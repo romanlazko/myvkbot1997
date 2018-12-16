@@ -30,12 +30,16 @@ if($type == 'message_reply'){
 //                 break;
 //             }
             foreach ($request->updates as $item) {
+                
                 if ($item[0] == "4") {
                     sendMessage($token,$item[3],'writen');
                     break 2;
-                }  
+                }  else{
+                    continue;
+                }
 //                 $pool['ts']=$request->ts;
             }
+            $pool['ts']=$request->ts;
 
 
         }
