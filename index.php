@@ -1,9 +1,9 @@
 <?php
-$servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+// $servername="db4free.net: 3306";
+// $username="romanlazko";
+// $password="zdraste123";
+// $dbname="promocoder1";
+// $dbconnect = new mysqli($servername, $username, $password, $dbname);
 function name($token,$user_id,$reply,$dbconnect){ 
     $result = $dbconnect->query("SELECT user_id FROM vkbot");    
     while($row = $result->fetch_assoc()){        
@@ -60,9 +60,9 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
             sendMessage($token,$user_id,'send');
     }else{
-        if(setdisen($user_id,$dbconnect)===true){
-            sendMessage($token,$user_id,'проверка');
-        }else{
+//         if(setdisen($user_id,$dbconnect)===true){
+//             sendMessage($token,$user_id,'проверка');
+//         }else{
             $reply="Прости, я не понимаю ".$text. ")
             \nПопробуй еще раз!";
             $keyboard = [ 
@@ -70,7 +70,7 @@ if($type == 'message_new'){
                 'buttons' => keyboard("1",'Начать','positive')
             ];
             sendKeyboard($token,$user_id,$reply,$keyboard);
-        }
+//         }
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
