@@ -38,7 +38,7 @@ if($type == 'message_reply'){
                     sendMessage($token,$item[3],$item[5]);
                     break ;
                 }  
-                $pool['ts']=$request->ts;
+//                 $pool['ts']=$request->ts;
             }
 
 
