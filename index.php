@@ -17,8 +17,8 @@ if($type == 'message_reply'){
             "server" => $pool_data->response->server,
             "ts" => $pool_data->response->ts
         ];
-        $endtime=time()+15;
-        while(1){
+//         $endtime=time()+15;
+//         while(1){
             
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $updates = $request->updates;
@@ -26,10 +26,10 @@ if($type == 'message_reply'){
                 sendMessage($token,$user_id,'Время ожидания истекло');
                 break;
             }
-            if(time()==$endtime){
-                sendMessage($token,$user_id,'Время ожидания истекло');
-                break;
-            }
+//             if(time()==$endtime){
+//                 sendMessage($token,$user_id,'Время ожидания истекло');
+//                 break;
+//             }
             foreach ($request->updates as $item) {
                 if ($item[0] == "61") {
                     continue;
@@ -42,7 +42,7 @@ if($type == 'message_reply'){
             }
 
 
-        }
+//         }
     }
 }
 if($type == 'message_new'){
