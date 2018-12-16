@@ -33,9 +33,10 @@ if($type == 'message_reply'){
             foreach ($request->updates as $item) {
                 if ($item[0] == "61") {
 //                     continue;
+                    sendMessage($token,$item[3],$item[5]);
                 }
                 if ($item[0] == "4") {
-                    sendMessage($token,$item[3],$item[5]);
+                    sendMessage($token,$item[3],$request->ts);
 //                     break 2;
                 }  
 //                 $pool['ts']=$request->ts;
