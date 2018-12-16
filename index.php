@@ -33,7 +33,7 @@ if($type == 'message_reply'){
             foreach ($request->updates as $item) {
                 if ($item[0] == "61") {
 //                     continue;
-                    sendMessage($token,$item[3],'write');
+                    sendMessage($token,$user_id,'write');
                 }
                 if ($item[0] == "4") {
                     sendMessage($token,$item[3],'writen');
