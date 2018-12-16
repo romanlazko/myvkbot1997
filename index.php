@@ -106,7 +106,7 @@ function keyboard($par,$name_btn,$color){
         
     ]];
     return $key;
-    return false;
+    
 }
 //     elseif($rest==':'){
 //         $text = str_replace(' ','',$text);
