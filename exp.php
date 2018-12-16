@@ -35,8 +35,8 @@ while(1){
                 continue;
             }
             
-            echo json_encode($request);
-            break ;
+            echo $request->ts;
+            break 2;
         }         
     }
     
