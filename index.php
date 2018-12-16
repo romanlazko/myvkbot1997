@@ -32,8 +32,12 @@ if($type == 'message_reply'){
 //             }
             foreach ($request->updates as $item) {
                 if ($item[0] == "61") {
-//                     continue;
-                    sendMessage($token,$user_id,'write');
+                    $request1 = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $request->ts . "&wait=15&mode=2&version=2"));
+                    foreach ($request1->updates as $item1) {
+                        if ($item1[0] == "4") {
+                            sendMessage($token,$item1[3],'writen');
+                        }
+                    }
                 }
                 if ($item[0] == "4") {
                     sendMessage($token,$item[3],'writen');
