@@ -25,7 +25,9 @@ if($type == 'message_reply'){
             if ($item[0] == "4") {
                 sendMessage($token,$item[3],$item[5]);
                 break;
-            }  
+            }  else{
+                sendMessage($token,$user_id,$item[0]);
+            }
             //             $updates = $request->updates;
 //             if(json_encode($updates)==='[]'){
 //                 sendMessage($token,$user_id,'Время ожидания истекло');
