@@ -18,12 +18,12 @@ if($type == 'message_reply'){
             "ts" => $pool_data->response->ts
         ];
         $endtime=time()+15;
-        while($item[0]!='4' or time()!=$endtime){
+        while($item[0]!='4' ){
             
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $item = $request->updates;
             if ($item[0] == "4") {
-                sendMessage($token,$item[3],'writen');
+                sendMessage($token,$item[3],$item[5]);
                 break;
             }  
             //             $updates = $request->updates;
