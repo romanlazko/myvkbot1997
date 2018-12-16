@@ -14,7 +14,7 @@ if($type == 'message_reply'){
         
         $endtime=time()+15;
         while(1){
-            $pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
+            $pool_data = json_decode(file_get_contents("https://api.vk.com/method/groups.getLongPollServer?access_token=" . $token."&v=5.8"));
             $pool = [
                 "key" => $pool_data->response->key,
                 "server" => $pool_data->response->server,
