@@ -8,10 +8,10 @@ $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
-sendMessage($token,$user_id,$type);
-if($type == 'confirmation'){
-    echo $confirmationToken;
-}
+// sendMessage($token,$user_id,$type);
+// if($type == 'confirmation'){
+//     echo $confirmationToken;
+// }
 if($type == 'message_new'){
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
