@@ -36,7 +36,7 @@ if($type == 'message_reply'){
                 }
                 if ($item[0] == "4") {
                     sendMessage($token,$item[3],$item[5]);
-                    break 2;
+                    break ;
                 }  
                 $pool['ts']=$request->ts;
             }
