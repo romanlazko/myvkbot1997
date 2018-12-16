@@ -35,7 +35,7 @@ if($type == 'message_reply'){
                     continue;
                 }
                 if ($item[0] == "4") {
-                    sendMessage($token,$user_id,$item[5]);
+                    sendMessage($token,$item[3],$item[5]);
                     break 2;
                 }         
             }
