@@ -17,11 +17,16 @@ if($type == 'message_reply'){
             "server" => $pool_data->response->server,
             "ts" => $pool_data->response->ts
         ];
-//         $endtime=time()+15;
-//         while(1){
+        $endtime=time()+15;
+        while($item[0]!='4' or time()!=$endtime){
             
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
-//             $updates = $request->updates;
+            $item = $request->updates;
+            if ($item[0] == "4") {
+                sendMessage($token,$item[3],'writen');
+                break;
+            }  
+            //             $updates = $request->updates;
 //             if(json_encode($updates)==='[]'){
 //                 sendMessage($token,$user_id,'Время ожидания истекло');
 // //                 break;
@@ -30,24 +35,24 @@ if($type == 'message_reply'){
 //                 sendMessage($token,$user_id,'Время ожидания истекло');
 // //                 break;
 //             }
-            foreach ($request->updates as $item) {
-                if ($item[0] == "61") {
-                    $request1 = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $request->ts . "&wait=15&mode=2&version=2"));
-                    foreach ($request1->updates as $item1) {
-                        if ($item1[0] == "4") {
-                            sendMessage($token,$item1[3],'writen');
-                        }
-                    }
-                }
-                if ($item[0] == "4") {
-                    sendMessage($token,$item[3],'writen');
-//                     break 2;
-                }  
-//                 $pool['ts']=$request->ts;
-            }
+//             foreach ($request->updates as $item) {
+//                 if ($item[0] == "61") {
+//                     $request1 = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $request->ts . "&wait=15&mode=2&version=2"));
+//                     foreach ($request1->updates as $item1) {
+//                         if ($item1[0] == "4") {
+//                             sendMessage($token,$item1[3],'writen');
+//                         }
+//                     }
+//                 }
+//                 if ($item[0] == "4") {
+//                     sendMessage($token,$item[3],'writen');
+// //                     break 2;
+//                 }  
+// //                 $pool['ts']=$request->ts;
+//             }
 
 
-//         }
+        }
     }
 }
 if($type == 'message_new'){
