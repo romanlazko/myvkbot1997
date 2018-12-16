@@ -21,17 +21,17 @@ if($type == 'message_reply'){
         $key =$pool['key'];
         $ts = $pool['ts'];
         $endtime=time()+15;
-        while($item[0]!='4' ){
+        while(1 ){
             $request = json_decode(file_get_contents("https://" . $server . "?act=a_check&key=" . $key . "&ts=" . $ts . "&wait=15&mode=2&version=2"));
 //             $updates = $request->updates;
 //             if(json_encode($updates)==='[]'){
 //                 sendMessage($token,$user_id,'Время ожидания истекло');
 //                 break;
 //             }
-//             if(time()==$endtime){
-//                 sendMessage($token,$user_id,'Время ожидания истекло');
-//                 break;
-//             }
+            if(time()==$endtime){
+                sendMessage($token,$user_id,'Время ожидания истекло');
+                break;
+            }
             foreach ($request->updates as $item) {
                 
                 if ($item[0] == "4") {
