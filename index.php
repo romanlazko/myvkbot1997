@@ -11,15 +11,15 @@ $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
 if($type == 'message_reply'){
     if($text =='send') {
-        
+        $pool_data = json_decode(file_get_contents("https://api.vk.com/method/message.getLongPollServer?access_token=" . $token."&v=5.8"));
+        $pool = [
+            "key" => $pool_data->response->key,
+            "server" => $pool_data->response->server,
+            "ts" => $pool_data->response->ts
+        ];
         $endtime=time()+15;
         while(1){
-            $pool_data = json_decode(file_get_contents("https://api.vk.com/method/groups.getLongPollServer?access_token=" . $token."&v=5.8"));
-            $pool = [
-                "key" => $pool_data->response->key,
-                "server" => $pool_data->response->server,
-                "ts" => $pool_data->response->ts
-            ];
+            
             $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
             $updates = $request->updates;
             if(json_encode($updates)==='[]'){
@@ -37,7 +37,8 @@ if($type == 'message_reply'){
                 if ($item[0] == "4") {
                     sendMessage($token,$item[3],$item[5]);
                     break 2;
-                }         
+                }  
+                $pool['ts']=$request->ts;
             }
 
 
