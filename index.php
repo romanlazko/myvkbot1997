@@ -1,5 +1,7 @@
 <?php
-
+if (!isset($_REQUEST)) { 
+return; 
+}
 function name($token,$user_id,$reply){ 
     $servername="db4free.net: 3306";
     $username="romanlazko";
@@ -87,6 +89,7 @@ function sendKeyboard($token,$user_id,$reply,$keyboard){
         'message' => $reply,
         'user_id' => $user_id,
         'access_token' => $token,
+        'read_state' => 1,
         'keyboard'=>json_encode($keyboard, JSON_UNESCAPED_UNICODE),
         'v' => '5.8'
     );
@@ -99,6 +102,7 @@ function sendMessage($token,$user_id,$reply){
     $request_params = array(
         'message' => $reply,
         'user_id' => $user_id,
+        'read_state' => 1,
         'access_token' => $token,
         'v' => '5.8'
     );
