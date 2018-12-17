@@ -73,7 +73,7 @@ if($type == 'message_new'){
     }else{
         if(setdisen($user_id)===true){
             $text = str_replace(' ','-',$text);
-            $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$L."-".$N.".aspx";
+            $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
             
             $url1 ="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
             $urlHeaders = @get_headers($url);
