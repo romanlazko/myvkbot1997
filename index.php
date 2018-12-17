@@ -1,10 +1,11 @@
 <?php
-$servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
-function name($token,$user_id,$reply,$dbconnect){ 
+
+function name($token,$user_id,$reply){ 
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM vkbot");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
@@ -18,10 +19,14 @@ function name($token,$user_id,$reply,$dbconnect){
     else{
         $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'");
     }
-    echo('ok'); 
+    $dbconnect->close();
 }
-function setdisen($user_id,$dbconnect){ 
-    
+function setdisen($user_id){ 
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result1 = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
     while($row = $result1->fetch_assoc()){        
         if($row['disen']=='1'){
@@ -34,7 +39,8 @@ function setdisen($user_id,$dbconnect){
             break;
         }
     }   
-    echo('ok'); 
+    $dbconnect->close();
+    
 }
 $confirmationToken = '14997d31';
 $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d';
@@ -48,7 +54,7 @@ $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
 if($type == 'message_reply'){
     if($text =='send') {
-        name($token,$user_id,$reply,$dbconnect);
+        name($token,$user_id,$reply);
         echo('ok'); 
     }
 }
@@ -63,7 +69,7 @@ if($type == 'message_new'){
     }elseif($text =='Проверить почту') {
             sendMessage($token,$user_id,'send');
     }else{
-        if(setdisen($user_id,$dbconnect)===true){
+        if(setdisen($user_id)===true){
             sendMessage($token,$user_id,'проверка');
         }else{
             $reply="Прости, я не понимаю ".$text. ")
@@ -140,6 +146,6 @@ function keyboard($par,$name_btn,$color){
         
 //         //sendKeyboard($token,$user_id,$reply,$keyboard);
 //     }
-$dbconnect->close();
+
 
 ?>
