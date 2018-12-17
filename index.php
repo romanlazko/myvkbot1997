@@ -18,6 +18,7 @@ function name($token,$user_id,$reply,$dbconnect){
     else{
         $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'");
     }
+    echo('ok'); 
 }
 function setdisen($user_id,$dbconnect){ 
     
@@ -33,6 +34,7 @@ function setdisen($user_id,$dbconnect){
             break;
         }
     }   
+    echo('ok'); 
 }
 $confirmationToken = '14997d31';
 $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d';
@@ -47,6 +49,7 @@ $user_name = $userInfo['response'][0]['first_name'];
 if($type == 'message_reply'){
     if($text =='send') {
         name($token,$user_id,$reply,$dbconnect);
+        echo('ok'); 
     }
 }
 if($type == 'message_new'){
