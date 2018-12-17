@@ -59,8 +59,8 @@ if($type == 'message_reply'){
         \nСначала Фамилия и через пробел Имя.') {
         name($token,$user_id,$reply);
     }
-    header("HTTP/1.1 200 OK");
-    echo('ok'); 
+//     header("HTTP/1.1 200 OK");
+//     echo('ok'); 
 }
 if($type == 'message_new'){
     if($text =='Начать') {
@@ -72,7 +72,7 @@ if($type == 'message_new'){
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
         $reply = $user_name.', отправь мне свои Фимилию и Имя что бы проверить почту.
-        \nСначала Фамилия и через пробел Имя.';
+        Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
     }else{
         if(setdisen($user_id)===true){
@@ -118,7 +118,6 @@ function sendKeyboard($token,$user_id,$reply,$keyboard){
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     header("HTTP/1.1 200 OK");
     echo('ok'); 
-    return false;
 }
 function sendMessage($token,$user_id,$reply){
     $request_params = array(
@@ -131,7 +130,6 @@ function sendMessage($token,$user_id,$reply){
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
     header("HTTP/1.1 200 OK");
     echo('ok'); 
-    return false;
 }
 function keyboard($par,$name_btn,$color){
     $key = [[
