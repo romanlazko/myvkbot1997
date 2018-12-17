@@ -57,8 +57,9 @@ $user_name = $userInfo['response'][0]['first_name'];
 if($type == 'message_reply'){
     if($text =='send') {
         name($token,$user_id,$reply);
-        echo('ok'); 
     }
+    header("HTTP/1.1 200 OK");
+    echo('ok'); 
 }
 if($type == 'message_new'){
     if($text =='Начать') {
