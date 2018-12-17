@@ -56,7 +56,7 @@ $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
 if($type == 'message_reply'){
     if($text ==$user_name.', отправь мне свои Фимилию и Имя что бы проверить почту.
-        \nСначала Фамилия и через пробел Имя.') {
+        Сначала Фамилия и через пробел Имя.') {
         name($token,$user_id,$reply);
     }
 //     header("HTTP/1.1 200 OK");
