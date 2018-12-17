@@ -85,6 +85,7 @@ function sendKeyboard($token,$user_id,$reply,$keyboard){
         'v' => '5.8'
     );
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
+    header("HTTP/1.1 200 OK");
     echo('ok'); 
     return false;
 }
@@ -96,6 +97,7 @@ function sendMessage($token,$user_id,$reply){
         'v' => '5.8'
     );
     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
+    header("HTTP/1.1 200 OK");
     echo('ok'); 
     return false;
 }
@@ -138,6 +140,6 @@ function keyboard($par,$name_btn,$color){
         
 //         //sendKeyboard($token,$user_id,$reply,$keyboard);
 //     }
-// $dbconnect->close();
+$dbconnect->close();
 
 ?>
