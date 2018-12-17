@@ -55,7 +55,8 @@ $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?u
 $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
 if($type == 'message_reply'){
-    if($text =='send') {
+    if($text ==$user_name.', отправь мне свои Фимилию и Имя что бы проверить почту.
+        \nСначала Фамилия и через пробел Имя.') {
         name($token,$user_id,$reply);
     }
     header("HTTP/1.1 200 OK");
@@ -70,7 +71,9 @@ if($type == 'message_new'){
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
-            sendMessage($token,$user_id,'send');
+        $reply = $user_name.', отправь мне свои Фимилию и Имя что бы проверить почту.
+        \nСначала Фамилия и через пробел Имя.';
+            sendMessage($token,$user_id,$reply);
     }else{
         if(setdisen($user_id)===true){
             $text = str_replace(' ','-',$text);
