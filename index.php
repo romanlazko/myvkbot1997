@@ -44,7 +44,7 @@ function setdisen($user_id){
     $dbconnect->close();
     
 }
-$confirmationToken = '14997d31';
+$confirmationToken = '8cef92a0';
 $token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d';
 $secretKey = 'zdraste123romanlazko';
 $data = json_decode(file_get_contents('php://input'),true);
@@ -61,6 +61,9 @@ if($type == 'message_reply'){
     }
 //     header("HTTP/1.1 200 OK");
 //     echo('ok'); 
+}
+if($type == 'confirmation'){
+    echo $confirmationToken;
 }
 if($type == 'message_new'){
     if($text =='Начать') {
