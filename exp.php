@@ -1,5 +1,5 @@
 <?php
-$token = "70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7";
+$token = "7afee784da63ce8f1f5359132ec25a4cb1e6e6d2729cb5b4e7aae83cc627056051962f4449489cbff9750";
 $LongPoll = curl("https://api.vk.com/method/messages.getLongPollServer?access_token=".$token);  
 $server = $LongPoll["response"]["server"];
 $key = $LongPoll["response"]["key"];
