@@ -1,47 +1,38 @@
 <?php
-// $user_id = 113601869;
-// $request_params = array(
-// 'user_id' => $user_id,
-// 'v' => '5.52',
-// 'access_token' => '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d'
-// );
-
-$token = '0d4e9c0bba882457716f8a05be540a13a19a3741f95a8684b022dcb7d1106a13b290329d1623a9f3aaa2d';
-$pool_data = json_decode(file_get_contents("https://api.vk.com/method/messages.getLongPollServer?access_token=" . $token."&v=5.8"));
-$pool = [
-    "key" => $pool_data->response->key,
-    "server" => $pool_data->response->server,
-    "ts" => $pool_data->response->ts
-];
-// $i = 0;
-// $endtime=time()+15;
-// while(1){
-    $request = json_decode(file_get_contents("https://" . $pool['server'] . "?act=a_check&key=" . $pool['key'] . "&ts=" . $pool['ts'] . "&wait=15&mode=2&version=2"));
-    $updates = $request->updates;
-    if(json_encode($updates)==='[]'){
-        echo 'Время ожидания истекло';
-//         break;
-    }
-//     if(time()==$endtime){
-//         echo 'Время ожидания истекло';
-//         break;
-//     }
-    foreach ($request->updates as $item) {
-        if ($item[0] == "61") {
-//             continue;
-            echo 'write';
-        }
-        if ($item[0] == "4") {
-//             if($item[5]=="send"){
-                echo 'written';
-//                 continue;
-//             }
-            
-//             echo $request->ts;
-//             break 2;
-        }         
-//     }
-    
-    
+$token = "70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7";
+$LongPoll = curl("https://api.vk.com/method/messages.getLongPollServer?access_token=".$token);  
+$server = $LongPoll["response"]["server"];
+$key = $LongPoll["response"]["key"];
+$LongPoll = curl("http://".$server."?act=a_check&key=".$key."&ts=".$LongPoll["response"]["ts"]."&wait=1&mode=2");
+while ( true )  {
+	$LongPoll = curl("http://".$server."?act=a_check&key=".$key."&ts=".$LongPoll["ts"]."&wait=25&mode=2");
+	if( preg_match("/^напомни (.*) в (.*)/ui" , $LongPoll["updates"][0][6] , $matches ) ){ 
+		if (preg_match("/^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/", $matches[2] )){ 
+			send("Запомнил! :)",$LongPoll["updates"][0][3]);
+			$reminders[$n] = array( "text" => $matches[1] , "time" => $matches[2] , "uid" => $LongPoll["updates"][0][3]); 
+			$n++;
+		}
+		else {
+			send( "Неверный формат времени" , $LongPoll["updates"][0][3] );
+		}
+	}
+	for ($i=0; $i < count($reminders) ; $i++) { 
+		if ($reminders[$i]["time"] == date('H:i') || $reminders[$i]["time"] == date('H:i+1')) { 
+			send ("Напоминаю ".$reminders[$i]["text"] , $reminders[$i]["uid"]);
+		}
+	}
+}
+function send( $message , $uid ) {
+	global $token ;
+	curl("https://api.vk.com/method/messages.send?access_token=".$token."&message=".urlencode($message)."&uid=".$uid);
+}
+function curl( $url ) {
+	$ch = curl_init( $url );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false );
+	curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+	$response = curl_exec( $ch );
+	curl_close( $ch );
+	return json_decode($response , true);
 }
 ?>
