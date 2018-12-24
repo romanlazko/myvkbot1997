@@ -5,8 +5,8 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
         $num = count($data);
         
         $row++;
-        for ($c=0; $c < 5; $c++) {
-            echo $data[$c].'\n';
+        //for ($c=0; $c < 5; ) {
+            echo $data[$row]."<br />\n";
 //             $pos      = strripos($data[$c], 'bAM-15898/DP-2018');
 
 //             if ($pos === false) {
@@ -15,7 +15,7 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
 //                 echo "Поздравляем!\n";
 //                 break 2;
 //             }
-        }
+        //}
     }
     fclose($handle);
 }
