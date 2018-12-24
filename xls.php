@@ -1,7 +1,8 @@
 <?php
 $row = 1;
 if (($handle = fopen("test2.csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    $data = fgetcsv($handle, 1000, ",");
+    //while ($data !== FALSE) {
         $num = count($data);
         
         $row++;
@@ -16,7 +17,7 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
 //                 break 2;
 //             }
         //}
-    }
+   // }
     fclose($handle);
 }
 ?>
