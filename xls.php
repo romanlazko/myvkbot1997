@@ -6,6 +6,15 @@ if (($handle = fopen("Prehled_k_17-12-2018.xls", "r")) !== FALSE) {
         
         $row++;
         for ($c=0; $c < $num; $c++) {
+            
+            $pos      = strripos($data[$c], 'OAM-32703/DP-2018');
+
+            if ($pos === false) {
+                echo "К сожалению, не найдена";
+            } else {
+                echo "Поздравляем!\n";
+                break;
+            }
             echo $data[$c] . "<br />\n";
         }
     }
