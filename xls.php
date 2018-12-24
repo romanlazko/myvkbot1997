@@ -6,7 +6,7 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
         $num = count($data);
         
         $row++;
-         if($num > 1){
+         if($num < 2){
               continue;
          }
         //for ($c=0; $c < 5; ) {
