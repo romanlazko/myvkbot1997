@@ -5,16 +5,16 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
         $num = count($data);
         
         $row++;
-        for ($c=0; $c < $num; $c++) {
-            
-            $pos      = strripos($data[$c], 'bAM-15898/DP-2018');
+        for ($c=0; $c < 5; $c++) {
+            echo $data[$c].'\n';
+//             $pos      = strripos($data[$c], 'bAM-15898/DP-2018');
 
-            if ($pos === false) {
-                continue;
-            } else {
-                echo "Поздравляем!\n";
-                break 2;
-            }
+//             if ($pos === false) {
+//                 continue;
+//             } else {
+//                 echo "Поздравляем!\n";
+//                 break 2;
+//             }
         }
     }
     fclose($handle);
