@@ -6,7 +6,7 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
         
         $row++;
         //for ($c=0; $c < 5; ) {
-            echo $data[$row]."<br />\n";
+            echo $data[1]."<br />\n";
 //             $pos      = strripos($data[$c], 'bAM-15898/DP-2018');
 
 //             if ($pos === false) {
