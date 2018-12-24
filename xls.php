@@ -1,6 +1,6 @@
 <?php
 $row = 1;
-if (($handle = fopen("Prehled_k_17-12-2018.xls", "r")) !== FALSE) {
+if (($handle = fopen("test2.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         
