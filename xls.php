@@ -10,12 +10,11 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
             $pos      = strripos($data[$c], 'OAM-32703/DP-2018');
 
             if ($pos === false) {
-                echo "К сожалению, не найдена";
+                continue;
             } else {
                 echo "Поздравляем!\n";
-                break;
+                break 2;
             }
-            echo $data[$c] . "<br />\n";
         }
     }
     fclose($handle);
