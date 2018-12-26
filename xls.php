@@ -10,9 +10,9 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
          if($num < 2){
               continue;
          }
-         $data=str_replace('я','',$data[1]);
+         $data1=str_replace('˙','',$data[1]);
         //for ($c=0; $c < 5; ) {
-            echo $data."<br />\n";
+            echo $data1."<br />\n";
 //             $pos      = strripos($data[$c], 'bAM-15898/DP-2018');
 
 //             if ($pos === false) {
