@@ -6,7 +6,8 @@ if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
           if($num < 2){
                continue;
           }
-          if($data[1]='  OAM-28112/DP-2016  '){
+          $text = str_replace(' ','-',$data[1]);
+          if($text='--OAM-28112/DP-2016--'){
                echo 'нашелся';
           }
           
