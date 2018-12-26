@@ -1,5 +1,5 @@
 <?php
-//header('Content-Type: text/html; charset=ISO-8859-2');
+header('Content-Type: text/html; charset=ISO-8859-2');
 $row = 1;
 if (($handle = fopen("test2.csv", "r")) !== FALSE) {
      
@@ -11,7 +11,7 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
               continue;
          }
         //for ($c=0; $c < 5; ) {
-            echo iconv( 'cp1251','utf-8' , $data[1] )."<br />\n";
+            echo $data[1]."<br />\n";
 //             $pos      = strripos($data[$c], 'bAM-15898/DP-2018');
 
 //             if ($pos === false) {
