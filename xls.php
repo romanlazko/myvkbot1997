@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/html; charset=ISO-8859-2');
+header('Content-Type: text/html; charset=cp1251');
 $row = 1;
 if (($handle = fopen("test2.csv", "r")) !== FALSE) {
      
