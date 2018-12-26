@@ -11,7 +11,7 @@ if (($handle = fopen("test2.csv", "r")) !== FALSE) {
               continue;
          }
         //for ($c=0; $c < 5; ) {
-            echo iconv('UTF-8', 'ISO-8859-2', $data[1])."<br />\n";
+            echo iconv('UTF-8', 'ISO-8859-7', $data[1])."<br />\n";
 //             $pos      = strripos($data[$c], 'bAM-15898/DP-2018');
 
 //             if ($pos === false) {
