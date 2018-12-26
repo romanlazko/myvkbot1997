@@ -7,11 +7,11 @@ if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
                continue;
           }
           $text = str_replace(' ','-',$data[1]);
-          if($text='--OAM-28112/DP-2016--'){
-               echo 'нашелся';
-          }
+//           if($text='--OAM-28112/DP-2016--'){
+//                echo 'нашелся';
+//           }
           
-//           echo $data."<br />\n";
+          echo $text."<br />\n";
      }
 fclose($handle);
 }
