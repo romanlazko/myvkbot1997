@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=ISO-8859-2');
 $row = 1;
-if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
+if (($handle = fopen("Prehled_k_17-12-2018.xls", "r")) !== FALSE) {
      while (($data= fgetcsv($handle, 1000, ",")) !== FALSE) {
         
           $text1 = substr($data[1], 2);
