@@ -11,7 +11,7 @@ if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
 //                echo 'нашелся';
 //           }
           $text1 = substr($data[1], 2);
-          $text = substr($text1, 2, -1);
+          $text = substr($text1, 0, -2);
           echo $text.".<br />\n";
      }
 fclose($handle);
