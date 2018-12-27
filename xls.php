@@ -2,7 +2,7 @@
 
 header('Content-Type: text/html; charset=ISO-8859-2');
 $row = 1;
-if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
+if (($handle = fopen("https://vk.com/doc198479020_486012686?hash=f23217a8ce1249e853&dl=591a8841aeba4034e2", "r")) !== FALSE) {
      while (($data= fgetcsv($handle, 1000, ",")) !== FALSE) {
         
           $text1 = substr($data[1], 2);
