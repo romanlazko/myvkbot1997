@@ -11,7 +11,7 @@ if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
                break;
           }
           elseif(strripos($data[1], '28112/DP-2016')){
-               echo 'find2';
+               echo 'find2: '.$data[1];
                break;
           }
           else{
