@@ -10,8 +10,8 @@ if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
 //           if($text='--OAM-28112/DP-2016--'){
 //                echo 'нашелся';
 //           }
-          
-          echo $data[1]."<br />\n";
+          $text = substr($data[1], 0, -2)
+          echo $text."<br />\n";
      }
 fclose($handle);
 }
