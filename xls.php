@@ -7,7 +7,7 @@ if (($handle = fopen("https://vk.com/doc198479020_486012686?hash=f23217a8ce1249e
         
           $text1 = substr($data[1], 2);
           $text = substr($text1, 0, -2);
-          if($text==='OAM-20104/PP-2018'){
+          if($text==='OAM-20104/PP-201'){
                echo 'find1';
                break;
           }
