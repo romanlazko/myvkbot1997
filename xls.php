@@ -12,7 +12,7 @@ if (($handle = fopen("Prehled_k_17-12-2018.csv", "r")) !== FALSE) {
 //           }
           $text1 = substr($data[1], 2);
           $text = substr($text, -2);
-          echo $text1.".\n";
+          echo $text1.".<br />\n";
      }
 fclose($handle);
 }
