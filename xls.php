@@ -7,8 +7,8 @@ if (($handle = fopen("Prehled_k_17-12-2018.xls", "r")) !== FALSE) {
         $num = count($data);
         $row++;
         for ($c=0; $c < $num; $c++) {
-          if(strripos($data[$c], '28112/DoP-2016')){
-               echo 'find2: ';
+          if(strripos($data[$c], 'OAM-2422/DP-2016')){
+               echo 'find2: '.$data[$c];
                break;
           }
           else{     
