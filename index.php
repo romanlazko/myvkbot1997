@@ -63,6 +63,7 @@ function select_file(){
     $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '1'");
     while($row = $select_file->fetch_assoc()){        
         return $row['file_url'];
+        break;
     } 
     $dbconnect->close();
     
