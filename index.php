@@ -62,6 +62,7 @@ $type = $data['type'];
 $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $file = $data['object']['attachments'][0]['type'];
+$file_format = $data['object']['attachments'][0]['doc']['ext'];
 $file_url = $data['object']['attachments'][0]['doc']['url'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
@@ -78,9 +79,13 @@ if($type == 'confirmation'){
     echo $confirmationToken;
 }
 if($type == 'message_new'){
-    if($file == 'doc'){
-        update_file(stristr($file_url, '?', true));
-        sendMessage($token,$user_id,'ok');
+    if($file == 'doc' ){
+        if($file_format == 'csv'){
+            update_file(stristr($file_url, '?', true));
+            sendMessage($token,$user_id,'ok');
+        }else{
+            sendMessage($token,$user_id,'Файл должен быть в формате CSV');
+        }
     }
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
