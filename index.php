@@ -51,7 +51,7 @@ $data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
 $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
-$file = $data['object']['attachments'][0];
+$file = $data['object']['attachments'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
@@ -67,9 +67,7 @@ if($type == 'confirmation'){
     echo $confirmationToken;
 }
 if($type == 'message_new'){
-    if($file == 'doc'){
-        sendMessage($token,$user_id,$file);
-    }
+    
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
         $keyboard = [ 
