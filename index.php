@@ -61,7 +61,9 @@ function select_file(){
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '1'");
-    return $select_file;
+    while($row = $select_file->fetch_assoc()){        
+        return $row['file_url'];
+    } 
     $dbconnect->close();
     
 }
