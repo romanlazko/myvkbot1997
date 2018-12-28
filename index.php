@@ -80,7 +80,7 @@ if($type == 'message_new'){
         Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
     }else{
-        sendMessage($token,$user_id,$file);
+        sendMessage($token,$user_id,json_encode($file));
 //         if(setdisen($user_id)===true){
 //             $text = str_replace(' ','-',$text);
 //             $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
