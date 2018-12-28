@@ -67,7 +67,9 @@ if($type == 'confirmation'){
     echo $confirmationToken;
 }
 if($type == 'message_new'){
-    
+    if($file == 'doc'){
+        sendMessage($token,$user_id,json_encode($data['object']['attachments'][0]['doc']['url']));
+    }
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
         $keyboard = [ 
