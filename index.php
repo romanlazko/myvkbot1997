@@ -54,6 +54,17 @@ function update_file($file_url){
     $dbconnect->close();
     
 }
+function select_file(){ 
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '1'");
+    return $select_file;
+    $dbconnect->close();
+    
+}
 $confirmationToken = '14997d31';
 $token = '70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
 $secretKey = 'zdraste123romanlazko';
@@ -98,7 +109,10 @@ if($type == 'message_new'){
         $reply = $user_name.', отправь мне свои Фимилию и Имя что бы проверить почту.
         Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
-    }else{
+    }elseif($text =='Проверить визу'){
+        sendMessage($token,$user_id,select_file());
+    }
+    else{
 //         if(setdisen($user_id)===true){
 //             $text = str_replace(' ','-',$text);
 //             $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
