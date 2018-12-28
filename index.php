@@ -50,7 +50,7 @@ function update_file($file_url){
     $password="zdraste123";
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url'");
+    $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE 1");
     $dbconnect->close();
     
 }
@@ -80,6 +80,7 @@ if($type == 'confirmation'){
 if($type == 'message_new'){
     if($file == 'doc'){
         update_file(stristr($file_url, '?', true));
+        sendMessage($token,$user_id,'ok');
     }
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
