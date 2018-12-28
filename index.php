@@ -82,35 +82,36 @@ if($type == 'message_new'){
         Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
     }else{
-        if(setdisen($user_id)===true){
-            $text = str_replace(' ','-',$text);
-            $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
+        sendMessage($token,$user_id,$file);
+//         if(setdisen($user_id)===true){
+//             $text = str_replace(' ','-',$text);
+//             $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
             
-            $url1 ="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
-            $urlHeaders = @get_headers($url);
-            $urlHeaders1 = @get_headers($url1);
-            $keyboard = [ 
-                'one_time' => true, 
-                'buttons' => keyboard("1",'Начать','positive')
-            ];
+//             $url1 ="https://www.mvcr.cz/clanek/verejne-vyhlasky-oamp-verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
+//             $urlHeaders = @get_headers($url);
+//             $urlHeaders1 = @get_headers($url1);
+//             $keyboard = [ 
+//                 'one_time' => true, 
+//                 'buttons' => keyboard("1",'Начать','positive')
+//             ];
 
-            if(strpos($urlHeaders[0], '200')) {
-                sendKeyboard($token,$user_id,$url,$keyboard);
-            } elseif(strpos($urlHeaders1[0], '200')) {
-                 sendKeyboard($token,$user_id,$url1,$keyboard);
-            } else{
-                sendKeyboard($token,$user_id,'Нет ссылки',$keyboard);
-            }
-            //sendMessage($token,$user_id,'проверка');
-        }else{
-            $reply="Прости, я не понимаю ".$text. ")
-            \nПопробуй еще раз!";
-            $keyboard = [ 
-                'one_time' => true, 
-                'buttons' => keyboard("1",'Начать','positive')
-            ];
-            sendKeyboard($token,$user_id,$reply,$keyboard);
-        }
+//             if(strpos($urlHeaders[0], '200')) {
+//                 sendKeyboard($token,$user_id,$url,$keyboard);
+//             } elseif(strpos($urlHeaders1[0], '200')) {
+//                  sendKeyboard($token,$user_id,$url1,$keyboard);
+//             } else{
+//                 sendKeyboard($token,$user_id,'Нет ссылки',$keyboard);
+//             }
+//             //sendMessage($token,$user_id,'проверка');
+//         }else{
+//             $reply="Прости, я не понимаю ".$text. ")
+//             \nПопробуй еще раз!";
+//             $keyboard = [ 
+//                 'one_time' => true, 
+//                 'buttons' => keyboard("1",'Начать','positive')
+//             ];
+//             sendKeyboard($token,$user_id,$reply,$keyboard);
+//         }
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
