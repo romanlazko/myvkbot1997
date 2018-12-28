@@ -44,6 +44,16 @@ function setdisen($user_id){
     $dbconnect->close();
     
 }
+function update_file($file_url){ 
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url'");
+    $dbconnect->close();
+    
+}
 $confirmationToken = '14997d31';
 $token = '70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
 $secretKey = 'zdraste123romanlazko';
@@ -52,6 +62,7 @@ $type = $data['type'];
 $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
 $file = $data['object']['attachments'][0]['type'];
+$file_url = $data['object']['attachments'][0]['doc']['url'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
@@ -68,7 +79,7 @@ if($type == 'confirmation'){
 }
 if($type == 'message_new'){
     if($file == 'doc'){
-        sendMessage($token,$user_id,stristr($data['object']['attachments'][0]['doc']['url'], '?', true));
+        update_file(stristr($file_url, '?', true));
     }
     if($text =='Начать') {
         $reply = "Привет, ".$user_name;
@@ -82,7 +93,6 @@ if($type == 'message_new'){
         Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
     }else{
-        sendMessage($token,$user_id,json_encode($file));
 //         if(setdisen($user_id)===true){
 //             $text = str_replace(' ','-',$text);
 //             $url = "https://www.mvcr.cz/clanek/verejna-vyhlaska-oznameni-o-moznosti-prevzit-pisemnost-".$text.".aspx";
