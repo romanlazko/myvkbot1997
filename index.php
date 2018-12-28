@@ -51,7 +51,7 @@ $data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
 $user_id = $data['object']['user_id'];
 $text = $data['object']['body'];
-$file = $data['object']['attachments']['type'];
+$file = $data['object']['attachments'][0];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.8"),true);
 $user_name = $userInfo['response'][0]['first_name'];
 // sendMessage($token,$user_id,$type);
