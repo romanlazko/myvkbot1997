@@ -29,7 +29,7 @@ function select_file(){
 header('Content-Type: text/html; charset=ISO-8859-2');
 $row = 1;
 
-if (($handle = fopen("https://vk.com/doc113601869_486322806", "r")) !== FALSE) {
+if (($handle = fopen("https://vk.com/doc113601869_486322806?hash=d258e6c97f5ebfea9c&dl=GEYTGNRQGE4DMOI:1546465860:ff89793c49a8413db4&api=1&no_preview=1", "r")) !== FALSE) {
      while (($data= fgetcsv($handle, 1000, ",")) !== FALSE) {
         
           $text1 = substr($data[1], 2);
