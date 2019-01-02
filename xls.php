@@ -12,9 +12,24 @@
 //                 else{
 //                      continue;
 //                 }
+function select_file(){ 
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '1'");
+    while($row = $select_file->fetch_assoc()){        
+        return $row['file_url'];
+        break;
+    } 
+    $dbconnect->close();
+    
+}
 header('Content-Type: text/html; charset=ISO-8859-2');
 $row = 1;
-if (($handle = fopen("https://vk.com/doc198479020_486014179?hash=2d06958b8235974c68&dl=GE4TQNBXHEYDEMA:1545911019:2d35238ca9f87c6505&api=1&no_preview=1", "r")) !== FALSE) {
+
+if (($handle = fopen(select_file(), "r")) !== FALSE) {
      while (($data= fgetcsv($handle, 1000, ",")) !== FALSE) {
         
           $text1 = substr($data[1], 2);
