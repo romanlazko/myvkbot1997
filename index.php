@@ -105,7 +105,7 @@ if($type == 'message_new'){
         Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
     }elseif($text =='Проверить визу'){
-        sendMessage($token,$user_id,select_file());
+        name($user_id,$first_name,$last_name,2);
     }
     else{
         $setdisen = setdisen($user_id);
