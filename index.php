@@ -24,10 +24,10 @@ return;
 //     $dbconnect->close();
 // }
 function name($user_id,$disen){ 
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
     $password="zdraste123";
-    $dbname="b178949_vkbot";
+    $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM vkbot");    
     while($row = $result->fetch_assoc()){        
@@ -45,10 +45,10 @@ function name($user_id,$disen){
     $dbconnect->close();
 }
 function setdisen($user_id){ 
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
     $password="zdraste123";
-    $dbname="b178949_vkbot";
+    $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result1 = $dbconnect->query("SELECT disen FROM vkbot WHERE user_id='$user_id'");    
     while($row = $result1->fetch_assoc()){
