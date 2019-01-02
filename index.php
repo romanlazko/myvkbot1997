@@ -2,11 +2,32 @@
 if (!isset($_REQUEST)) { 
 return; 
 }
-function name($token,$user_id,$reply){ 
-    $servername="db4free.net: 3306";
-    $username="romanlazko";
+// function name($token,$user_id,$reply){ 
+//     $servername="db4free.net: 3306";
+//     $username="romanlazko";
+//     $password="zdraste123";
+//     $dbname="promocoder1";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $result = $dbconnect->query("SELECT user_id FROM vkbot");    
+//     while($row = $result->fetch_assoc()){        
+//         if($row['user_id']==$user_id){
+//             $new_id = false;
+//             break;
+//         }
+//     }   
+//     if($new_id !== false){
+//         $insertname = $dbconnect->query("INSERT INTO vkbot(user_id,disen) VALUES('$user_id','1')");
+//     }
+//     else{
+//         $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'");
+//     }
+//     $dbconnect->close();
+// }
+function name($user_id,$disen){ 
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
     $password="zdraste123";
-    $dbname="promocoder1";
+    $dbname="b178949_vkbot";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM vkbot");    
     while($row = $result->fetch_assoc()){        
@@ -16,10 +37,10 @@ function name($token,$user_id,$reply){
         }
     }   
     if($new_id !== false){
-        $insertname = $dbconnect->query("INSERT INTO vkbot(user_id,disen) VALUES('$user_id','1')");
+        $insertname = $dbconnect->query("INSERT INTO vkbot(user_id,disen) VALUES('$user_id','$disen')");
     }
     else{
-        $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='1' WHERE `user_id`='$user_id'");
+        $updatename = $dbconnect->query("UPDATE `vkbot` SET `disen`='$disen' WHERE `user_id`='$user_id'");
     }
     $dbconnect->close();
 }
@@ -105,7 +126,7 @@ if($type == 'message_new'){
         Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
     }elseif($text =='Проверить визу'){
-        name($user_id,$first_name,$last_name,2);
+        name($user_id,2);
     }
     else{
         $setdisen = setdisen($user_id);
