@@ -126,6 +126,7 @@ if($type == 'message_new'){
         Сначала Фамилия и через пробел Имя.';
             sendMessage($token,$user_id,$reply);
     }elseif($text =='Проверить визу'){
+        sendMessage($token,$user_id,'Визу');
         name($user_id,2);
     }
     else{
