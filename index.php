@@ -118,7 +118,7 @@ if($type == 'message_new'){
         $reply = "Привет, ".$user_name;
         $keyboard = [ 
             'one_time' => true, 
-            'buttons' => keyboard("1",'Проверить почту','positive')
+            'buttons' => [[keyboard("1",'Проверить почту','positive'),keyboard("2",'Проверить почту2','positive')]]
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
     }elseif($text =='Проверить почту') {
@@ -216,19 +216,15 @@ function sendMessage($token,$user_id,$reply){
     echo('ok'); 
 }
 function keyboard($par,$name_btn,$color){
-    $key = [[
-        ['action' =>['type' => 'text', 
-                     'payload' => '{"button": '.$par.'}',
-                     'label' => $name_btn, 
-                    ],
-        'color' => $color],
+    $key = 
+        
         ['action' =>['type' => 'text', 
                      'payload' => '{"button": '.$par.'}',
                      'label' => $name_btn, 
                     ],
         'color' => $color]
         
-    ]];
+    ;
     return $key;
     
 }
