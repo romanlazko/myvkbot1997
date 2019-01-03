@@ -221,6 +221,11 @@ function keyboard($par,$name_btn,$color){
                      'payload' => '{"button": '.$par.'}',
                      'label' => $name_btn, 
                     ],
+        'color' => $color],
+        ['action' =>['type' => 'text', 
+                     'payload' => '{"button": '.$par.'}',
+                     'label' => $name_btn, 
+                    ],
         'color' => $color]
         
     ]];
