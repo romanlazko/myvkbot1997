@@ -100,11 +100,11 @@ $secretKey = 'zdraste123romanlazko';
 $data = json_decode(file_get_contents('php://input'),true);
 $type = $data['type'];
 $user_id = $data['object']['user_id'];
-$text = iconv( 'utf-8','cp1251' , $data['object']['body']);
+$text = $data['object']['body'];
 $button = $data['object']['payload'];
 $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.78"),true);
-$first_name = iconv( 'utf-8','cp1251', $userInfo['response'][0]['first_name']);
-$last_name = iconv( 'utf-8','cp1251', $userInfo['response'][0]['last_name']);
+$first_name = $userInfo['response'][0]['first_name'];
+$last_name = $userInfo['response'][0]['last_name'];
 $setdisen = setdisen($user_id);
 if($type == 'confirmation'){
     echo $confirmationToken;
@@ -491,7 +491,7 @@ https://www.mvcr.cz/clanek/sluzby-pro-verejnost-informace-pro-cizince-kontakty.a
     }
 }
 function sendKeyboard($token,$user_id,$reply,$keyboard){
-    $reply = iconv( 'cp1251','utf-8' , $reply);
+    //$reply = iconv( 'cp1251','utf-8' , $reply);
     $request_params = array(
         'message' => $reply,
         'user_id' => $user_id,
@@ -504,7 +504,7 @@ function sendKeyboard($token,$user_id,$reply,$keyboard){
     echo ('ok'); 
 }
 function sendMessage($token,$user_id,$reply){
-    $reply = iconv( 'cp1251','utf-8' , $reply);
+    //$reply = iconv( 'cp1251','utf-8' , $reply);
     $request_params = array(
         'message' => $reply,
         'user_id' => $user_id,
@@ -516,7 +516,7 @@ function sendMessage($token,$user_id,$reply){
     echo ('ok'); 
 }
 function keyboard($par,$name_btn,$color){
-    $name_btn = iconv( 'cp1251','utf-8' , $name_btn);
+    //$name_btn = iconv( 'cp1251','utf-8' , $name_btn);
     $key = 
         ['action' =>['type' => 'text', 
                      'payload' => '{"button": '.$par.'}',
