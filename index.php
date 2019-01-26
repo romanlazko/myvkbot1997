@@ -6,95 +6,95 @@ $servername="78.108.80.117";
     $password="123456";
     $dbname="b178949_vkbot";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
-// if (!isset($_REQUEST)) { 
-// return; 
-// }
-// function name($user_id,$first_name,$last_name,$disen){ 
+if (!isset($_REQUEST)) { 
+return; 
+}
+function name($user_id,$first_name,$last_name,$disen){ 
     
-//     global $dbconnect;
-//     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
-//     while($row = $result->fetch_assoc()){        
-//         if($row['user_id']==$user_id){
-//             $new_id = false;
-//             break;
-//         }
-//     }   
-//     if($new_id !== false){
-//         $insertname = $dbconnect->query("INSERT INTO 8marta(user_id,disen,last_name,first_name,visanum,visacontrol) VALUES('$user_id','$disen','$last_name','$first_name','1','1')");
-//     }
-//     else{
-//         $updatename = $dbconnect->query("UPDATE `8marta` SET `disen`='$disen' WHERE `user_id`='$user_id'");
-//     }
-// }
-// function namestrach($user_id,$text,$param){ 
-//     global $dbconnect;
-//     $result = $dbconnect->query("SELECT user_id FROM strach");    
-//     while($row = $result->fetch_assoc()){        
-//         if($row['user_id']==$user_id){
-//             $new_id = false;
-//             break;
-//         }
-//     }   
-//     if($new_id !== false){
-//         $insertname = $dbconnect->query("INSERT INTO strach(user_id,first_last,pas,tel,adres,birth,srok,beginstrach,gorod) VALUES('$user_id',' ',' ',' ',' ',' ',' ',' ',' ')");
-//     }
-//     else{
-//         if($text!=='0'){
-//         $updatename = $dbconnect->query("UPDATE `strach` SET `$param`='$text' WHERE `user_id`='$user_id'");}
-//     }
-// }
-// function selectstrach($user_id){ 
-//     global $dbconnect;
-//     $result = $dbconnect->query("SELECT first_last,pas,tel,adres,birth,srok,beginstrach,gorod FROM strach WHERE user_id='$user_id'");    
-//     while($row = $result->fetch_assoc()){        
-//         return $row;
-//     }
-// }
-// function setdisen($user_id){ 
-//     global $dbconnect;
-//     $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
-//     while($row = $result1->fetch_assoc()){
-//         if($row['disen']!==0){
-//             $updatename1 = $dbconnect->query("UPDATE `8marta` SET `disen`='0' WHERE `user_id`='$user_id'");
-//             return $row['disen'];
-//         }        
+    global $dbconnect;
+    $result = $dbconnect->query("SELECT user_id FROM 8marta");    
+    while($row = $result->fetch_assoc()){        
+        if($row['user_id']==$user_id){
+            $new_id = false;
+            break;
+        }
+    }   
+    if($new_id !== false){
+        $insertname = $dbconnect->query("INSERT INTO 8marta(user_id,disen,last_name,first_name,visanum,visacontrol) VALUES('$user_id','$disen','$last_name','$first_name','1','1')");
+    }
+    else{
+        $updatename = $dbconnect->query("UPDATE `8marta` SET `disen`='$disen' WHERE `user_id`='$user_id'");
+    }
+}
+function namestrach($user_id,$text,$param){ 
+    global $dbconnect;
+    $result = $dbconnect->query("SELECT user_id FROM strach");    
+    while($row = $result->fetch_assoc()){        
+        if($row['user_id']==$user_id){
+            $new_id = false;
+            break;
+        }
+    }   
+    if($new_id !== false){
+        $insertname = $dbconnect->query("INSERT INTO strach(user_id,first_last,pas,tel,adres,birth,srok,beginstrach,gorod) VALUES('$user_id',' ',' ',' ',' ',' ',' ',' ',' ')");
+    }
+    else{
+        if($text!=='0'){
+        $updatename = $dbconnect->query("UPDATE `strach` SET `$param`='$text' WHERE `user_id`='$user_id'");}
+    }
+}
+function selectstrach($user_id){ 
+    global $dbconnect;
+    $result = $dbconnect->query("SELECT first_last,pas,tel,adres,birth,srok,beginstrach,gorod FROM strach WHERE user_id='$user_id'");    
+    while($row = $result->fetch_assoc()){        
+        return $row;
+    }
+}
+function setdisen($user_id){ 
+    global $dbconnect;
+    $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
+    while($row = $result1->fetch_assoc()){
+        if($row['disen']!==0){
+            $updatename1 = $dbconnect->query("UPDATE `8marta` SET `disen`='0' WHERE `user_id`='$user_id'");
+            return $row['disen'];
+        }        
         
-//     }   
-// }
-// function update_file($file_url,$token,$user_id,$newid){ 
-//     global $dbconnect;
-//     $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE `newid` = '$newid'");
-//     sendMessage($token,$user_id,'ok');   
-// }
-// function select_file($newid){ 
-//     global $dbconnect;
-//     $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '$newid'");
-//     while($row = $select_file->fetch_assoc()){        
-//         return $row['file_url'];
-//         break;
-//     } 
-// }
-// function visasave($text,$user_id){
-//     global $dbconnect;
-//     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
-//     while($row = $result->fetch_assoc()){        
-//         if($row['user_id']==$user_id){
-//             $new_id = false;
-//             break;
-//         }
-//     }   
-//     if($new_id !== false){
-//         $insertname = $dbconnect->query("INSERT INTO 8marta(visanum,visacontrol) VALUES('$text','0')");
-//     }
-//     else{
-//         $updatename = $dbconnect->query("UPDATE `8marta` SET `visanum`='$text' WHERE `user_id`='$user_id'");
-//     }
-// }
-// function visacontrol($user_id,$visacontrol){
-//     global $dbconnect;
-//     $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
+    }   
+}
+function update_file($file_url,$token,$user_id,$newid){ 
+    global $dbconnect;
+    $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE `newid` = '$newid'");
+    sendMessage($token,$user_id,'ok');   
+}
+function select_file($newid){ 
+    global $dbconnect;
+    $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '$newid'");
+    while($row = $select_file->fetch_assoc()){        
+        return $row['file_url'];
+        break;
+    } 
+}
+function visasave($text,$user_id){
+    global $dbconnect;
+    $result = $dbconnect->query("SELECT user_id FROM 8marta");    
+    while($row = $result->fetch_assoc()){        
+        if($row['user_id']==$user_id){
+            $new_id = false;
+            break;
+        }
+    }   
+    if($new_id !== false){
+        $insertname = $dbconnect->query("INSERT INTO 8marta(visanum,visacontrol) VALUES('$text','0')");
+    }
+    else{
+        $updatename = $dbconnect->query("UPDATE `8marta` SET `visanum`='$text' WHERE `user_id`='$user_id'");
+    }
+}
+function visacontrol($user_id,$visacontrol){
+    global $dbconnect;
+    $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
     
-// }
+}
 $confirmationToken = '14997d31';
 $token = '3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7';//'70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
 $secretKey = 'zdraste123romanlazko';
@@ -103,13 +103,13 @@ $type = $data['type'];
 $user_id = $data['object']['from_id'];
 //$text = iconv( 'utf-8','cp1251' , $data['object']['text']);
 $text = $data['object']['text'];
-// $button = $data['object']['payload'];
+$button = $data['object']['payload'];
 // $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.92"),true);
 // //$first_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['first_name']);
 // //$last_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['last_name']);
 // $first_name = $userInfo['response'][0]['first_name'];
 // $last_name = $userInfo['response'][0]['last_name'];
-// $setdisen = setdisen($user_id);
+$setdisen = setdisen($user_id);
 //$setdisen = 1;
 if($type == 'confirmation'){
     echo $confirmationToken;
