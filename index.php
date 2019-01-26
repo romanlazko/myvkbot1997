@@ -14,7 +14,10 @@ return;
 }
 function name($user_id,$first_name,$last_name,$disen){ 
     
-    global $dbconnect;
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
@@ -28,6 +31,7 @@ function name($user_id,$first_name,$last_name,$disen){
     else{
         $updatename = $dbconnect->query("UPDATE `8marta` SET `disen`='$disen' WHERE `user_id`='$user_id'");
     }
+    $dbconnect->close();
 }
 function namestrach($user_id,$text,$param){ 
     global $dbconnect;
