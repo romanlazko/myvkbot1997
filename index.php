@@ -544,7 +544,7 @@ function sendKeyboard($token,$user_id,$reply,$keyboard){
     $request_params = array(
         'message' => $reply,
         'user_id' => $user_id,
-        'random_id' => rand(-10000000, 10000000),
+        'random_id' => rand(1, 10000000),
         'access_token' => $token,
         'keyboard'=>json_encode($keyboard, JSON_UNESCAPED_UNICODE),
         'v' => '5.92'
@@ -557,7 +557,7 @@ function sendMessage($token,$user_id,$reply){
     //$reply = iconv( 'cp1251','utf-8' , $reply);
     $request_params = array(
         'message' => $reply,
-        'random_id' => rand(-10000000, 10000000),
+        'random_id' => rand(1, 10000000),
         'user_id' => $user_id,
         'access_token' => $token,
         'v' => '5.92',
