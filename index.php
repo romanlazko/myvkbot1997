@@ -1,14 +1,14 @@
 <?php
 
 
-$servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-if (!isset($_REQUEST)) { 
-return; 
-}
+// $servername="78.108.80.117";
+//     $username="u178949_vkbot";
+//     $password="123456";
+//     $dbname="b178949_vkbot";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+// if (!isset($_REQUEST)) { 
+// return; 
+// }
 function name($user_id,$first_name,$last_name,$disen){ 
     
     global $dbconnect;
