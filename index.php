@@ -111,9 +111,9 @@ $type = $data['type'];
 // $last_name = $userInfo['response'][0]['last_name'];
 //$setdisen = setdisen($user_id);
 //$setdisen = 1;
-// if($type == 'confirmation'){
-//     echo $confirmationToken;
-// }
+if($type == 'confirmation'){
+    echo $confirmationToken;
+}
 // if($type == 'message_new'){
     
 //     if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  /*or $button =='{"button":6}' */ or $text== "начать") {
