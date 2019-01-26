@@ -109,8 +109,8 @@ $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?u
 //$last_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['last_name']);
 $first_name = $userInfo['response'][0]['first_name'];
 $last_name = $userInfo['response'][0]['last_name'];
-//$setdisen = setdisen($user_id);
-$setdisen = 1;
+
+//$setdisen = 1;
 if($type == 'confirmation'){
     echo $confirmationToken;
 }
@@ -336,7 +336,7 @@ if($type == 'message_new'){
     
     else{
         $color = 'positive';
-        
+        $setdisen = setdisen($user_id);
         
         if($setdisen==='4'){
             $reply =  "Имя сохранено";
