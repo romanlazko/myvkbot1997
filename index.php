@@ -1,18 +1,18 @@
 <?php
 
 
-
+$servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
 
 if (!isset($_REQUEST)) { 
 return; 
 }
 function name($user_id,$first_name,$last_name,$disen){ 
     
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    global $dbconnect;
     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
@@ -26,14 +26,10 @@ function name($user_id,$first_name,$last_name,$disen){
     else{
         $updatename = $dbconnect->query("UPDATE `8marta` SET `disen`='$disen' WHERE `user_id`='$user_id'");
     }
-    $dbconnect->close();
+    
 }
 function namestrach($user_id,$text,$param){ 
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    global $dbconnect;
     $result = $dbconnect->query("SELECT user_id FROM strach");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
@@ -48,25 +44,21 @@ function namestrach($user_id,$text,$param){
         if($text!=='0'){
         $updatename = $dbconnect->query("UPDATE `strach` SET `$param`='$text' WHERE `user_id`='$user_id'");}
     }
-	$dbconnect->close();
 }
-function selectstrach($user_id){ 
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $result = $dbconnect->query("SELECT first_last,pas,tel,adres,birth,srok,beginstrach,gorod FROM strach WHERE user_id='$user_id'");    
-    while($row = $result->fetch_assoc()){        
-        return $row;
-    }
-	$dbconnect->close();
-}
+// function selectstrach($user_id){ 
+//     $servername="78.108.80.117";
+//     $username="u178949_vkbot";
+//     $password="123456";
+//     $dbname="b178949_vkbot";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $result = $dbconnect->query("SELECT first_last,pas,tel,adres,birth,srok,beginstrach,gorod FROM strach WHERE user_id='$user_id'");    
+//     while($row = $result->fetch_assoc()){        
+//         return $row;
+//     }
+// 	$dbconnect->close();
+// }
 function setdisen($user_id){ 
-	$servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
+    global $dbconnect;
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     
     $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
@@ -77,61 +69,61 @@ function setdisen($user_id){
         }        
         
     }  
-    $dbconnect->close();
+//     $dbconnect->close();
 }
-function update_file($file_url,$token,$user_id,$newid){ 
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE `newid` = '$newid'");
-    sendMessage($token,$user_id,'ok');   
-	$dbconnect->close();
-}
-function select_file($newid){ 
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '$newid'");
-    while($row = $select_file->fetch_assoc()){        
-        return $row['file_url'];
-        break;
-    } 
-	$dbconnect->close();
-}
-function visasave($text,$user_id){
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $result = $dbconnect->query("SELECT user_id FROM 8marta");    
-    while($row = $result->fetch_assoc()){        
-        if($row['user_id']==$user_id){
-            $new_id = false;
-            break;
-        }
-    }   
-    if($new_id !== false){
-        $insertname = $dbconnect->query("INSERT INTO 8marta(visanum,visacontrol) VALUES('$text','0')");
-    }
-    else{
-        $updatename = $dbconnect->query("UPDATE `8marta` SET `visanum`='$text' WHERE `user_id`='$user_id'");
-    }
-	$dbconnect->close();
-}
-function visacontrol($user_id,$visacontrol){
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
-    $dbconnect->close();
-}
+// function update_file($file_url,$token,$user_id,$newid){ 
+//     $servername="78.108.80.117";
+//     $username="u178949_vkbot";
+//     $password="123456";
+//     $dbname="b178949_vkbot";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE `newid` = '$newid'");
+//     sendMessage($token,$user_id,'ok');   
+// 	$dbconnect->close();
+// }
+// function select_file($newid){ 
+//     $servername="78.108.80.117";
+//     $username="u178949_vkbot";
+//     $password="123456";
+//     $dbname="b178949_vkbot";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '$newid'");
+//     while($row = $select_file->fetch_assoc()){        
+//         return $row['file_url'];
+//         break;
+//     } 
+// 	$dbconnect->close();
+// }
+// function visasave($text,$user_id){
+//     $servername="78.108.80.117";
+//     $username="u178949_vkbot";
+//     $password="123456";
+//     $dbname="b178949_vkbot";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
+//     while($row = $result->fetch_assoc()){        
+//         if($row['user_id']==$user_id){
+//             $new_id = false;
+//             break;
+//         }
+//     }   
+//     if($new_id !== false){
+//         $insertname = $dbconnect->query("INSERT INTO 8marta(visanum,visacontrol) VALUES('$text','0')");
+//     }
+//     else{
+//         $updatename = $dbconnect->query("UPDATE `8marta` SET `visanum`='$text' WHERE `user_id`='$user_id'");
+//     }
+// 	$dbconnect->close();
+// }
+// function visacontrol($user_id,$visacontrol){
+//     $servername="78.108.80.117";
+//     $username="u178949_vkbot";
+//     $password="123456";
+//     $dbname="b178949_vkbot";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
+//     $dbconnect->close();
+// }
 $confirmationToken = '14997d31';
 $token = '3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7';//'70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
 $secretKey = 'zdraste123romanlazko';
