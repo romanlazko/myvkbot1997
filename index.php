@@ -239,7 +239,7 @@ if($type == 'message_new'){
         $reply = "Нажимая на кнопки, пишите свои данные.";
         $keyboard = [ 
                 'one_time' => false, 
-                'buttons' => [[keyboard('22',$buttonName, $color)],[keyboard('23',"Дата рождения: ".selectstrach($user_id)['birth']  ,$color)]
+                'buttons' => [[keyboard('22',"Имя и Фамилия: ".selectstrach($user_id)['first_last'], $color)],[keyboard('23',"Дата рождения: ".selectstrach($user_id)['birth']  ,$color)]
                              ,[keyboard('24',"Номер паспорта: ".selectstrach($user_id)['pas'] ,$color)],[keyboard('25',"Номер телефона: ".selectstrach($user_id)['tel'] ,$color)]
                              ,[keyboard('26', "Адрес проживания: ".selectstrach($user_id)['adres'] ,$color)],[keyboard('28', "Город: ".selectstrach($user_id)['gorod'] ,$color)]
                              ,[keyboard('27', "Дата начала: ".selectstrach($user_id)['beginstrach'] ,$color)],[keyboard('17', "Продолжить" ,'positive')],[keyboard('6', "Назад" ,'negative')]
@@ -350,7 +350,7 @@ if($type == 'message_new'){
                 
             $keyboard = [ 
                 'one_time' => false, 
-                'buttons' => [[keyboard('22',$buttonName ,$color)],[keyboard('23', "Дата рождения: ".selectstrach($user_id)['birth'] ,$color)]
+                'buttons' => [[keyboard('22',"Имя и Фамилия: ".$text,$color)],[keyboard('23', "Дата рождения: ".selectstrach($user_id)['birth'] ,$color)]
                              ,[keyboard('24', "Номер паспорта: ".selectstrach($user_id)['pas'] ,$color)],[keyboard('25', "Номер телефона: ".selectstrach($user_id)['tel'] ,$color)]
                              ,[keyboard('26', "Адрес проживания: ".selectstrach($user_id)['adres'] ,$color)],[keyboard('28', "Город: ".selectstrach($user_id)['gorod'] ,$color)],[keyboard('27', "Дата начала: ".selectstrach($user_id)['beginstrach'] ,$color)]
                              ,[keyboard('17', "Продолжить" ,'positive')],[keyboard('6', "Назад" ,'negative')]
@@ -370,7 +370,7 @@ if($type == 'message_new'){
             $buttonName = selectstrach($user_id)['first_last'];//$buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
             $keyboard = [ 
                 'one_time' => false,  
-                'buttons' => [[keyboard('22', $buttonName,$color)],[keyboard('23', "Дата рождения: ".$text ,$color)]
+                'buttons' => [[keyboard('22', "Имя и Фамилия: ".selectstrach($user_id)['first_last'],$color)],[keyboard('23', "Дата рождения: ".$text ,$color)]
                              ,[keyboard('24', "Номер паспорта: ".selectstrach($user_id)['pas'] ,$color)],[keyboard('25', "Номер телефона: ".selectstrach($user_id)['tel'] ,$color)]
                              ,[keyboard('26', "Адрес проживания: ".selectstrach($user_id)['adres'] ,$color)],[keyboard('28', "Город: ".selectstrach($user_id)['gorod'] ,$color)],[keyboard('27', "Дата начала: ".selectstrach($user_id)['beginstrach'] ,$color)]
                              ,[keyboard('17', "Продолжить" ,'positive')],[keyboard('6', "Назад" ,'negative')]
@@ -385,7 +385,7 @@ if($type == 'message_new'){
             }
         }elseif($setdisen==='6'){
             $reply = "Паспорт сохранен";
-            $buttonName = selectstrach($user_id)['first_last'];//$buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
+            $buttonName = "Имя и Фамилия: ".selectstrach($user_id)['first_last'];//$buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
             $keyboard = [ 
                 'one_time' => false, 
                 'buttons' => [[keyboard('22',$buttonName ,$color)],[keyboard('23', "Дата рождения: ".selectstrach($user_id)['birth'] ,$color)]
@@ -398,7 +398,7 @@ if($type == 'message_new'){
             namestrach($user_id,$text,'pas');
         }elseif($setdisen==='7'){
             $reply = "Телефон сохранен";
-            $buttonName = selectstrach($user_id)['first_last'];//$buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
+            $buttonName = "Имя и Фамилия: ".selectstrach($user_id)['first_last'];//$buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
             $keyboard = [ 
                 'one_time' => false, 
                 'buttons' => [[keyboard('22',$buttonName ,$color)],[keyboard('23', "Дата рождения: ".selectstrach($user_id)['birth'] ,$color)]
@@ -412,7 +412,7 @@ if($type == 'message_new'){
         }elseif($setdisen==='8'){
             if (preg_match('/[a-z0-9]+/i',$text) ){
             $reply = "Адрес сохранен";
-            $buttonName = selectstrach($user_id)['first_last'];//$buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
+            $buttonName = "Имя и Фамилия: ".selectstrach($user_id)['first_last'];//$buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
             $keyboard = [ 
                 'one_time' => false, 
                 'buttons' => [[keyboard('22',$buttonName ,$color)],[keyboard('23', "Дата рождения: ".selectstrach($user_id)['birth'] ,$color)]
