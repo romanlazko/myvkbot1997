@@ -116,9 +116,9 @@ if($type == 'confirmation'){
 }
 if($type == 'message_new'){
     
-    if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  or $button =='{"button":6}'  or $text== "начать") {
+    if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  /*or $button =='{"button":6}' */ or $text== "начать") {
         
-        $reply ="Привет, ".$first_name."!\n
+        $reply ="Привет, !\n
 Я бот, который поможет Вам проверить, готова ли Ваша виза. 
 Чтобы продолжить, нажмите на 'Проверить визу', и следуйте подсказкам.";
         $keyboard = [ 
