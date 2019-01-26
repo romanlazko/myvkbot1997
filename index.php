@@ -290,7 +290,7 @@ if($type == 'message_new'){
             $buttonName = selectstrach($user_id)['first_last']; //mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'utf-8').selectstrach($user_id)['first_last'];
             $keyboard = [ 
                 'one_time' => false, 
-                'buttons' => [[keyboard('22',$buttonName, $color)],[keyboard('23',"Дата рождения: ".selectstrach($user_id)['birth']  ,$color)]
+                'buttons' => [[keyboard('22',"Имя и Фамилия: ".selectstrach($user_id)['first_last'], $color)],[keyboard('23',"Дата рождения: ".selectstrach($user_id)['birth']  ,$color)]
                              ,[keyboard('24',"Номер паспорта: ".selectstrach($user_id)['pas'] ,$color)],[keyboard('25',"Номер телефона: ".selectstrach($user_id)['tel'] ,$color)]
                              ,[keyboard('26', "Адрес проживания: ".selectstrach($user_id)['adres'] ,$color)],[keyboard('28', "Город: ".selectstrach($user_id)['gorod'] ,$color)],[keyboard('27', "Дата начала: ".selectstrach($user_id)['beginstrach'] ,$color)]
                              ,[keyboard('17', "Продолжить" ,'positive')],[keyboard('6', "Назад" ,'negative')]
