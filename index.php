@@ -53,7 +53,12 @@ function selectstrach($user_id){
     }
 }
 function setdisen($user_id){ 
-    global $dbconnect;
+	$servername="db4free.net: 3306";
+$username="romanlazko";
+$password="zdraste123";
+$dbname="promocoder1";
+$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    
     $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
     while($row = $result1->fetch_assoc()){
         if($row['disen']!==0){
@@ -61,7 +66,8 @@ function setdisen($user_id){
             return $row['disen'];
         }        
         
-    }   
+    }  
+    $dbconnect->close();
 }
 function update_file($file_url,$token,$user_id,$newid){ 
     global $dbconnect;
@@ -111,7 +117,7 @@ $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?u
 //$last_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['last_name']);
 $first_name = $userInfo['response'][0]['first_name'];
 $last_name = $userInfo['response'][0]['last_name'];
-
+$setdisen = setdisen($user_id);
 //$setdisen = 1;
 if($type == 'confirmation'){
     echo $confirmationToken;
@@ -338,7 +344,7 @@ if($type == 'message_new'){
     
     else{
         $color = 'positive';
-        $setdisen = setdisen($user_id);
+        
         
         if($setdisen==='4'){
             $reply =  "Имя сохранено";
