@@ -59,7 +59,7 @@ function namestrach($user_id,$text,$param){
 // }
 function setdisen($user_id){ 
     global $dbconnect;
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    
     
     $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
     while($row = $result1->fetch_assoc()){
