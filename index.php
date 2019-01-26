@@ -8,11 +8,11 @@ return;
 }
 function name($user_id,$first_name,$last_name,$disen){ 
     
-    $servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
@@ -29,11 +29,11 @@ $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $dbconnect->close();
 }
 function namestrach($user_id,$text,$param){ 
-    $servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM strach");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
@@ -51,11 +51,11 @@ $dbconnect = new mysqli($servername, $username, $password, $dbname);
 	$dbconnect->close();
 }
 function selectstrach($user_id){ 
-    $servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT first_last,pas,tel,adres,birth,srok,beginstrach,gorod FROM strach WHERE user_id='$user_id'");    
     while($row = $result->fetch_assoc()){        
         return $row;
@@ -63,11 +63,11 @@ $dbconnect = new mysqli($servername, $username, $password, $dbname);
 	$dbconnect->close();
 }
 function setdisen($user_id){ 
-	$servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+	$servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     
     $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
     while($row = $result1->fetch_assoc()){
@@ -80,21 +80,21 @@ $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $dbconnect->close();
 }
 function update_file($file_url,$token,$user_id,$newid){ 
-    $servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE `newid` = '$newid'");
     sendMessage($token,$user_id,'ok');   
 	$dbconnect->close();
 }
 function select_file($newid){ 
-    $servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '$newid'");
     while($row = $select_file->fetch_assoc()){        
         return $row['file_url'];
@@ -103,11 +103,11 @@ $dbconnect = new mysqli($servername, $username, $password, $dbname);
 	$dbconnect->close();
 }
 function visasave($text,$user_id){
-    $servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
@@ -124,11 +124,11 @@ $dbconnect = new mysqli($servername, $username, $password, $dbname);
 	$dbconnect->close();
 }
 function visacontrol($user_id,$visacontrol){
-    $servername="db4free.net: 3306";
-$username="romanlazko";
-$password="zdraste123";
-$dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="78.108.80.117";
+    $username="u178949_vkbot";
+    $password="123456";
+    $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
     $dbconnect->close();
 }
@@ -153,7 +153,7 @@ if($type == 'confirmation'){
 }
 if($type == 'message_new'){
     
-    if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  /*or $button =='{"button":6}' */ or $text== "начать") {
+    if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  or $button =='{"button":6}' or $text== "начать") {
         
         $reply ="Привет, ".$first_name."!\n
 Я бот, который поможет Вам проверить, готова ли Ваша виза. 
