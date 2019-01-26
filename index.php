@@ -1,14 +1,8 @@
 <?php
 
 
-$servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-if($dbconnect){
-	sendMessage('3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7',113601869,'ok');
-}else{sendMessage('3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7',113601869,'no');}
+
+
 if (!isset($_REQUEST)) { 
 return; 
 }
@@ -18,6 +12,7 @@ function name($user_id,$first_name,$last_name,$disen){
     $username="u178949_vkbot";
     $password="123456";
     $dbname="b178949_vkbot";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
