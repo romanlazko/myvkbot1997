@@ -180,7 +180,7 @@ if($type == 'message_new'){
                           [keyboard('6', "Назад" ,'negative')]]
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
-
+        namestrach($user_id,'0',0);
     }elseif($text =="Продолжить"){
         if(selectstrach($user_id)['first_last']===' '){
             $reply = "Напишите имя и фамилию";
