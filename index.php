@@ -9,92 +9,92 @@
 // if (!isset($_REQUEST)) { 
 // return; 
 // }
-function name($user_id,$first_name,$last_name,$disen){ 
+// function name($user_id,$first_name,$last_name,$disen){ 
     
-    global $dbconnect;
-    $result = $dbconnect->query("SELECT user_id FROM 8marta");    
-    while($row = $result->fetch_assoc()){        
-        if($row['user_id']==$user_id){
-            $new_id = false;
-            break;
-        }
-    }   
-    if($new_id !== false){
-        $insertname = $dbconnect->query("INSERT INTO 8marta(user_id,disen,last_name,first_name,visanum,visacontrol) VALUES('$user_id','$disen','$last_name','$first_name','1','1')");
-    }
-    else{
-        $updatename = $dbconnect->query("UPDATE `8marta` SET `disen`='$disen' WHERE `user_id`='$user_id'");
-    }
-}
-function namestrach($user_id,$text,$param){ 
-    global $dbconnect;
-    $result = $dbconnect->query("SELECT user_id FROM strach");    
-    while($row = $result->fetch_assoc()){        
-        if($row['user_id']==$user_id){
-            $new_id = false;
-            break;
-        }
-    }   
-    if($new_id !== false){
-        $insertname = $dbconnect->query("INSERT INTO strach(user_id,first_last,pas,tel,adres,birth,srok,beginstrach,gorod) VALUES('$user_id',' ',' ',' ',' ',' ',' ',' ',' ')");
-    }
-    else{
-        if($text!=='0'){
-        $updatename = $dbconnect->query("UPDATE `strach` SET `$param`='$text' WHERE `user_id`='$user_id'");}
-    }
-}
-function selectstrach($user_id){ 
-    global $dbconnect;
-    $result = $dbconnect->query("SELECT first_last,pas,tel,adres,birth,srok,beginstrach,gorod FROM strach WHERE user_id='$user_id'");    
-    while($row = $result->fetch_assoc()){        
-        return $row;
-    }
-}
-function setdisen($user_id){ 
-    global $dbconnect;
-    $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
-    while($row = $result1->fetch_assoc()){
-        if($row['disen']!==0){
-            $updatename1 = $dbconnect->query("UPDATE `8marta` SET `disen`='0' WHERE `user_id`='$user_id'");
-            return $row['disen'];
-        }        
+//     global $dbconnect;
+//     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
+//     while($row = $result->fetch_assoc()){        
+//         if($row['user_id']==$user_id){
+//             $new_id = false;
+//             break;
+//         }
+//     }   
+//     if($new_id !== false){
+//         $insertname = $dbconnect->query("INSERT INTO 8marta(user_id,disen,last_name,first_name,visanum,visacontrol) VALUES('$user_id','$disen','$last_name','$first_name','1','1')");
+//     }
+//     else{
+//         $updatename = $dbconnect->query("UPDATE `8marta` SET `disen`='$disen' WHERE `user_id`='$user_id'");
+//     }
+// }
+// function namestrach($user_id,$text,$param){ 
+//     global $dbconnect;
+//     $result = $dbconnect->query("SELECT user_id FROM strach");    
+//     while($row = $result->fetch_assoc()){        
+//         if($row['user_id']==$user_id){
+//             $new_id = false;
+//             break;
+//         }
+//     }   
+//     if($new_id !== false){
+//         $insertname = $dbconnect->query("INSERT INTO strach(user_id,first_last,pas,tel,adres,birth,srok,beginstrach,gorod) VALUES('$user_id',' ',' ',' ',' ',' ',' ',' ',' ')");
+//     }
+//     else{
+//         if($text!=='0'){
+//         $updatename = $dbconnect->query("UPDATE `strach` SET `$param`='$text' WHERE `user_id`='$user_id'");}
+//     }
+// }
+// function selectstrach($user_id){ 
+//     global $dbconnect;
+//     $result = $dbconnect->query("SELECT first_last,pas,tel,adres,birth,srok,beginstrach,gorod FROM strach WHERE user_id='$user_id'");    
+//     while($row = $result->fetch_assoc()){        
+//         return $row;
+//     }
+// }
+// function setdisen($user_id){ 
+//     global $dbconnect;
+//     $result1 = $dbconnect->query("SELECT disen FROM 8marta WHERE user_id='$user_id'");    
+//     while($row = $result1->fetch_assoc()){
+//         if($row['disen']!==0){
+//             $updatename1 = $dbconnect->query("UPDATE `8marta` SET `disen`='0' WHERE `user_id`='$user_id'");
+//             return $row['disen'];
+//         }        
         
-    }   
-}
-function update_file($file_url,$token,$user_id,$newid){ 
-    global $dbconnect;
-    $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE `newid` = '$newid'");
-    sendMessage($token,$user_id,'ok');   
-}
-function select_file($newid){ 
-    global $dbconnect;
-    $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '$newid'");
-    while($row = $select_file->fetch_assoc()){        
-        return $row['file_url'];
-        break;
-    } 
-}
-function visasave($text,$user_id){
-    global $dbconnect;
-    $result = $dbconnect->query("SELECT user_id FROM 8marta");    
-    while($row = $result->fetch_assoc()){        
-        if($row['user_id']==$user_id){
-            $new_id = false;
-            break;
-        }
-    }   
-    if($new_id !== false){
-        $insertname = $dbconnect->query("INSERT INTO 8marta(visanum,visacontrol) VALUES('$text','0')");
-    }
-    else{
-        $updatename = $dbconnect->query("UPDATE `8marta` SET `visanum`='$text' WHERE `user_id`='$user_id'");
-    }
-}
-function visacontrol($user_id,$visacontrol){
-    global $dbconnect;
-    $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
+//     }   
+// }
+// function update_file($file_url,$token,$user_id,$newid){ 
+//     global $dbconnect;
+//     $update_file = $dbconnect->query("UPDATE `filevisa` SET `file_url`='$file_url' WHERE `newid` = '$newid'");
+//     sendMessage($token,$user_id,'ok');   
+// }
+// function select_file($newid){ 
+//     global $dbconnect;
+//     $select_file = $dbconnect->query("SELECT file_url FROM `filevisa` WHERE newid= '$newid'");
+//     while($row = $select_file->fetch_assoc()){        
+//         return $row['file_url'];
+//         break;
+//     } 
+// }
+// function visasave($text,$user_id){
+//     global $dbconnect;
+//     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
+//     while($row = $result->fetch_assoc()){        
+//         if($row['user_id']==$user_id){
+//             $new_id = false;
+//             break;
+//         }
+//     }   
+//     if($new_id !== false){
+//         $insertname = $dbconnect->query("INSERT INTO 8marta(visanum,visacontrol) VALUES('$text','0')");
+//     }
+//     else{
+//         $updatename = $dbconnect->query("UPDATE `8marta` SET `visanum`='$text' WHERE `user_id`='$user_id'");
+//     }
+// }
+// function visacontrol($user_id,$visacontrol){
+//     global $dbconnect;
+//     $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
     
-}
+// }
 $confirmationToken = '14997d31';
 $token = '3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7';//'70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
 $secretKey = 'zdraste123romanlazko';
@@ -109,7 +109,7 @@ $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?u
 //$last_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['last_name']);
 $first_name = $userInfo['response'][0]['first_name'];
 $last_name = $userInfo['response'][0]['last_name'];
-$setdisen = setdisen($user_id);
+//$setdisen = setdisen($user_id);
 //$setdisen = 1;
 if($type == 'confirmation'){
     echo $confirmationToken;
@@ -125,53 +125,53 @@ if($type == 'message_new'){
             'one_time' => true, 
             'buttons' => [[keyboard('1',  "Проверить визу" ,'positive')],[keyboard('2',"Страхование",'positive')],[keyboard('3',"Настройки"  ,'positive')]]
         ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
+        sendKeyboard($token,$user_id,$reply,$keyboard);}
 
-    }elseif($button =='{"button":1}' ){
+//     }elseif($button =='{"button":1}' ){
         
-        name($user_id,$first_name,$last_name,2);
-        $reply = $first_name.', отправьте мне номер своего заявления чтобы проверить готова ли Ваша виза.
-Пример: 
-Если номер Вашего заявления OAM-22043-1/PP-2018, Вам достаточно написать 22043/PP-2018. Результат будет выглядеть так: OAM-22043/PP-2018.
-Важно! 
-Все символы должны быть написаны латиницей!
-Если мне удастся найти номер, то это означает, что Ваша виза была одобрена.';
-        sendMessage($token,$user_id,$reply);
+//         name($user_id,$first_name,$last_name,2);
+//         $reply = $first_name.', отправьте мне номер своего заявления чтобы проверить готова ли Ваша виза.
+// Пример: 
+// Если номер Вашего заявления OAM-22043-1/PP-2018, Вам достаточно написать 22043/PP-2018. Результат будет выглядеть так: OAM-22043/PP-2018.
+// Важно! 
+// Все символы должны быть написаны латиницей!
+// Если мне удастся найти номер, то это означает, что Ваша виза была одобрена.';
+//         sendMessage($token,$user_id,$reply);
        
-    }elseif($button =='{"button":2}'){
+//     }elseif($button =='{"button":2}'){
 
-        $reply = "Что бы Вы хотели узнать о страховании?";
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => [[keyboard('4',"Заказать страховку" ,'positive')],[keyboard('5', "Возврат средств" ,'positive')],[keyboard('6', "Назад" ,'negative')]]
-        ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
+//         $reply = "Что бы Вы хотели узнать о страховании?";
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => [[keyboard('4',"Заказать страховку" ,'positive')],[keyboard('5', "Возврат средств" ,'positive')],[keyboard('6', "Назад" ,'negative')]]
+//         ];
+//         sendKeyboard($token,$user_id,$reply,$keyboard);
     
-    }elseif($button =='{"button":4}'){
+//     }elseif($button =='{"button":4}'){
 
-        $reply = "ВЫБЕРЕТЕ ПОДХОДЯЩИЙ ВАМ ВИД СТРАХОВАНИЯ.";
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => [[keyboard('7', "КОМПЛЕКСНОЕ СТРАХОВАНИЕ - ДО 30 ЛЕТ" ,'positive')],[keyboard('8', "КОМПЛЕКСНОЕ СТРАХОВАНИЕ - ОТ 30 ЛЕТ" ,'positive')],
-                         [keyboard('9', "НЕОТЛОЖНАЯ МЕД ПОМОЩЬ" ,'positive')],[keyboard('6', "Назад" ,'negative')]]
-        ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
+//         $reply = "ВЫБЕРЕТЕ ПОДХОДЯЩИЙ ВАМ ВИД СТРАХОВАНИЯ.";
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => [[keyboard('7', "КОМПЛЕКСНОЕ СТРАХОВАНИЕ - ДО 30 ЛЕТ" ,'positive')],[keyboard('8', "КОМПЛЕКСНОЕ СТРАХОВАНИЕ - ОТ 30 ЛЕТ" ,'positive')],
+//                          [keyboard('9', "НЕОТЛОЖНАЯ МЕД ПОМОЩЬ" ,'positive')],[keyboard('6', "Назад" ,'negative')]]
+//         ];
+//         sendKeyboard($token,$user_id,$reply,$keyboard);
     
-    }elseif($button =='{"button":7}'){
+//     }elseif($button =='{"button":7}'){
         
-        $reply = "КОМПЛЕКСНОЕ МЕДИЦИНСКОЕ СТРАХОВАНИЕ.
-При этом расходы на репатриацию составляют максимум 400 тыс. ЧК из общего лимита. Общий лимитом страхового возмещения за экстренное стоматологическое лечение является сумма в 5 тыс.
-";
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => [[keyboard('30', "3 мес ".cenik(3) ,'positive'),keyboard('30', "4 мес ".cenik(4) ,'positive')],
-                          [keyboard('30', "5 мес ".cenik(5) ,'positive'),keyboard('30', "6 мес ".cenik(6) ,'positive')],
-                          [keyboard('30', "7 мес ".cenik(7) ,'positive'),keyboard('30', "8 мес ".cenik(8) ,'positive')],
-                          [keyboard('30', "9 мес ".cenik(9) ,'positive'),keyboard('30', "10 мес ".cenik(10) ,'positive')],
-                          [keyboard('30', "11 мес ".cenik(11) ,'positive'),keyboard('30', "12 мес ".cenik(12) ,'positive')],
-                          [keyboard('6', "Назад" ,'negative')]]
-        ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);
+//         $reply = "КОМПЛЕКСНОЕ МЕДИЦИНСКОЕ СТРАХОВАНИЕ.
+// При этом расходы на репатриацию составляют максимум 400 тыс. ЧК из общего лимита. Общий лимитом страхового возмещения за экстренное стоматологическое лечение является сумма в 5 тыс.
+// ";
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => [[keyboard('30', "3 мес ".cenik(3) ,'positive'),keyboard('30', "4 мес ".cenik(4) ,'positive')],
+//                           [keyboard('30', "5 мес ".cenik(5) ,'positive'),keyboard('30', "6 мес ".cenik(6) ,'positive')],
+//                           [keyboard('30', "7 мес ".cenik(7) ,'positive'),keyboard('30', "8 мес ".cenik(8) ,'positive')],
+//                           [keyboard('30', "9 мес ".cenik(9) ,'positive'),keyboard('30', "10 мес ".cenik(10) ,'positive')],
+//                           [keyboard('30', "11 мес ".cenik(11) ,'positive'),keyboard('30', "12 мес ".cenik(12) ,'positive')],
+//                           [keyboard('6', "Назад" ,'negative')]]
+//         ];
+//         sendKeyboard($token,$user_id,$reply,$keyboard);
 
 //     }elseif($text =="Продолжить"){
 //         if(selectstrach($user_id)['first_last']===' '){
