@@ -235,7 +235,7 @@ if($type == 'message_new'){
         }
     }elseif($button =='{"button":12}'){
         $color = 'positive';
-        $buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
+        $buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ").selectstrach($user_id)['first_last'];
         $reply = "Нажимая на кнопки, пишите свои данные.";
         $keyboard = [ 
                 'one_time' => false, 
@@ -287,7 +287,7 @@ if($type == 'message_new'){
     }elseif($button =='{"button":30}'){
             $color = 'positive';
             $reply = "Нажимая на кнопки, пишите свои данные.";
-            $buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'cp1251').selectstrach($user_id)['first_last'];
+            $buttonName = mb_strimwidth("Имя и Фамилия: ", 0, 40 - strlen(selectstrach($user_id)['first_last']), "..: ",'utf-8').selectstrach($user_id)['first_last'];
             $keyboard = [ 
                 'one_time' => false, 
                 'buttons' => [[keyboard('22',$buttonName, $color)],[keyboard('23',"Дата рождения: ".selectstrach($user_id)['birth']  ,$color)]
