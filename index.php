@@ -103,7 +103,7 @@ $type = $data['type'];
 $user_id = $data['object']['from_id'];
 //$text = iconv( 'utf-8','cp1251' , $data['object']['text']);
 $text = $data['object']['text'];
-$button = $data['object']['payload'];
+//$button = $data['object']['payload'];
 // $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.92"),true);
 // //$first_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['first_name']);
 // //$last_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['last_name']);
