@@ -114,18 +114,21 @@ $type = $data['type'];
 if($type == 'confirmation'){
     echo $confirmationToken;
 }
-// if($type == 'message_new'){
+if($type == 'message_new'){
     
-//     if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  /*or $button =='{"button":6}' */ or $text== "начать") {
+    if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  /*or $button =='{"button":6}' */ or $text== "начать") {
         
-//         $reply ="Привет, !\n
-// Я бот, который поможет Вам проверить, готова ли Ваша виза. 
-// Чтобы продолжить, нажмите на 'Проверить визу', и следуйте подсказкам.";
-//         $keyboard = [ 
-//             'one_time' => true, 
-//             'buttons' => [[keyboard('1',  "Проверить визу" ,'positive')],[keyboard('2',"Страхование",'positive')],[keyboard('3',"Настройки"  ,'positive')]]
-//         ];
-//         sendKeyboard($token,$user_id,$reply,$keyboard);}
+        $reply ="Привет, !\n
+Я бот, который поможет Вам проверить, готова ли Ваша виза. 
+Чтобы продолжить, нажмите на 'Проверить визу', и следуйте подсказкам.";
+        $keyboard = [ 
+            'one_time' => true, 
+            'buttons' => [[keyboard('1',  "Проверить визу" ,'positive')],[keyboard('2',"Страхование",'positive')],[keyboard('3',"Настройки"  ,'positive')]]
+        ];
+        sendKeyboard($token,$user_id,$reply,$keyboard);
+    }
+}
+	
 
 //     }elseif($button =='{"button":1}' ){
         
