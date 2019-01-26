@@ -95,11 +95,11 @@
 //     $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
     
 // }
-// $confirmationToken = '14997d31';
-// $token = '3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7';//'70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
-// $secretKey = 'zdraste123romanlazko';
-// $data = json_decode(file_get_contents('php://input'),true);
-// $type = $data['type'];
+$confirmationToken = '14997d31';
+$token = '3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7';//'70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
+$secretKey = 'zdraste123romanlazko';
+$data = json_decode(file_get_contents('php://input'),true);
+$type = $data['type'];
 // $user_id = $data['object']['from_id'];
 //$text = iconv( 'utf-8','cp1251' , $data['object']['text']);
 // $text = $data['object']['text']);
