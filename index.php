@@ -109,8 +109,8 @@ $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?u
 //$last_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['last_name']);
 $first_name = $userInfo['response'][0]['first_name'];
 $last_name = $userInfo['response'][0]['last_name'];
-//$setdisen = setdisen($user_id);
-$setdisen = 1;
+$setdisen = setdisen($user_id);
+//$setdisen = 1;
 if($type == 'confirmation'){
     echo $confirmationToken;
 }
@@ -126,7 +126,7 @@ if($type == 'message_new'){
             'buttons' => [[keyboard('1',  "Проверить визу" ,'positive')],[keyboard('2',"Страхование",'positive')],[keyboard('3',"Настройки"  ,'positive')]]
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
-    }
+    
 
 	
 
