@@ -548,19 +548,19 @@ function sendKeyboard($token,$user_id,$reply,$keyboard){
     header("HTTP/1.1 200 OK");
     echo ('ok'); 
 }
-function sendMessage($token,$user_id,$reply){
-    //$reply = iconv( 'cp1251','utf-8' , $reply);
-    $request_params = array(
-        'message' => $reply,
-        'random_id' => rand(-10000000, 10000000),
-        'user_id' => $user_id,
-        'access_token' => $token,
-        'v' => '5.92',
-    );
-    file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
-    header("HTTP/1.1 200 OK");
-    echo ('ok'); 
-}
+// function sendMessage($token,$user_id,$reply){
+//     //$reply = iconv( 'cp1251','utf-8' , $reply);
+//     $request_params = array(
+//         'message' => $reply,
+//         'random_id' => rand(-10000000, 10000000),
+//         'user_id' => $user_id,
+//         'access_token' => $token,
+//         'v' => '5.92',
+//     );
+//     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
+//     header("HTTP/1.1 200 OK");
+//     echo ('ok'); 
+// }
 function keyboard($par,$name_btn,$color){
     //if (preg_match("/[а-я]/i", $name_btn)){
     //$name_btn = iconv( 'cp1251','utf-8' , $name_btn);
