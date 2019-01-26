@@ -534,20 +534,20 @@ if($type == 'message_new'){
 //         }
 //     }
 // }
-// function sendKeyboard($token,$user_id,$reply,$keyboard){
-//     //$reply = iconv( 'cp1251','utf-8' , $reply);
-//     $request_params = array(
-//         'message' => $reply,
-//         'user_id' => $user_id,
-//         'random_id' => rand(-10000000, 10000000),
-//         'access_token' => $token,
-//         'keyboard'=>json_encode($keyboard, JSON_UNESCAPED_UNICODE),
-//         'v' => '5.92'
-//     );
-//     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
-//     header("HTTP/1.1 200 OK");
-//     echo ('ok'); 
-// }
+function sendKeyboard($token,$user_id,$reply,$keyboard){
+    //$reply = iconv( 'cp1251','utf-8' , $reply);
+    $request_params = array(
+        'message' => $reply,
+        'user_id' => $user_id,
+        'random_id' => rand(-10000000, 10000000),
+        'access_token' => $token,
+        'keyboard'=>json_encode($keyboard, JSON_UNESCAPED_UNICODE),
+        'v' => '5.92'
+    );
+    file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
+    header("HTTP/1.1 200 OK");
+    echo ('ok'); 
+}
 // function sendMessage($token,$user_id,$reply){
 //     //$reply = iconv( 'cp1251','utf-8' , $reply);
 //     $request_params = array(
@@ -561,19 +561,19 @@ if($type == 'message_new'){
 //     header("HTTP/1.1 200 OK");
 //     echo ('ok'); 
 // }
-// function keyboard($par,$name_btn,$color){
-//     //if (preg_match("/[а-я]/i", $name_btn)){
-//     //$name_btn = iconv( 'cp1251','utf-8' , $name_btn);
-//     $key = 
-//         ['action' =>['type' => 'text', 
-//                      'payload' => '{"button": '.$par.'}',
-//                      'label' => $name_btn, 
-//                     ],
-//         'color' => $color]
-//     ;
-//     return $key;
+function keyboard($par,$name_btn,$color){
+    //if (preg_match("/[а-я]/i", $name_btn)){
+    //$name_btn = iconv( 'cp1251','utf-8' , $name_btn);
+    $key = 
+        ['action' =>['type' => 'text', 
+                     'payload' => '{"button": '.$par.'}',
+                     'label' => $name_btn, 
+                    ],
+        'color' => $color]
+    ;
+    return $key;
     
-// }
+}
 // function cenik($param){
 //     $cenik = $param*833;
 //     return $cenik;
