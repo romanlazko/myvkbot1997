@@ -129,7 +129,7 @@ if($type == 'message_new'){
             'buttons' => [[keyboard('1',  "Проверить визу" ,'positive')],[keyboard('2',"Страхование",'positive')],[keyboard('3',"Настройки"  ,'positive')]]
         ];
         sendKeyboard($token,$user_id,$reply,$keyboard);
-    
+    name($user_id,$first_name,$last_name,2);
 
 	
 
