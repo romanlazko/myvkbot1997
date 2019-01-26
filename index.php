@@ -95,14 +95,14 @@
 //     $updatevisa = $dbconnect->query("UPDATE `8marta` SET `visacontrol`='$visacontrol' WHERE `user_id`='$user_id'");
     
 // }
-$confirmationToken = '14997d31';
-$token = '3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7';//'70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
-$secretKey = 'zdraste123romanlazko';
-$data = json_decode(file_get_contents('php://input'),true);
-$type = $data['type'];
-$user_id = $data['object']['from_id'];
+// $confirmationToken = '14997d31';
+// $token = '3af47dabc63343342ac2e6a677529cce3ab16f7b6d0194fbd1490f02723f6d9ffc02744c7c842171bd6d7';//'70ed1287bd3708989487a43bdab2b33909b25028eb1318564ff268be9c92fd2a83413ea7e369d6c8159e7';
+// $secretKey = 'zdraste123romanlazko';
+// $data = json_decode(file_get_contents('php://input'),true);
+// $type = $data['type'];
+// $user_id = $data['object']['from_id'];
 //$text = iconv( 'utf-8','cp1251' , $data['object']['text']);
-$text = $data['object']['text']);
+// $text = $data['object']['text']);
 // $button = $data['object']['payload'];
 // $userInfo = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids=".$user_id."&access_token=".$token."&v=5.92"),true);
 //$first_name = iconv( 'utf-8','cp1251' , $userInfo['response'][0]['first_name']);
@@ -111,21 +111,21 @@ $text = $data['object']['text']);
 // $last_name = $userInfo['response'][0]['last_name'];
 //$setdisen = setdisen($user_id);
 //$setdisen = 1;
-if($type == 'confirmation'){
-    echo $confirmationToken;
-}
-if($type == 'message_new'){
+// if($type == 'confirmation'){
+//     echo $confirmationToken;
+// }
+// if($type == 'message_new'){
     
-    if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  /*or $button =='{"button":6}' */ or $text== "начать") {
+//     if($text == "Начать"  or $text=="Але"  or $text== "Хелло"  /*or $button =='{"button":6}' */ or $text== "начать") {
         
-        $reply ="Привет, !\n
-Я бот, который поможет Вам проверить, готова ли Ваша виза. 
-Чтобы продолжить, нажмите на 'Проверить визу', и следуйте подсказкам.";
-        $keyboard = [ 
-            'one_time' => true, 
-            'buttons' => [[keyboard('1',  "Проверить визу" ,'positive')],[keyboard('2',"Страхование",'positive')],[keyboard('3',"Настройки"  ,'positive')]]
-        ];
-        sendKeyboard($token,$user_id,$reply,$keyboard);}
+//         $reply ="Привет, !\n
+// Я бот, который поможет Вам проверить, готова ли Ваша виза. 
+// Чтобы продолжить, нажмите на 'Проверить визу', и следуйте подсказкам.";
+//         $keyboard = [ 
+//             'one_time' => true, 
+//             'buttons' => [[keyboard('1',  "Проверить визу" ,'positive')],[keyboard('2',"Страхование",'positive')],[keyboard('3',"Настройки"  ,'positive')]]
+//         ];
+//         sendKeyboard($token,$user_id,$reply,$keyboard);}
 
 //     }elseif($button =='{"button":1}' ){
         
@@ -530,47 +530,47 @@ if($type == 'message_new'){
 //             echo ('ok'); 
 //         }
 //     }
-}
-function sendKeyboard($token,$user_id,$reply,$keyboard){
-    //$reply = iconv( 'cp1251','utf-8' , $reply);
-    $request_params = array(
-        'message' => $reply,
-        'user_id' => $user_id,
-        'random_id' => rand(-10000000, 10000000),
-        'access_token' => $token,
-        'keyboard'=>json_encode($keyboard, JSON_UNESCAPED_UNICODE),
-        'v' => '5.92'
-    );
-    file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
-    header("HTTP/1.1 200 OK");
-    echo ('ok'); 
-}
-function sendMessage($token,$user_id,$reply){
-    //$reply = iconv( 'cp1251','utf-8' , $reply);
-    $request_params = array(
-        'message' => $reply,
-        'random_id' => rand(-10000000, 10000000),
-        'user_id' => $user_id,
-        'access_token' => $token,
-        'v' => '5.92',
-    );
-    file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
-    header("HTTP/1.1 200 OK");
-    echo ('ok'); 
-}
-function keyboard($par,$name_btn,$color){
-    //if (preg_match("/[а-я]/i", $name_btn)){
-    //$name_btn = iconv( 'cp1251','utf-8' , $name_btn);
-    $key = 
-        ['action' =>['type' => 'text', 
-                     'payload' => '{"button": '.$par.'}',
-                     'label' => $name_btn, 
-                    ],
-        'color' => $color]
-    ;
-    return $key;
+// }
+// function sendKeyboard($token,$user_id,$reply,$keyboard){
+//     //$reply = iconv( 'cp1251','utf-8' , $reply);
+//     $request_params = array(
+//         'message' => $reply,
+//         'user_id' => $user_id,
+//         'random_id' => rand(-10000000, 10000000),
+//         'access_token' => $token,
+//         'keyboard'=>json_encode($keyboard, JSON_UNESCAPED_UNICODE),
+//         'v' => '5.92'
+//     );
+//     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
+//     header("HTTP/1.1 200 OK");
+//     echo ('ok'); 
+// }
+// function sendMessage($token,$user_id,$reply){
+//     //$reply = iconv( 'cp1251','utf-8' , $reply);
+//     $request_params = array(
+//         'message' => $reply,
+//         'random_id' => rand(-10000000, 10000000),
+//         'user_id' => $user_id,
+//         'access_token' => $token,
+//         'v' => '5.92',
+//     );
+//     file_get_contents('https://api.vk.com/method/messages.send?'. http_build_query($request_params));
+//     header("HTTP/1.1 200 OK");
+//     echo ('ok'); 
+// }
+// function keyboard($par,$name_btn,$color){
+//     //if (preg_match("/[а-я]/i", $name_btn)){
+//     //$name_btn = iconv( 'cp1251','utf-8' , $name_btn);
+//     $key = 
+//         ['action' =>['type' => 'text', 
+//                      'payload' => '{"button": '.$par.'}',
+//                      'label' => $name_btn, 
+//                     ],
+//         'color' => $color]
+//     ;
+//     return $key;
     
-}
+// }
 // function cenik($param){
 //     $cenik = $param*833;
 //     return $cenik;
