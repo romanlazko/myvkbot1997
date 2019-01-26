@@ -8,11 +8,11 @@ return;
 }
 function name($user_id,$first_name,$last_name,$disen){ 
     
-    $servername="78.108.80.117";
-    $username="u178949_vkbot";
-    $password="123456";
-    $dbname="b178949_vkbot";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    $servername="db4free.net: 3306";
+$username="romanlazko";
+$password="zdraste123";
+$dbname="promocoder1";
+$dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT user_id FROM 8marta");    
     while($row = $result->fetch_assoc()){        
         if($row['user_id']==$user_id){
